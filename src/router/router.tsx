@@ -6,10 +6,10 @@ import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import SignUp from '../pages/SignUp/SignUp';
 
 export enum AppRoutes {
-  main = '/',
+  welcome = '/',
+  main = '/graphiql',
   signIn = '/sign-in',
   signUp = '/sign-up',
-  welcome = '/welcome',
 }
 
 export const routesConfig = [
