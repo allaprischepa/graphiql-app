@@ -1,7 +1,9 @@
+import { RouterProvider } from 'react-router-dom';
+import { appRouter } from '../../router/router';
 import './App.scss';
 
 function App() {
-  return <div>reactiveBuQLya GraphiQL App</div>;
+  return <RouterProvider router={appRouter} />;
 }
 
 export default App;
