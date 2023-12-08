@@ -37,11 +37,7 @@
   height: 13vmin;
   float: left;
   margin-right: 1.25em;
-  background: linear-gradient(
-    $deg,
-    $main-color-light 0 70%,
-    $accent-medium 0% 100%
-  );
+
   transform: rotate(-4deg);
   transition: $trans;
   border-radius: 0.25em;
@@ -56,12 +52,24 @@
   }
 }
 
+.member:nth-of-type(odd) .thumb {
+  background: linear-gradient(
+    $deg,
+    $main-color-light 0 70%,
+    $accent-medium 0% 100%
+  );
+}
+
 .member:nth-of-type(even) .thumb {
   --deg: 86deg;
   float: right;
   margin-left: 2em;
   margin-right: -3em;
-  transform: rotate(4deg);
+  background: linear-gradient(
+    $deg,
+    $accent-medium 0 35%,
+    $main-color-light 0% 100%
+  );
 
   @media screen and (max-width: 768px) {
     margin-right: 0;
