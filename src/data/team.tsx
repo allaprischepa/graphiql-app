@@ -21,7 +21,7 @@ export const team = [
 
   {
     id: 3,
-    photo: 'zena.png',
+    photo: 'zena.jpg',
     name: 'Yauheniya Mastavaya',
     github: 'zena86',
     href: 'https://github.com/zena86',
