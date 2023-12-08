@@ -1,7 +1,7 @@
 export const team = [
   {
     id: 1,
-    photo: 'public/alla.jpg',
+    photo: 'alla.jpg',
     name: 'Alla Prischepa',
     github: 'allaprischepa',
     href: 'https://github.com/allaprischepa',
@@ -11,7 +11,7 @@ export const team = [
 
   {
     id: 2,
-    photo: 'public/sasha.jpg',
+    photo: 'sasha.jpg',
     name: 'Alexander Filimonov',
     github: 'luftkrabbe',
     href: 'https://github.com/luftkrabbe',
@@ -21,7 +21,7 @@ export const team = [
 
   {
     id: 3,
-    photo: 'public/zena.png',
+    photo: 'zena.png',
     name: 'Yauheniya Mastavaya',
     github: 'zena86',
     href: 'https://github.com/zena86',

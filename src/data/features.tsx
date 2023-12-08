@@ -1,28 +1,28 @@
 export const features = [
   {
     id: 1,
-    icon: 'public/graphql.svg',
+    icon: 'graphql.svg',
     text: 'GraphQL requests with syntax highlighting',
   },
   {
     id: 2,
-    icon: 'public/clean.svg',
+    icon: 'clean.svg',
     text: 'The query editor support prettifying',
   },
   {
     id: 3,
-    icon: 'public/docs.svg',
+    icon: 'docs.svg',
     text: 'Lazily loaded documentation explorer',
   },
   { id: 4, icon: 'public/language.svg', text: 'Support two languages' },
   {
     id: 5,
-    icon: 'public/api.svg',
+    icon: 'api.svg',
     text: 'Different user-specified API endpoint',
   },
   {
     id: 6,
-    icon: 'public/responsive.svg',
+    icon: 'responsive.svg',
     text: 'Responsive design from mobile to desktop',
   },
 ];
