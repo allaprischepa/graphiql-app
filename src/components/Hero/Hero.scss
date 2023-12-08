@@ -1,0 +1,44 @@
+@import './../../styles/abstarcts/variables';
+
+.hero {
+  background-color: $main-color-light;
+  background-image: url('../../assets/images/hero-bg.svg');
+  font-size: 16px;
+
+  .content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  h1 {
+    color: $accent-medium;
+    font-size: 3em;
+    padding-bottom: 25px;
+  }
+
+  p {
+    color: $accent-light;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    max-width: 700px;
+  }
+
+  a {
+    color: $accent-light;
+    font-weight: 700;
+    transition: $trans;
+
+    &:hover {
+      color: $accent-medium;
+    }
+
+    &:visited {
+      color: $accent-light;
+    }
+  }
+
+  .subtitle {
+    font-weight: 700;
+  }
+}
