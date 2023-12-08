@@ -14,7 +14,7 @@ export const features = [
     icon: 'docs.svg',
     text: 'Lazily loaded documentation explorer',
   },
-  { id: 4, icon: 'public/language.svg', text: 'Support two languages' },
+  { id: 4, icon: 'language.svg', text: 'Support two languages' },
   {
     id: 5,
     icon: 'api.svg',
