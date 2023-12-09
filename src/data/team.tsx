@@ -5,7 +5,7 @@ export const team = [
     name: 'Alla Prischepa',
     github: 'allaprischepa',
     href: 'https://github.com/allaprischepa',
-    text: 'Previously worked as PHP developer. Was a BE developer on Drupal for several years. At this moment she decided to move to FE, thats why have started the learning journey in RSSchool.',
+    text: 'She worked as a BE developer on Drupal for several years, had experience in PHP development and now decided to take an exciting learning journey with RSSchool to gain new skills in FE.',
     isTeamlead: true,
   },
 
@@ -15,7 +15,7 @@ export const team = [
     name: 'Alexander Filimonov',
     github: 'luftkrabbe',
     href: 'https://github.com/luftkrabbe',
-    text: ' He is well-trained and ready-to-work specialist with a solid technical education and an analytical mind that helps him to handle with assigned tasks.',
+    text: ' He is well-trained and ready-to-work specialist with a solid technical education. Acquires new skills in front-end development by learning React.',
     isTeamlead: false,
   },
 
@@ -25,7 +25,7 @@ export const team = [
     name: 'Yauheniya Mastavaya',
     github: 'zena86',
     href: 'https://github.com/zena86',
-    text: 'She has experience commercial website development using HTML, CSS, and JavaScript. At this moment studies React.',
+    text: 'She has good commercial experience in website development using HTML, CSS and JavaScript. And now she is learning React to reach a new development level.',
     isTeamlead: false,
   },
 ];
