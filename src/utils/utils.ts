@@ -30,13 +30,14 @@ const setTabs = (str: string) => {
 
 export const prettifyGraphQLString = (str: string) => {
   let newStr = sanitizeString(str.trim());
-  newStr = newStr.replaceAll(/(\s+)/g, ' ');
-  newStr = newStr.replaceAll(/(\s*\(\s*)/g, '(');
-  newStr = newStr.replaceAll(/(\s*\)\s*)/g, ') ');
-  newStr = newStr.replaceAll(/(\s*{\s*)/g, ' {\n');
-  newStr = newStr.replaceAll(/(\s*})/g, '\n}');
-  newStr = newStr.replaceAll(/(\w+)\s+(?=\w)/g, '$1\n');
-  newStr = newStr.replaceAll(/(query)(\s+)/g, '$1 ');
+  newStr = newStr
+    .replaceAll(/(\s+)/g, ' ')
+    .replaceAll(/(\s*\(\s*)/g, '(')
+    .replaceAll(/(\s*\)\s*)/g, ') ')
+    .replaceAll(/(\s*{\s*)/g, ' {\n')
+    .replaceAll(/(\s*})/g, '\n}')
+    .replaceAll(/(\w+)\s+(?=\w)/g, '$1\n')
+    .replaceAll(/(query)(\s+)/g, '$1 ');
   newStr = setTabs(newStr);
 
   return newStr;
