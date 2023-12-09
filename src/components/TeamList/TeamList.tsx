@@ -1,5 +1,5 @@
 import { team } from '../../data/team';
-import { MemberItem } from '../../types';
+import { MemberItem } from '../../types/types';
 import Member from '../Member/Member';
 import './TeamList.scss';
 

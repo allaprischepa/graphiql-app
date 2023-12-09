@@ -1,4 +1,4 @@
-import { FeatureItem } from '../../types';
+import { FeatureItem } from '../../types/types';
 
 export interface FeatureProps {
   feature: FeatureItem;

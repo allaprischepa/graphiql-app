@@ -1,5 +1,5 @@
 import { features } from '../../data/features';
-import { FeatureItem } from '../../types';
+import { FeatureItem } from '../../types/types';
 import Feature from '../Feature/Feature';
 import './FeaturesList.scss';
 

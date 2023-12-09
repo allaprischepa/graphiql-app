@@ -1,4 +1,4 @@
-import { MemberItem } from '../../types';
+import { MemberItem } from '../../types/types';
 import './Member.scss';
 
 export interface MemberProps {
