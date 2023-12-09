@@ -10,10 +10,10 @@ function Hero() {
             GraphiQL is a playground/IDE for graphQL requests.
           </p>
           <p>
-            App also include: Authorization and authentication capabilities,
-            ensuring access to the tool is restricted to authorized users.
+            App includes the authorization and authentication capabilities,
+            ensuring access to the tool only for authorized users.
           </p>
-          <p>Work with a user-specified open GraphQL endpoint.</p>
+          <p>It works with a user-specified GraphQL open endpoint.</p>
           <p>
             The app is the result of completing the final task of &nbsp;
             <a href="https://rs.school/react/">RS School React Course.</a>
