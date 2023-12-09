@@ -52,12 +52,12 @@ export default function ControlPanel({
   return (
     <div className="control-panel">
       <button
-        className="run"
+        className="btn run"
         onClick={run}
         title={titles.runBtn[Languages.EN]}
       />
       <button
-        className="prettify"
+        className="btn prettify"
         onClick={prettify}
         title={titles.prettifyBtn[Languages.EN]}
       />

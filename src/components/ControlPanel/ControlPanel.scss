@@ -6,34 +6,40 @@
   width: 40px;
   gap: 10px;
 
-  button {
+  .btn {
     display: flex;
     align-items: center;
     width: 40px;
     height: 40px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
   }
 
-  .run::before {
-    content: '';
-    display: block;
-    width: 80%;
-    height: 80%;
-    margin: auto;
-    background-color: white;
-    -webkit-mask: url('../../assets/icons/play.png') no-repeat center / contain;
-    mask: url('../../assets/icons/play.png') no-repeat center / contain;
+  .run {
+    background-color: $accent-dark;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 50%;
+      height: 50%;
+      margin: auto;
+      background-color: white;
+      -webkit-mask: url('../../assets/icons/play.png') no-repeat center /
+        contain;
+      mask: url('../../assets/icons/play.png') no-repeat center / contain;
+    }
   }
 
   .prettify::before {
     content: '';
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     margin: auto;
     background-color: $accent-light;
-    -webkit-mask: url('../../assets/icons/broomstick.png') no-repeat center /
-      contain;
-    mask: url('../../assets/icons/broomstick.png') no-repeat center / contain;
+    -webkit-mask: url('/clean.svg') no-repeat center / contain;
+    mask: url('/clean.svg') no-repeat center / contain;
   }
 }
