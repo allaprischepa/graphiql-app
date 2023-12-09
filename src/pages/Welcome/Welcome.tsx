@@ -3,7 +3,7 @@ import { AppRoutes } from '../../router/router';
 import Features from '../../components/Features/Features';
 import Hero from '../../components/Hero/Hero';
 import Team from '../../components/Team/Team';
-import './Welcom.scss';
+import './Welcome.scss';
 
 export default function Welcome() {
   return (
