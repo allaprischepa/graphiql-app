@@ -54,7 +54,7 @@ describe('Welcome Page', () => {
 
     render(<RouterProvider router={router} />);
 
-    const welcome = await screen.findByText(/Welcome/);
+    const welcome = await screen.findByText('GraphiQL');
     expect(welcome).toBeInTheDocument();
   });
 });

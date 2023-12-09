@@ -1,0 +1,101 @@
+@import './../../styles/abstracts/variables';
+
+.description {
+  padding-top: 1vmin;
+}
+
+.description p {
+  padding: 0 2em;
+  margin-bottom: 1em;
+}
+
+h3 {
+  background: linear-gradient(182deg, #fff0 60%, $main-color-light 0 100%);
+  display: inline;
+  transform: rotate(-2deg);
+  position: absolute;
+  margin: 0;
+  margin-top: -2.5em;
+  left: 9vmin;
+  padding: 0.5em 0.75em;
+  color: $accent-medium;
+  border-radius: 0.25em;
+  font-size: 1.35em;
+  transform-origin: left bottom;
+
+  @media screen and (max-width: 768px) {
+    padding: 0;
+  }
+}
+
+.member:nth-of-type(even) h3 {
+  left: inherit;
+  right: 9vmin;
+  transform: rotate(2deg);
+  transform-origin: right bottom;
+  background: linear-gradient(-182deg, #fff0 60%, $main-color-light 0 100%);
+}
+
+.member:hover h3 {
+  transition: $trans;
+  transform: rotate(0deg);
+  background: linear-gradient(180deg, #fff0 59%, $main-color-light 0 100%);
+}
+
+.teamlead:after {
+  content: 'Team lead';
+  font-size: 0.75em;
+  position: absolute;
+  top: -1.5em;
+  background: $accent-medium;
+  right: 4em;
+  transform: rotate(3deg);
+  padding: 0.35em 0.75em 0.5em;
+  border-radius: 0.25em;
+  color: $main-color-light;
+  font-weight: bold;
+
+  @media screen and (max-width: 533px) {
+    right: 15px;
+  }
+}
+
+.teamlead:nth-of-type(even):after {
+  right: inherit;
+  left: 4em;
+  transform: rotate(-3deg);
+}
+
+.description p a {
+  display: block;
+  position: relative;
+  display: inline-block;
+  margin: 0.5em 0 0 0;
+  background: $main-color-light;
+  color: $accent-medium;
+  padding: 0.1em 0.5em 0.35em;
+  border-radius: 0.5em;
+  text-decoration: none;
+  transition: var(--trans);
+  padding-left: 25px;
+
+  &::before {
+    content: url('../../assets/icons/github.svg');
+    position: absolute;
+    top: 4px;
+    left: 5px;
+  }
+}
+
+.description p a:hover {
+  transition: $trans;
+}
+
+.description p a img {
+  float: left;
+  width: 22px;
+  filter: invert(1);
+  border-radius: 0.15em;
+  padding: 2px;
+  margin-right: 2px;
+}

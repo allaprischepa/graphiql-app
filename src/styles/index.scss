@@ -1,13 +1,54 @@
+@import './abstracts/variables';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  font-size: 18px;
+  color: $accent-medium;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+}
+
+section {
+  padding: 60px 40px;
+
+  @media screen and (max-width: 768px) {
+    padding: 40px 10px;
+  }
+}
+
+h2 {
+  color: $accent-medium;
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  text-align: center;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 20px;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  max-width: 1280px;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 768px) {
+    padding: 0 10px;
+  }
 }
