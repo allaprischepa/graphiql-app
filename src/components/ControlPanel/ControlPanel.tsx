@@ -6,7 +6,7 @@ import { EditorView } from 'codemirror';
 import './ControlPanel.scss';
 import { titles } from '../../data/graphiql';
 import { Languages } from '../../utils/enums';
-import { sanitizeString } from '../../utils/utils';
+import { prettifyGraphQLString } from '../../utils/utils';
 
 interface Props {
   requestViewRef: MutableRefObject<EditorView | null>;
@@ -45,7 +45,7 @@ export default function ControlPanel({
 
   const prettify = () => {
     const queryString = requestViewRef.current?.state.doc.toString() ?? '';
-    const prettified = sanitizeString(queryString);
+    const prettified = prettifyGraphQLString(queryString);
     replaceText(requestViewRef, prettified);
   };
 
