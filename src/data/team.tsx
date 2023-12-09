@@ -5,7 +5,7 @@ export const team = [
     name: 'Alla Prischepa',
     github: 'allaprischepa',
     href: 'https://github.com/allaprischepa',
-    text: 'Previously worked as PHP developer. Was a BE developer on Drupal for several years. At this moment she decided to move to FE, thats why have started the learning journey in RSSchool.',
+    text: 'She worked as a BE developer on Drupal for several years, had experience in PHP development and now decided to take an exciting learning journey with RSSchool to gain new skills in FE.',
     isTeamlead: true,
   },
 
