@@ -25,7 +25,7 @@ export const team = [
     name: 'Yauheniya Mastavaya',
     github: 'zena86',
     href: 'https://github.com/zena86',
-    text: 'She has experience commercial website development using HTML, CSS, and JavaScript. At this moment studies React.',
+    text: 'She has good commercial experience in website development using HTML, CSS and JavaScript. And now she is learning React to reach a new development level.',
     isTeamlead: false,
   },
 ];
