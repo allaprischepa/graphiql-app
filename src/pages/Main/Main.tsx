@@ -10,21 +10,23 @@ export default function Main() {
   const responseViewRef = useRef<EditorView | null>(null);
 
   return (
-    <div className="graphiql">
-      <div className="request-section">
-        <QueryEditor
-          viewRef={requestViewRef}
-          mode="request"
-          text={defaultQueryString}
-        />
-        <ControlPanel
-          requestViewRef={requestViewRef}
-          responseViewRef={responseViewRef}
-        />
-      </div>
-      <div className="response-section">
-        <QueryEditor viewRef={responseViewRef} mode="response" />
-      </div>
-    </div>
+    <main className="graphiql-main">
+      <section className="main-container">
+        <section className="request-section">
+          <QueryEditor
+            viewRef={requestViewRef}
+            mode="request"
+            text={defaultQueryString}
+          />
+          <ControlPanel
+            requestViewRef={requestViewRef}
+            responseViewRef={responseViewRef}
+          />
+        </section>
+        <section className="response-section">
+          <QueryEditor viewRef={responseViewRef} mode="response" />
+        </section>
+      </section>
+    </main>
   );
 }

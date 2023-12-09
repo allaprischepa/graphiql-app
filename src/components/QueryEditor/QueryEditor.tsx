@@ -16,15 +16,17 @@ export default function QueryEditor({ viewRef, mode, text }: Props) {
 
   useEffect(() => {
     if (editorRef.current instanceof HTMLDivElement) {
+      const extensions = [
+        basicSetup,
+        EditorView.editable.of(mode === 'request'),
+        EditorState.tabSize.of(2),
+        graphql(),
+      ];
+      if (mode === 'response') extensions.push(EditorView.lineWrapping);
+
       const editorView = new EditorView({
         doc: text,
-        extensions: [
-          basicSetup,
-          EditorView.editable.of(mode === 'request'),
-          EditorState.tabSize.of(2),
-          EditorView.lineWrapping,
-          graphql(),
-        ],
+        extensions,
         parent: editorRef.current,
       });
 

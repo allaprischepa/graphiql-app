@@ -3,6 +3,9 @@ import { graphqlApi } from '../../api/graphqlApi';
 import { AppDispatch } from '../../state/store';
 import { MutableRefObject } from 'react';
 import { EditorView } from 'codemirror';
+import './ControlPanel.scss';
+import { titles } from '../../data/graphiql';
+import { Languages } from '../../utils/enums';
 
 interface Props {
   requestViewRef: MutableRefObject<EditorView | null>;
@@ -36,9 +39,7 @@ export default function ControlPanel({
 
   return (
     <div className="control-panel">
-      <button className="run" onClick={() => run()}>
-        Run
-      </button>
+      <button className="run" onClick={run} title={titles.run[Languages.EN]} />
     </div>
   );
 }

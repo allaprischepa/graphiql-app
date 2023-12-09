@@ -1,4 +1,47 @@
-.graphiql {
+@import '../../styles/abstract/variables';
+
+.main-container {
   display: flex;
+  margin: 15px;
+  margin-left: 0;
   box-sizing: border-box;
+  border-radius: 0 10px 10px 0;
+  background-color: lighten($main-color-dark, 6);
+
+  .request-section {
+    display: flex;
+    gap: 15px;
+    margin: 10px;
+    flex: 1.2 1 0%;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 5px 0px 10px 0px $main-color-dark;
+  }
+
+  .response-section {
+    flex: 1 1 0%;
+  }
+
+  .request-section,
+  .response-section {
+    min-width: 30%;
+    max-height: 100vh;
+    padding: 15px;
+    min-height: 500px;
+
+    .editor {
+      width: 100%;
+      overflow: auto;
+    }
+  }
+
+  @media screen and (max-width: 679px) {
+    flex-direction: column;
+    margin-right: 0;
+    border-radius: 0 0 10px 10px;
+
+    .request-section {
+      box-shadow: 0px 5px 10px 0px $main-color-dark;
+    }
+  }
 }
