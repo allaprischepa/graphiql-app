@@ -3,6 +3,7 @@ import { EditorState } from '@codemirror/state';
 import { MutableRefObject, useEffect, useRef } from 'react';
 import { graphql } from 'cm6-graphql';
 import { useDispatch } from 'react-redux';
+import { defaultEditorTheme, requestEditorTheme } from './QueryEditorTheme';
 
 interface Props {
   viewRef: MutableRefObject<EditorView | null>;
@@ -16,11 +17,14 @@ export default function QueryEditor({ viewRef, mode, text }: Props) {
 
   useEffect(() => {
     if (editorRef.current instanceof HTMLDivElement) {
+      const theme =
+        mode === 'request' ? requestEditorTheme : defaultEditorTheme;
       const extensions = [
         basicSetup,
         EditorView.editable.of(mode === 'request'),
         EditorState.tabSize.of(2),
         graphql(),
+        theme,
       ];
       if (mode === 'response') extensions.push(EditorView.lineWrapping);
 

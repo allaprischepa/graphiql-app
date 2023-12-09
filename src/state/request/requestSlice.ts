@@ -3,7 +3,18 @@ import { intro } from '../../data/graphiql';
 import { commentOutString } from '../../utils/utils';
 import { Languages } from '../../utils/enums';
 
-export const defaultQueryString = commentOutString(intro[Languages.EN]);
+const queryExample = `
+
+  query Characters {
+    characters {
+        results {
+            name
+        }
+    }
+  }
+`;
+export const defaultQueryString =
+  commentOutString(intro[Languages.EN]) + queryExample;
 
 interface RequestState {
   endpoint: string;

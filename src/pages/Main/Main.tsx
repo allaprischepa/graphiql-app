@@ -10,8 +10,8 @@ export default function Main() {
   const responseViewRef = useRef<EditorView | null>(null);
 
   return (
-    <main className="graphiql-main">
-      <section className="main-container">
+    <main className="graphiql-container">
+      <section className="graphiql-main">
         <section className="request-section">
           <QueryEditor
             viewRef={requestViewRef}
