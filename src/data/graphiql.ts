@@ -28,8 +28,12 @@ export const intro = {
 };
 
 export const titles = {
-  run: {
+  runBtn: {
     [Languages.EN]: 'Execute query',
     [Languages.RU]: 'Выполнить запрос',
+  },
+  prettifyBtn: {
+    [Languages.EN]: 'Prettify query',
+    [Languages.RU]: 'Облагородить запрос',
   },
 };

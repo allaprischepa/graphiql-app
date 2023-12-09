@@ -6,6 +6,7 @@ import { EditorView } from 'codemirror';
 import './ControlPanel.scss';
 import { titles } from '../../data/graphiql';
 import { Languages } from '../../utils/enums';
+import { sanitizeString } from '../../utils/utils';
 
 interface Props {
   requestViewRef: MutableRefObject<EditorView | null>;
@@ -18,28 +19,48 @@ export default function ControlPanel({
 }: Props) {
   const dispatch = useDispatch<AppDispatch>();
 
-  const run = async () => {
-    const queryString = requestViewRef.current?.state.doc.toString() ?? '';
-    console.log('queryString', queryString);
-    const action = graphqlApi.endpoints.getQueryResponse.initiate(queryString);
-    const { data } = await dispatch(action);
-
-    if (data && responseViewRef.current) {
-      console.log(JSON.stringify(data));
+  const replaceText = (
+    editorViewRef: MutableRefObject<EditorView | null>,
+    text: string
+  ) => {
+    if (editorViewRef.current) {
       const transaction = {
         changes: {
           from: 0,
-          to: responseViewRef.current.state.doc.length,
-          insert: JSON.stringify(data),
+          to: editorViewRef.current.state.doc.length,
+          insert: text,
         },
       };
-      responseViewRef.current.dispatch(transaction);
+      editorViewRef.current.dispatch(transaction);
     }
+  };
+
+  const run = async () => {
+    const queryString = requestViewRef.current?.state.doc.toString() ?? '';
+    const action = graphqlApi.endpoints.getQueryResponse.initiate(queryString);
+    const { data } = await dispatch(action);
+
+    if (data) replaceText(responseViewRef, JSON.stringify(data, null, 2));
+  };
+
+  const prettify = () => {
+    const queryString = requestViewRef.current?.state.doc.toString() ?? '';
+    const prettified = sanitizeString(queryString);
+    replaceText(requestViewRef, prettified);
   };
 
   return (
     <div className="control-panel">
-      <button className="run" onClick={run} title={titles.run[Languages.EN]} />
+      <button
+        className="run"
+        onClick={run}
+        title={titles.runBtn[Languages.EN]}
+      />
+      <button
+        className="prettify"
+        onClick={prettify}
+        title={titles.prettifyBtn[Languages.EN]}
+      />
     </div>
   );
 }

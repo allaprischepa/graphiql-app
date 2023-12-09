@@ -4,6 +4,7 @@ import { MutableRefObject, useEffect, useRef } from 'react';
 import { graphql } from 'cm6-graphql';
 import { useDispatch } from 'react-redux';
 import { defaultEditorTheme, requestEditorTheme } from './QueryEditorTheme';
+import { json } from '@codemirror/lang-json';
 
 interface Props {
   viewRef: MutableRefObject<EditorView | null>;
@@ -17,13 +18,15 @@ export default function QueryEditor({ viewRef, mode, text }: Props) {
 
   useEffect(() => {
     if (editorRef.current instanceof HTMLDivElement) {
-      const theme =
-        mode === 'request' ? requestEditorTheme : defaultEditorTheme;
+      const requestMode = mode === 'request';
+      const theme = requestMode ? requestEditorTheme : defaultEditorTheme;
+      const language = requestMode ? graphql() : json();
+
       const extensions = [
         basicSetup,
         EditorView.editable.of(mode === 'request'),
         EditorState.tabSize.of(2),
-        graphql(),
+        language,
         theme,
       ];
       if (mode === 'response') extensions.push(EditorView.lineWrapping);
