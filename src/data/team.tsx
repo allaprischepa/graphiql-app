@@ -15,7 +15,7 @@ export const team = [
     name: 'Alexander Filimonov',
     github: 'luftkrabbe',
     href: 'https://github.com/luftkrabbe',
-    text: ' He is well-trained and ready-to-work specialist with a solid technical education and an analytical mind that helps him to handle with assigned tasks.',
+    text: ' He is well-trained and ready-to-work specialist with a solid technical education. Acquires new skills in front-end development by learning React.',
     isTeamlead: false,
   },
 
