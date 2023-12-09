@@ -71,3 +71,7 @@ li {
   border-radius: $scrollbar-width;
   border: solid $scrollbar-width transparent;
 }
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
