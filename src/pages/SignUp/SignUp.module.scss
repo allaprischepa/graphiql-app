@@ -1,0 +1,41 @@
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.fieldsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 400px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 0;
+  & input {
+    box-sizing: border-box;
+    width: 220px;
+  }
+  & label {
+    margin: 0 10px 0 0;
+  }
+}
+
+.errorMessage {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  position: relative;
+  font-size: 0.7rem;
+  font-weight: 500;
+  height: 0;
+  margin: 0;
+}
