@@ -4,6 +4,6 @@ export type SignInForm = {
 };
 
 export type SignUpForm = SignInForm & {
-  password: string;
+  name: string;
   confirmPassword: string;
 };
