@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { SignUpFormData } from '../../types/formsData';
+import { SignUpForm } from '../../types/formsData';
 
 import styles from './SignUp.module.scss';
 
@@ -37,7 +37,7 @@ export default function SignUp() {
   const { register, handleSubmit, formState } = form;
   const { errors, isValid } = formState;
 
-  const onFormSubmit = (data: SignUpFormData): void => {
+  const onFormSubmit = (data: SignUpForm): void => {
     console.log(data);
     navigate('/sign-in');
   };
