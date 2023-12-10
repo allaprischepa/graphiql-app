@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignInForm } from '../../types/formsData';
@@ -53,6 +53,10 @@ export default function SignIn() {
           SIGN IN
         </button>
       </form>
+      <div>
+        Don&apos;t have an account? <Link to="/sign-up">Sign up!</Link>
+      </div>
+      <Link to="/">Back to Welcome page</Link>
     </>
   );
 }
