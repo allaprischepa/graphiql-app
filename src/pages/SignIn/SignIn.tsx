@@ -1,29 +1,17 @@
-import * as yup from 'yup';
-
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignInForm } from '../../types/formsData';
+import { validationSchemaSignIn } from '../../utils/validationRules';
 
 import styles from './SignIn.module.scss';
 
 export default function SignIn() {
   const navigate = useNavigate();
 
-  const validationSchema = yup.object().shape({
-    email: yup.string().email().required('enter your e-mail'),
-    password: yup
-      .string()
-      .required('enter your password')
-      .min(8, 'at least 8 characters')
-      .matches(/\p{Number}/gu, 'at least 1 number')
-      .matches(/\p{Letter}/gu, 'at least 1 letter')
-      .matches(/\p{Symbol}|\p{Punctuation}/gu, 'at least 1 special character'),
-  });
-
   const form = useForm({
     mode: 'all',
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(validationSchemaSignIn),
   });
   const { register, handleSubmit, formState } = form;
   const { errors, isValid } = formState;

@@ -1,38 +1,17 @@
-import * as yup from 'yup';
-
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignUpForm } from '../../types/formsData';
+import { validationSchemaSignUp } from '../../utils/validationRules';
 
 import styles from './SignUp.module.scss';
 
 export default function SignUp() {
   const navigate = useNavigate();
 
-  const validationSchema = yup.object().shape({
-    name: yup
-      .string()
-      .required('enter your name')
-      .max(32, 'at most 32 characters')
-      .matches(/^\p{Letter}/u, 'start with letter'),
-    email: yup.string().email().required('enter your e-mail'),
-    password: yup
-      .string()
-      .required('enter your password')
-      .min(8, 'at least 8 characters')
-      .matches(/\p{Number}/gu, 'at least 1 number')
-      .matches(/\p{Letter}/gu, 'at least 1 letter')
-      .matches(/\p{Symbol}|\p{Punctuation}/gu, 'at least 1 special character'),
-    confirmPassword: yup
-      .string()
-      .required('confirm your password')
-      .oneOf([yup.ref('password')], 'passwords must match'),
-  });
-
   const form = useForm({
     mode: 'all',
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(validationSchemaSignUp),
   });
   const { register, handleSubmit, formState } = form;
   const { errors, isValid } = formState;
