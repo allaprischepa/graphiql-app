@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignUpForm } from '../../types/formsData';
 import { validationSchemaSignUp } from '../../utils/validationRules';
+import { userAuth } from '../../services/firebaseAuth';
 
 import styles from './SignUp.module.scss';
-import { registerWithEmailAndPassword } from '../../services/firebaseRegister';
 
 export default function SignUp() {
   const [isOpenedPassword, setIsOpenedPassword] = useState(false);
@@ -25,7 +25,7 @@ export default function SignUp() {
   const onFormSubmit = async (data: SignUpForm): Promise<void> => {
     setIsRegistering(true);
     try {
-      await registerWithEmailAndPassword(data);
+      await userAuth.registerWithEmailAndPassword(data);
       navigate('/sign-in');
     } catch (err) {
       console.log(err);

@@ -4,11 +4,13 @@ import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignInForm } from '../../types/formsData';
 import { validationSchemaSignIn } from '../../utils/validationRules';
+import { userAuth } from '../../services/firebaseAuth';
 
 import styles from './SignIn.module.scss';
 
 export default function SignIn() {
   const [isOpenedPassword, setIsOpenedPassword] = useState(false);
+  const [isLoggingIn, setLoggingIn] = useState(false);
 
   const navigate = useNavigate();
 
@@ -19,9 +21,17 @@ export default function SignIn() {
   const { register, handleSubmit, formState } = form;
   const { errors, isValid } = formState;
 
-  const onFormSubmit = (data: SignInForm): void => {
-    console.log(data);
-    navigate('/graphiql');
+  const onFormSubmit = async (data: SignInForm): Promise<void> => {
+    setLoggingIn(true);
+    try {
+      await userAuth.logInWithEmailAndPassword(data);
+      navigate('/graphiql');
+    } catch (err) {
+      console.log(err);
+      alert(err);
+    } finally {
+      setLoggingIn(false);
+    }
   };
 
   return (
@@ -61,7 +71,7 @@ export default function SignIn() {
           disabled={!isValid}
           className={styles.submitButton}
         >
-          SIGN IN
+          {isLoggingIn ? 'LOGGING IN...' : 'SIGN IN'}
         </button>
       </form>
       <div>
