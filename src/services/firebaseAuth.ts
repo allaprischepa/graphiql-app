@@ -3,6 +3,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  signOut,
 } from 'firebase/auth';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
@@ -29,5 +30,9 @@ export const userAuth = {
   logInWithEmailAndPassword: async (data: SignInForm) => {
     const { email, password } = data;
     await signInWithEmailAndPassword(auth, email, password);
+  },
+
+  logOut: async () => {
+    signOut(auth);
   },
 };

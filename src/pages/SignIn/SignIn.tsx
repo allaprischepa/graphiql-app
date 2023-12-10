@@ -11,6 +11,7 @@ import styles from './SignIn.module.scss';
 export default function SignIn() {
   const [isOpenedPassword, setIsOpenedPassword] = useState(false);
   const [isLoggingIn, setLoggingIn] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const navigate = useNavigate();
 
@@ -20,6 +21,19 @@ export default function SignIn() {
   });
   const { register, handleSubmit, formState } = form;
   const { errors, isValid } = formState;
+
+  const userLogOut = async (): Promise<void> => {
+    setIsLoggingOut(true);
+    try {
+      await userAuth.logOut();
+      navigate('/');
+    } catch (err) {
+      console.log(err);
+      alert(err);
+    } finally {
+      setIsLoggingOut(false);
+    }
+  };
 
   const onFormSubmit = async (data: SignInForm): Promise<void> => {
     setLoggingIn(true);
@@ -74,6 +88,9 @@ export default function SignIn() {
           {isLoggingIn ? 'LOGGING IN...' : 'SIGN IN'}
         </button>
       </form>
+      <button onClick={userLogOut}>
+        {isLoggingOut ? 'LOGGING OUT...' : 'LOG OUT'}
+      </button>
       <div>
         Don&apos;t have an account? <Link to="/sign-up">Sign up!</Link>
       </div>
