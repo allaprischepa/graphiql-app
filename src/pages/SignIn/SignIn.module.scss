@@ -15,6 +15,7 @@
 }
 
 .field {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,6 +27,20 @@
   }
   & label {
     margin: 0 10px 0 0;
+  }
+  & .passwordOpenedEye,
+  .passwordClosedEye {
+    position: absolute;
+    right: -26px;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+  }
+  & .passwordOpenedEye {
+    content: url('../../assets/openedEye.svg');
+  }
+  & .passwordClosedEye {
+    content: url('../../assets/closedEye.svg');
   }
 }
 

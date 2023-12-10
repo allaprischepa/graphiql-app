@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignUpForm } from '../../types/formsData';
 import { validationSchemaSignUp } from '../../utils/validationRules';
@@ -7,6 +8,9 @@ import { validationSchemaSignUp } from '../../utils/validationRules';
 import styles from './SignUp.module.scss';
 
 export default function SignUp() {
+  const [isOpenedPassword, setIsOpenedPassword] = useState(false);
+  const [isOpenedPasswordConfirm, setIsOpenedPasswordConfirm] = useState(false);
+
   const navigate = useNavigate();
 
   const form = useForm({
@@ -43,10 +47,18 @@ export default function SignUp() {
           <div className={styles.field}>
             <label htmlFor="password">Password:</label>
             <input
-              type="password"
+              type={isOpenedPassword ? 'text' : 'password'}
               id="password"
               {...register('password')}
             ></input>
+            <div
+              className={
+                isOpenedPassword
+                  ? styles.passwordOpenedEye
+                  : styles.passwordClosedEye
+              }
+              onClick={() => setIsOpenedPassword(!isOpenedPassword)}
+            ></div>
           </div>
           {errors.password && (
             <p className={styles.errorMessage}>{errors.password.message}</p>
@@ -54,10 +66,20 @@ export default function SignUp() {
           <div className={styles.field}>
             <label htmlFor="confirmPassword">Confirm password:</label>
             <input
-              type="password"
+              type={isOpenedPasswordConfirm ? 'text' : 'password'}
               id="confirmPassword"
               {...register('confirmPassword')}
             ></input>
+            <div
+              className={
+                isOpenedPasswordConfirm
+                  ? styles.passwordOpenedEye
+                  : styles.passwordClosedEye
+              }
+              onClick={() =>
+                setIsOpenedPasswordConfirm(!isOpenedPasswordConfirm)
+              }
+            ></div>
           </div>
           {errors.confirmPassword && (
             <p className={styles.errorMessage}>

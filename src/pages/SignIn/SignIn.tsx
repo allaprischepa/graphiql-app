@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignInForm } from '../../types/formsData';
 import { validationSchemaSignIn } from '../../utils/validationRules';
@@ -7,6 +8,8 @@ import { validationSchemaSignIn } from '../../utils/validationRules';
 import styles from './SignIn.module.scss';
 
 export default function SignIn() {
+  const [isOpenedPassword, setIsOpenedPassword] = useState(false);
+
   const navigate = useNavigate();
 
   const form = useForm({
@@ -36,10 +39,18 @@ export default function SignIn() {
           <div className={styles.field}>
             <label htmlFor="password">Password:</label>
             <input
-              type="password"
+              type={isOpenedPassword ? 'text' : 'password'}
               id="password"
               {...register('password')}
             ></input>
+            <div
+              className={
+                isOpenedPassword
+                  ? styles.passwordOpenedEye
+                  : styles.passwordClosedEye
+              }
+              onClick={() => setIsOpenedPassword(!isOpenedPassword)}
+            ></div>
           </div>
           {errors.password && (
             <p className={styles.errorMessage}>{errors.password.message}</p>
