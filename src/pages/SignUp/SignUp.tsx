@@ -116,7 +116,6 @@ export default function SignUp() {
               Sign in!
             </Link>
           </div>
-          <Link to="/">Back to Welcome page</Link>
         </div>
       </section>
     </>

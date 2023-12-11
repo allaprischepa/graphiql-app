@@ -99,7 +99,6 @@ export default function SignIn() {
               Sign up!
             </Link>
           </div>
-          <Link to="/">Back to Welcome page</Link>
           <button onClick={userLogOut}>
             {isLoggingOut ? 'LOGGING OUT...' : 'LOG OUT'}
           </button>
