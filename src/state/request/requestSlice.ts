@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { intro } from '../../data/graphiql';
 import { commentOutString } from '../../utils/utils';
 import { Languages } from '../../utils/enums';
-import { API_URL, QUERY_EXAMPLE } from '../../utils/constants';
+import { API_URL, QUERY_EXAMPLE } from '../../constants';
 
 export const defaultQueryString =
   commentOutString(intro[Languages.EN]) + QUERY_EXAMPLE;
