@@ -34,6 +34,6 @@ export const titles = {
   },
   prettifyBtn: {
     [Languages.EN]: 'Prettify query',
-    [Languages.RU]: 'Облагородить запрос',
+    [Languages.RU]: 'Форматировать запрос',
   },
 };
