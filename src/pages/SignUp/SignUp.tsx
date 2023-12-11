@@ -6,6 +6,8 @@ import { SignUpForm } from '../../types/formsData';
 import { validationSchemaSignUp } from '../../utils/validationRules';
 import { userAuth } from '../../services/firebaseAuth';
 
+import Header from '../../components/Header/Header';
+
 import styles from './SignUp.module.scss';
 
 export default function SignUp() {
@@ -37,78 +39,86 @@ export default function SignUp() {
 
   return (
     <>
-      <div className={styles.title}>Sign Up</div>
-      <form onSubmit={handleSubmit(onFormSubmit)} noValidate>
-        <div className={styles.fieldsContainer}>
-          <div className={styles.field}>
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" {...register('name')}></input>
+      <Header />
+      <section className={styles.signUp}>
+        <div className={styles.container}>
+          <h2>Sign Up</h2>
+          <form onSubmit={handleSubmit(onFormSubmit)} noValidate>
+            <div className={styles.fieldsContainer}>
+              <div className={styles.field}>
+                <label htmlFor="name">Name:</label>
+                <input type="text" id="name" {...register('name')}></input>
+              </div>
+              {errors.name && (
+                <p className={styles.errorMessage}>{errors.name.message}</p>
+              )}
+              <div className={styles.field}>
+                <label htmlFor="email">E-mail:</label>
+                <input type="email" id="email" {...register('email')}></input>
+              </div>
+              {errors.email && (
+                <p className={styles.errorMessage}>{errors.email.message}</p>
+              )}
+              <div className={styles.field}>
+                <label htmlFor="password">Password:</label>
+                <input
+                  type={isOpenedPassword ? 'text' : 'password'}
+                  id="password"
+                  {...register('password')}
+                ></input>
+                <div
+                  className={
+                    isOpenedPassword
+                      ? styles.passwordOpenedEye
+                      : styles.passwordClosedEye
+                  }
+                  onClick={() => setIsOpenedPassword(!isOpenedPassword)}
+                ></div>
+              </div>
+              {errors.password && (
+                <p className={styles.errorMessage}>{errors.password.message}</p>
+              )}
+              <div className={styles.field}>
+                <label htmlFor="confirmPassword">Confirm password:</label>
+                <input
+                  type={isOpenedPasswordConfirm ? 'text' : 'password'}
+                  id="confirmPassword"
+                  {...register('confirmPassword')}
+                ></input>
+                <div
+                  className={
+                    isOpenedPasswordConfirm
+                      ? styles.passwordOpenedEye
+                      : styles.passwordClosedEye
+                  }
+                  onClick={() =>
+                    setIsOpenedPasswordConfirm(!isOpenedPasswordConfirm)
+                  }
+                ></div>
+              </div>
+              {errors.confirmPassword && (
+                <p className={styles.errorMessage}>
+                  {errors.confirmPassword.message}
+                </p>
+              )}
+            </div>
+            <button
+              type="submit"
+              disabled={!isValid}
+              className={styles.submitButton}
+            >
+              {isRegistering ? 'REGISTERING...' : 'SIGN UP'}
+            </button>
+          </form>
+          <div className={styles.signUpText}>
+            Already have an account?{' '}
+            <Link to="/sign-in" className={styles.signUpLink}>
+              Sign in!
+            </Link>
           </div>
-          {errors.name && (
-            <p className={styles.errorMessage}>{errors.name.message}</p>
-          )}
-          <div className={styles.field}>
-            <label htmlFor="email">E-mail:</label>
-            <input type="email" id="email" {...register('email')}></input>
-          </div>
-          {errors.email && (
-            <p className={styles.errorMessage}>{errors.email.message}</p>
-          )}
-          <div className={styles.field}>
-            <label htmlFor="password">Password:</label>
-            <input
-              type={isOpenedPassword ? 'text' : 'password'}
-              id="password"
-              {...register('password')}
-            ></input>
-            <div
-              className={
-                isOpenedPassword
-                  ? styles.passwordOpenedEye
-                  : styles.passwordClosedEye
-              }
-              onClick={() => setIsOpenedPassword(!isOpenedPassword)}
-            ></div>
-          </div>
-          {errors.password && (
-            <p className={styles.errorMessage}>{errors.password.message}</p>
-          )}
-          <div className={styles.field}>
-            <label htmlFor="confirmPassword">Confirm password:</label>
-            <input
-              type={isOpenedPasswordConfirm ? 'text' : 'password'}
-              id="confirmPassword"
-              {...register('confirmPassword')}
-            ></input>
-            <div
-              className={
-                isOpenedPasswordConfirm
-                  ? styles.passwordOpenedEye
-                  : styles.passwordClosedEye
-              }
-              onClick={() =>
-                setIsOpenedPasswordConfirm(!isOpenedPasswordConfirm)
-              }
-            ></div>
-          </div>
-          {errors.confirmPassword && (
-            <p className={styles.errorMessage}>
-              {errors.confirmPassword.message}
-            </p>
-          )}
+          <Link to="/">Back to Welcome page</Link>
         </div>
-        <button
-          type="submit"
-          disabled={!isValid}
-          className={styles.submitButton}
-        >
-          {isRegistering ? 'REGISTERING...' : 'SIGN UP'}
-        </button>
-        <div>
-          Already have an account? <Link to="/sign-in">Sign in!</Link>
-        </div>
-        <Link to="/">Back to Welcome page</Link>
-      </form>
+      </section>
     </>
   );
 }
