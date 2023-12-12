@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { AppRoutes, routesConfig } from '../src/router/router';
 import { render, screen } from '@testing-library/react';
+import { FIRST_ELEM } from '../src/constants';
 
 describe('404 Page', () => {
   it('is displayed when navigating to an invalid route', async () => {
@@ -26,8 +27,8 @@ describe('Sign In Page', () => {
 
     render(<RouterProvider router={router} />);
 
-    const signIn = await screen.findByText(/Sign In/);
-    expect(signIn).toBeInTheDocument();
+    const signIn = await screen.findAllByText(/Sign In/);
+    expect(signIn[FIRST_ELEM]).toBeInTheDocument();
   });
 });
 
@@ -40,8 +41,8 @@ describe('Sign Up Page', () => {
 
     render(<RouterProvider router={router} />);
 
-    const signUp = await screen.findByText(/Sign Up/);
-    expect(signUp).toBeInTheDocument();
+    const signUp = await screen.findAllByText(/Sign Up/);
+    expect(signUp[FIRST_ELEM]).toBeInTheDocument();
   });
 });
 
