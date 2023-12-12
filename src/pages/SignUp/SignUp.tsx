@@ -3,23 +3,25 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignUpForm } from '../../types/forms';
-import { validationSchemaSignUp } from '../../utils/validationRules';
+import { validationSchema } from '../../utils/validationRules';
 import { userAuth } from '../../services/firebaseAuth';
 
 import Header from '../../components/Header/Header';
+import { NameField } from '../../components/FormFields/NameField';
+import { EmailField } from '../../components/FormFields/EmailField';
+import { PasswordField } from '../../components/FormFields/PasswordField';
+import { PasswordFieldConfirm } from '../../components/FormFields/PasswordConfirmField';
 
 import './SignUp.scss';
 
 export default function SignUp() {
-  const [isOpenedPassword, setIsOpenedPassword] = useState(false);
-  const [isOpenedPasswordConfirm, setIsOpenedPasswordConfirm] = useState(false);
   const [isRegistering, setIsRegistering] = useState(false);
 
   const navigate = useNavigate();
 
   const form = useForm({
     mode: 'all',
-    resolver: yupResolver(validationSchemaSignUp),
+    resolver: yupResolver(validationSchema),
   });
   const { register, handleSubmit, formState } = form;
   const { errors, isValid } = formState;
@@ -49,62 +51,10 @@ export default function SignUp() {
             noValidate
           >
             <div className="fields-container">
-              <div className="field">
-                <label htmlFor="name">Name:</label>
-                <input type="text" id="name" {...register('name')}></input>
-              </div>
-              {errors.name && (
-                <p className="error-message">{errors.name.message}</p>
-              )}
-              <div className="field">
-                <label htmlFor="email">E-mail:</label>
-                <input type="email" id="email" {...register('email')}></input>
-              </div>
-              {errors.email && (
-                <p className="error-message">{errors.email.message}</p>
-              )}
-              <div className="field">
-                <label htmlFor="password">Password:</label>
-                <input
-                  type={isOpenedPassword ? 'text' : 'password'}
-                  id="password"
-                  {...register('password')}
-                ></input>
-                <div
-                  className={
-                    isOpenedPassword
-                      ? 'password-opened-eye'
-                      : 'password-closed-eye'
-                  }
-                  onClick={() => setIsOpenedPassword(!isOpenedPassword)}
-                ></div>
-              </div>
-              {errors.password && (
-                <p className="error-message">{errors.password.message}</p>
-              )}
-              <div className="field">
-                <label htmlFor="confirmPassword">Confirm password:</label>
-                <input
-                  type={isOpenedPasswordConfirm ? 'text' : 'password'}
-                  id="confirmPassword"
-                  {...register('confirmPassword')}
-                ></input>
-                <div
-                  className={
-                    isOpenedPasswordConfirm
-                      ? 'password-opened-eye'
-                      : 'password-closed-eye'
-                  }
-                  onClick={() =>
-                    setIsOpenedPasswordConfirm(!isOpenedPasswordConfirm)
-                  }
-                ></div>
-              </div>
-              {errors.confirmPassword && (
-                <p className="error-message">
-                  {errors.confirmPassword.message}
-                </p>
-              )}
+              <NameField {...{ register, errors }} />
+              <EmailField {...{ register, errors }} />
+              <PasswordField {...{ register, errors }} />
+              <PasswordFieldConfirm {...{ register, errors }} />
             </div>
             <button type="submit" disabled={!isValid} className="submit-btn">
               {isRegistering ? 'REGISTERING...' : 'SIGN UP'}

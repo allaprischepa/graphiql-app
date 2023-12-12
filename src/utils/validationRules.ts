@@ -21,14 +21,9 @@ const confirmPassword = yup
   .required('confirm your password')
   .oneOf([yup.ref('password')], 'passwords must match');
 
-export const validationSchemaSignUp = yup.object().shape({
+export const validationSchema = yup.object().shape({
   name: name,
   email: email,
   password: password,
   confirmPassword: confirmPassword,
-});
-
-export const validationSchemaSignIn = yup.object().shape({
-  email: email,
-  password: password,
 });

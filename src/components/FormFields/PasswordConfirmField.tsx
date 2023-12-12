@@ -4,17 +4,17 @@ import { useState } from 'react';
 
 import './FormFields.scss';
 
-export function PasswordField({ register, errors }: FormHandlers) {
+export function PasswordFieldConfirm({ register, errors }: FormHandlers) {
   const [isOpenedPassword, setIsOpenedPassword] = useState(false);
 
   return (
     <>
       <div className="field">
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="confirmPassword">Confirm password:</label>
         <input
           type={isOpenedPassword ? 'text' : 'password'}
-          id="password"
-          {...register('password')}
+          id="confirmPassword"
+          {...register('confirmPassword')}
         ></input>
         <div
           className={
@@ -23,8 +23,8 @@ export function PasswordField({ register, errors }: FormHandlers) {
           onClick={() => setIsOpenedPassword(!isOpenedPassword)}
         ></div>
       </div>
-      {errors.password && (
-        <p className="error-message">{errors.password.message}</p>
+      {errors.confirmPassword && (
+        <p className="error-message">{errors.confirmPassword.message}</p>
       )}
     </>
   );

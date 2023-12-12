@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignInForm } from '../../types/forms';
-import { validationSchemaSignIn } from '../../utils/validationRules';
+import { validationSchema } from '../../utils/validationRules';
 import { userAuth } from '../../services/firebaseAuth';
 
 import Header from '../../components/Header/Header';
@@ -19,7 +19,7 @@ export default function SignIn() {
 
   const form = useForm({
     mode: 'all',
-    resolver: yupResolver(validationSchemaSignIn),
+    resolver: yupResolver(validationSchema),
   });
   const { register, handleSubmit, formState } = form;
   const { errors, isValid } = formState;

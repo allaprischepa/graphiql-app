@@ -12,6 +12,6 @@ export type SignUpForm = SignInForm & {
 };
 
 export type FormHandlers = {
-  register: UseFormRegister<SignUpForm | SignInForm>;
-  errors: FieldErrors<Partial<SignUpForm>>;
+  register: UseFormRegister<SignUpForm>;
+  errors: FieldErrors<SignUpForm>;
 };

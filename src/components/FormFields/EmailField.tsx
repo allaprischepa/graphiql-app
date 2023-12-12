@@ -1,4 +1,5 @@
 import { FormHandlers } from '../../types/forms';
+
 import './FormFields.scss';
 
 export function EmailField({ register, errors }: FormHandlers) {
