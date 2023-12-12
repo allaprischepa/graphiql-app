@@ -1,7 +1,9 @@
 import { describe, it, expect } from 'vitest';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
-import { AppRoutes, routesConfig } from '../src/router/router';
+import { routesConfig } from '../src/router/router';
 import { render, screen } from '@testing-library/react';
+import { AppRoutes, Languages } from '../src/utils/enums';
+import LangState from '../src/languages/LangState';
 
 describe('404 Page', () => {
   it('is displayed when navigating to an invalid route', async () => {
@@ -52,7 +54,11 @@ describe('Welcome Page', () => {
       initialEntries: [route],
     });
 
-    render(<RouterProvider router={router} />);
+    render(
+      <LangState initialState={{ language: Languages.EN }}>
+        <RouterProvider router={router} />
+      </LangState>
+    );
 
     const welcome = await screen.findByText('GraphiQL');
     expect(welcome).toBeInTheDocument();

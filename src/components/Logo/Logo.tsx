@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { AppRoutes } from '../../router/router';
+import { AppRoutes } from '../../utils/enums';
 import './Logo.scss';
 
 const Logo = () => {

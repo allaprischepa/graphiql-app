@@ -91,13 +91,13 @@
 }
 
 .tgl-flip + .tgl-btn:after {
-  content: attr(data-tg-on);
+  content: attr(data-tg);
   transform: rotateY(-180deg);
 }
 
 .tgl-flip + .tgl-btn:before {
+  content: attr(data-tg);
   background: $main-color-dark;
-  content: attr(data-tg-off);
 }
 
 .tgl-flip:hover + .tgl-btn:before {
