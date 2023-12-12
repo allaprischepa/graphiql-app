@@ -13,3 +13,7 @@ export interface MemberItem {
   text: string;
   isTeamlead: boolean;
 }
+
+export interface GraphQLError {
+  message: string;
+}
