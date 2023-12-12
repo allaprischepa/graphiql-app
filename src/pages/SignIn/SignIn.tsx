@@ -41,7 +41,7 @@ export default function SignIn() {
       <Header />
       <section className={styles.signUp}>
         <div className={styles.container}>
-          <h2>Sign In</h2>
+          <div className={styles.title}>Sign In</div>
           <form onSubmit={handleSubmit(onFormSubmit)} noValidate>
             <div className={styles.fieldsContainer}>
               <div className={styles.field}>

@@ -8,6 +8,18 @@
   background-color: $main-color-light;
 }
 
+.title {
+  color: $accent-medium;
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-align: center;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 20px;
+  }
+}
+
 .container {
   display: flex;
   align-items: center;
