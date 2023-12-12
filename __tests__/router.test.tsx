@@ -2,6 +2,9 @@ import { describe, it, expect } from 'vitest';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { AppRoutes, routesConfig } from '../src/router/router';
 import { render, screen } from '@testing-library/react';
+import { TEST_ID as MAIN_PAGE_TEST_ID } from '../src/pages/Main/Main';
+import { Provider } from 'react-redux';
+import { configureAppStore } from '../src/state/store';
 
 describe('404 Page', () => {
   it('is displayed when navigating to an invalid route', async () => {
@@ -56,5 +59,24 @@ describe('Welcome Page', () => {
 
     const welcome = await screen.findByText('GraphiQL');
     expect(welcome).toBeInTheDocument();
+  });
+});
+
+describe('Main Page', () => {
+  it('is displayed when navigating to the corresponding route', () => {
+    const store = configureAppStore();
+    const route = AppRoutes.main;
+    const router = createMemoryRouter(routesConfig, {
+      initialEntries: [route],
+    });
+
+    render(
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    );
+
+    const mainPage = screen.getByTestId(MAIN_PAGE_TEST_ID);
+    expect(mainPage).toBeInTheDocument();
   });
 });

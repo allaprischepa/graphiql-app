@@ -8,11 +8,14 @@ const rootReducer = combineReducers({
   graphqlApi: graphqlApiReducer,
 });
 
-export const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(graphqlApi.middleware),
-});
+export const configureAppStore = () =>
+  configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(graphqlApi.middleware),
+  });
+
+export const store = configureAppStore();
 
 export type AppStore = typeof store;
 export type RootState = ReturnType<typeof rootReducer>;
