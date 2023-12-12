@@ -7,7 +7,7 @@ import {
 } from 'firebase/auth';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
-import { SignInForm, SignUpForm } from '../types/formsData';
+import { SignInForm, SignUpForm } from '../types/forms';
 import { firebaseConfig } from './firebaseConfig';
 
 const app = initializeApp(firebaseConfig);

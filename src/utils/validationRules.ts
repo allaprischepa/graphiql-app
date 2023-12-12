@@ -1,12 +1,12 @@
 import * as yup from 'yup';
 
-const name = yup
+export const name = yup
   .string()
   .required('enter your name')
   .max(32, 'at most 32 characters')
   .matches(/^\p{Letter}/u, 'start with letter');
 
-const email = yup.string().email().required('enter your e-mail');
+export const email = yup.string().email().required('enter your e-mail');
 
 const password = yup
   .string()
