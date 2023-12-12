@@ -1,0 +1,25 @@
+@import './../../styles/abstracts/variables';
+
+.signout {
+  width: 30px;
+  margin-left: 20px;
+  border: none;
+  background-color: transparent;
+  position: relative;
+  transition: $trans;
+  cursor: pointer;
+
+  &:hover {
+    &::after {
+      content: url('./../../assets/icons/signout-hover.svg');
+    }
+  }
+
+  &::after {
+    content: url('./../../assets/icons/sign-out.svg');
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+}

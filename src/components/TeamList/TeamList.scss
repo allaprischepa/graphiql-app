@@ -30,6 +30,10 @@
     $accent-medium 0 97%,
     #fff0 calc(97% + 1px) 100%
   );
+
+  @media screen and (max-width: 768px) {
+    text-align: left;
+  }
 }
 
 .thumb {
