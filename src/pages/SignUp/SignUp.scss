@@ -1,6 +1,6 @@
 @import './../../styles/abstracts/variables';
 
-.form-section {
+.sign-section {
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -8,12 +8,11 @@
   height: 100%;
 }
 
-.form-container {
+.sign-container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
   max-width: 1280px;
   padding: 0 20px;
   margin: 0 auto;
@@ -28,7 +27,6 @@
   font-size: 2em;
   font-weight: 700;
   margin-bottom: 25px;
-  text-align: center;
 
   @media screen and (max-width: 768px) {
     margin-bottom: 20px;
@@ -36,19 +34,17 @@
 }
 
 .sign-form {
-  padding: 20px 40px 20px 40px;
+  padding: 20px 40px;
   border-radius: 10px;
   background-color: $main-color;
 
   @media screen and (max-width: 533px) {
-    padding: 10px 30px 20px 30px;
+    padding: 10px 35px 20px 35px;
   }
 }
 
 .fields-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   width: 380px;
 
@@ -64,14 +60,15 @@
   width: 100%;
   margin: 20px 0 0 0;
   font-weight: 500;
-  background-color: $accent-light;
   border-radius: 10px;
   border: solid 0 transparent;
   cursor: pointer;
   transition: $trans;
+
   &:hover {
     background-color: $accent-light-x2;
   }
+
   &:disabled {
     cursor: not-allowed;
     background-color: $accent-light;

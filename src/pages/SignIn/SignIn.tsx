@@ -40,8 +40,8 @@ export default function SignIn() {
   return (
     <>
       <Header />
-      <section className="form-section">
-        <div className="form-container">
+      <section className="sign-section">
+        <div className="sign-container">
           <div className="sign-title">Sign In</div>
           <form
             onSubmit={handleSubmit(onFormSubmit)}

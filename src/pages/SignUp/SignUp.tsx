@@ -42,8 +42,8 @@ export default function SignUp() {
   return (
     <>
       <Header />
-      <section className="form-section">
-        <div className="form-container">
+      <section className="sign-section">
+        <div className="sign-container">
           <div className="sign-title">Sign Up</div>
           <form
             onSubmit={handleSubmit(onFormSubmit)}
