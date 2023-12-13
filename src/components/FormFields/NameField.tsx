@@ -1,8 +1,8 @@
-import { FormHandlers } from '../../types/forms';
+import { FormHandlersSignUp } from '../../types/forms';
 
 import './FormFields.scss';
 
-export function NameField({ register, errors }: FormHandlers) {
+export function NameField({ register, errors }: FormHandlersSignUp) {
   return (
     <>
       <div className="field" data-testid="name-field">

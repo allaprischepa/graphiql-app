@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignUpForm } from '../../types/forms';
-import { validationSchema } from '../../utils/validationRules';
+import { validationSchemaSignUp } from '../../utils/validationRules';
 import { userAuth } from '../../services/firebaseAuth';
 
 import Header from '../../components/Header/Header';
@@ -21,7 +21,7 @@ export default function SignUp() {
 
   const form = useForm({
     mode: 'all',
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(validationSchemaSignUp),
   });
   const { register, handleSubmit, formState } = form;
   const { errors, isValid } = formState;
@@ -48,6 +48,7 @@ export default function SignUp() {
           <form
             onSubmit={handleSubmit(onFormSubmit)}
             className="sign-form"
+            data-testid="sign-up-form"
             noValidate
           >
             <div className="fields-container">

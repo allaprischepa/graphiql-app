@@ -1,10 +1,9 @@
-import { FormHandlers } from '../../types/forms';
-
+import { FormHandlersSignUp } from '../../types/forms';
 import { useState } from 'react';
 
 import './FormFields.scss';
 
-export function PasswordFieldConfirm({ register, errors }: FormHandlers) {
+export function PasswordFieldConfirm({ register, errors }: FormHandlersSignUp) {
   const [isOpenedPassword, setIsOpenedPassword] = useState(false);
 
   return (

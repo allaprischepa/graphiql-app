@@ -1,10 +1,12 @@
-import { FormHandlers } from '../../types/forms';
-
+import { FormHandlers, SignUpForm } from '../../types/forms';
+import { UseFormRegister } from 'react-hook-form';
 import { useState } from 'react';
 
 import './FormFields.scss';
 
 export function PasswordField({ register, errors }: FormHandlers) {
+  const registerSignUp = register as UseFormRegister<SignUpForm>;
+
   const [isOpenedPassword, setIsOpenedPassword] = useState(false);
 
   return (
@@ -14,7 +16,7 @@ export function PasswordField({ register, errors }: FormHandlers) {
         <input
           type={isOpenedPassword ? 'text' : 'password'}
           id="password"
-          {...register('password')}
+          {...registerSignUp('password')}
         ></input>
         <div
           className={

@@ -11,7 +11,14 @@ export type SignUpForm = SignInForm & {
   confirmPassword: string;
 };
 
-export type FormHandlers = {
+export type FormHandlersSignUp = {
   register: UseFormRegister<SignUpForm>;
   errors: FieldErrors<SignUpForm>;
 };
+
+export type FormHandlersSignIn = {
+  register: UseFormRegister<SignInForm>;
+  errors: FieldErrors<SignInForm>;
+};
+
+export type FormHandlers = FormHandlersSignIn | FormHandlersSignUp;

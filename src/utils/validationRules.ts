@@ -52,9 +52,14 @@ const confirmPassword = yup
     `${validMessages.confirmPassword.matchPassword}`
   );
 
-export const validationSchema = yup.object().shape({
+export const validationSchemaSignUp = yup.object().shape({
   name: name,
   email: email,
   password: password,
   confirmPassword: confirmPassword,
+});
+
+export const validationSchemaSignIn = yup.object().shape({
+  email: email,
+  password: password,
 });
