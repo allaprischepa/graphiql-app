@@ -1,0 +1,86 @@
+@import '../../styles/abstracts/variables';
+
+.vh-section {
+  .section-bar {
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+
+    .tab {
+      font-size: 15px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      box-sizing: border-box;
+      cursor: pointer;
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: $light-gray;
+        }
+      }
+    }
+
+    .toggle-tools {
+      width: 36px;
+      height: 36px;
+      border: none;
+      border-radius: 5px;
+      background: none;
+      margin-left: auto;
+      cursor: pointer;
+
+      &::before {
+        content: '';
+        display: block;
+        width: 40%;
+        height: 40%;
+        margin: auto;
+        background: center / contain no-repeat
+          url('../../assets/icons/arrow-up.png');
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: $light-gray;
+        }
+      }
+    }
+  }
+
+  .section-content {
+    display: none;
+
+    .tab-content {
+      display: none;
+      min-height: 150px;
+      max-height: 300px;
+      overflow: auto;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  &.open {
+    .section-bar {
+      .tab {
+        color: $accent-light;
+
+        &.active {
+          color: darken($accent-medium, 50);
+        }
+      }
+
+      .toggle-tools {
+        &::before {
+          transform: rotateZ(180deg);
+        }
+      }
+    }
+
+    .section-content {
+      display: block;
+    }
+  }
+}

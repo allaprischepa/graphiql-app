@@ -65,6 +65,11 @@ interface QueryResponse {
   data: object;
 }
 
+interface RequestObject {
+  query: string;
+  variables: object;
+}
+
 const dynamicBaseQuery: BaseQueryFn<
   string | FetchArgs,
   unknown,
@@ -94,11 +99,12 @@ export const graphqlApi = createApi({
         }),
       }),
     }),
-    getQueryResponse: builder.query<QueryResponse, string>({
-      query: (queryString: string) => ({
+    getQueryResponse: builder.query<QueryResponse, RequestObject>({
+      query: ({ query, variables }) => ({
         url: '',
         body: JSON.stringify({
-          query: queryString,
+          query,
+          variables,
         }),
       }),
     }),

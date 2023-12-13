@@ -63,3 +63,25 @@ export const prettifyGraphQLString = (str: string) => {
 
   return newStr;
 };
+
+export const capitalize = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
+export const parseJsonFromString = (
+  str: string
+): { object: object; error: Error | null } => {
+  let object = {};
+  let error = null;
+
+  if (str.length > 0) {
+    try {
+      object = JSON.parse(str);
+    } catch (err) {
+      if (err instanceof Error) error = err;
+      else throw err;
+    }
+  }
+
+  return { object, error };
+};

@@ -8,7 +8,7 @@ import { json } from '@codemirror/lang-json';
 
 interface Props {
   viewRef: MutableRefObject<EditorView | null>;
-  mode: 'request' | 'response';
+  mode: 'request' | 'response' | 'default';
   text?: string;
 }
 
@@ -21,14 +21,16 @@ export default function QueryEditor({ viewRef, mode, text }: Props) {
       const requestMode = mode === 'request';
       const theme = requestMode ? requestEditorTheme : defaultEditorTheme;
       const language = requestMode ? graphql() : json();
+      const editable = mode !== 'response';
 
       const extensions = [
         basicSetup,
-        EditorView.editable.of(mode === 'request'),
+        EditorView.editable.of(editable),
         EditorState.tabSize.of(2),
         language,
         theme,
       ];
+
       if (mode === 'response') extensions.push(EditorView.lineWrapping);
 
       const editorView = new EditorView({
