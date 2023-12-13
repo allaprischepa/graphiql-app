@@ -4,7 +4,6 @@ import ru from './lang/ru';
 import { LangStateProps } from '../types/types';
 import langReducer from './langReducer';
 import { langContext } from './langContext';
-// import initialState from './initialState';
 import { LangActionType, Languages } from '../utils/enums';
 
 function LangState({ children, initialState }: LangStateProps) {
