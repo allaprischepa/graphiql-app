@@ -1,25 +1,56 @@
 import * as yup from 'yup';
 
+export const validMessages = {
+  name: {
+    required: 'enter your name',
+    max: 'at most 32 characters',
+    startLetter: 'start with letter',
+  },
+  email: {
+    required: 'enter your e-mail',
+  },
+  password: {
+    required: 'enter your password',
+    min: 'at least 8 characters',
+    hasNumber: 'at least 1 number',
+    hasLetter: 'at least 1 letter',
+    hasSpecial: 'at least 1 special character',
+  },
+  confirmPassword: {
+    required: 'confirm your password',
+    matchPassword: 'passwords must match',
+  },
+};
+
 export const name = yup
   .string()
-  .required('enter your name')
-  .max(32, 'at most 32 characters')
-  .matches(/^\p{Letter}/u, 'start with letter');
+  .required(`${validMessages.name.required}`)
+  .max(32, `${validMessages.name.max}`)
+  .matches(/^\p{Letter}/u, `${validMessages.name.startLetter}`);
 
-export const email = yup.string().email().required('enter your e-mail');
+export const email = yup
+  .string()
+  .email()
+  .required(`${validMessages.email.required}`);
 
 const password = yup
   .string()
-  .required('enter your password')
-  .min(8, 'at least 8 characters')
-  .matches(/\p{Number}/gu, 'at least 1 number')
-  .matches(/\p{Letter}/gu, 'at least 1 letter')
-  .matches(/\p{Symbol}|\p{Punctuation}/gu, 'at least 1 special character');
+  .required(`${validMessages.password.required}`)
+  .min(8, `${validMessages.password.min}`)
+  .matches(/\p{Number}/gu, `${validMessages.password.hasNumber}`)
+  .matches(/\p{Letter}/gu, `${validMessages.password.hasLetter}`)
+  .matches(
+    /\p{Symbol}|\p{Punctuation}/gu,
+    `${validMessages.password.hasSpecial}`
+  );
 
 const confirmPassword = yup
   .string()
-  .required('confirm your password')
-  .oneOf([yup.ref('password')], 'passwords must match');
+  .required(`${validMessages.confirmPassword.required}`)
+  .oneOf(
+    [yup.ref('password')],
+    `${validMessages.confirmPassword.matchPassword}`
+  );
 
 export const validationSchema = yup.object().shape({
   name: name,
