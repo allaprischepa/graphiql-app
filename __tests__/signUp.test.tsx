@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { AppRoutes, routesConfig } from '../src/router/router';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
@@ -80,5 +80,43 @@ describe('Sign Up Page', () => {
     expect(confirmPasswordInput).toHaveAttribute('type', 'text');
     await user.click(passwordVisibiliySwitcher);
     expect(confirmPasswordInput).toHaveAttribute('type', 'password');
+  });
+
+  it('Submit form only with correct data', async () => {
+    const mockSubmit = vi.fn();
+    render(<RouterProvider router={router} />);
+    const user = userEvent.setup();
+
+    const signUpForm = screen.getByTestId('sign-up-form');
+    signUpForm.onsubmit = mockSubmit;
+
+    const submitButton = screen.getByRole('button', { name: /sign up/i });
+    await user.click(submitButton);
+
+    expect(mockSubmit).not.toHaveBeenCalled();
+
+    const nameInput = screen.getByRole('textbox', { name: /name:/i });
+    const emailInput = screen.getByRole('textbox', { name: /e\-mail:/i });
+    const passwordInput = screen.getAllByLabelText(/password:/i)[FIRST_ELEM];
+    const confirmPasswordInput = screen.getByLabelText(/confirm password:/i);
+
+    await user.type(nameInput, 'User123');
+    await user.type(emailInput, 'correct-email@mail.com');
+    await user.type(passwordInput, '12345678letters!');
+    await user.type(confirmPasswordInput, '12345678letters!');
+
+    await user.click(submitButton);
+
+    expect(mockSubmit).toHaveBeenCalled();
+  });
+
+  it('Navigate to page Sign In with link below the form', async () => {
+    render(<RouterProvider router={router} />);
+    const user = userEvent.setup();
+
+    await user.click(screen.getByRole('link', { name: /sign in!/i }));
+    expect(
+      (await screen.findAllByText(/Sign In/i))[FIRST_ELEM]
+    ).toBeInTheDocument();
   });
 });
