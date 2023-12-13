@@ -1,4 +1,4 @@
-export const SCROLL_OFFSET = 5;
+export const SCROLL_OFFSET = 20;
 
 // tests
 

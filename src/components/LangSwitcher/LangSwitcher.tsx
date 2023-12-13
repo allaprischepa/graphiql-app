@@ -9,7 +9,7 @@ const LangSwitcher = () => {
         data-tg-on="EN"
         data-tg-off="RU"
         className="tgl-btn"
-      ></label>
+      />
     </div>
   );
 };
