@@ -9,7 +9,7 @@ export function PasswordField({ register, errors }: FormHandlers) {
 
   return (
     <>
-      <div className="field">
+      <div className="field" data-testid="password-field">
         <label htmlFor="password">Password:</label>
         <input
           type={isOpenedPassword ? 'text' : 'password'}
@@ -21,6 +21,7 @@ export function PasswordField({ register, errors }: FormHandlers) {
             isOpenedPassword ? 'password-opened-eye' : 'password-closed-eye'
           }
           onClick={() => setIsOpenedPassword(!isOpenedPassword)}
+          data-testid="password-eye"
         ></div>
       </div>
       {errors.password && (

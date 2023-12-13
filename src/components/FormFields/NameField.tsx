@@ -5,7 +5,7 @@ import './FormFields.scss';
 export function NameField({ register, errors }: FormHandlers) {
   return (
     <>
-      <div className="field">
+      <div className="field" data-testid="name-field">
         <label htmlFor="name">Name:</label>
         <input type="text" id="name" {...register('name')}></input>
       </div>

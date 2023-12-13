@@ -5,7 +5,7 @@ import './FormFields.scss';
 export function EmailField({ register, errors }: FormHandlers) {
   return (
     <>
-      <div className="field">
+      <div className="field" data-testid="email-field">
         <label htmlFor="email">E-mail:</label>
         <input type="email" id="email" {...register('email')}></input>
       </div>

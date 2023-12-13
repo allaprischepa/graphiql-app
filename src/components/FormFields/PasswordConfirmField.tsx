@@ -9,7 +9,7 @@ export function PasswordFieldConfirm({ register, errors }: FormHandlers) {
 
   return (
     <>
-      <div className="field">
+      <div className="field" data-testid="confirm-password-field">
         <label htmlFor="confirmPassword">Confirm password:</label>
         <input
           type={isOpenedPassword ? 'text' : 'password'}
@@ -21,6 +21,7 @@ export function PasswordFieldConfirm({ register, errors }: FormHandlers) {
             isOpenedPassword ? 'password-opened-eye' : 'password-closed-eye'
           }
           onClick={() => setIsOpenedPassword(!isOpenedPassword)}
+          data-testid="confirm-password-eye"
         ></div>
       </div>
       {errors.confirmPassword && (
