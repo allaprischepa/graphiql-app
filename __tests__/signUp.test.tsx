@@ -15,8 +15,7 @@ describe('Sign Up Page', () => {
   it('Render Sign Up elements', async () => {
     render(<RouterProvider router={router} />);
 
-    expect(screen.getAllByText(/Sign In/i)[FIRST_ELEM]).toBeInTheDocument();
-
+    expect(screen.getByTestId('sign-up-title')).toBeInTheDocument();
     expect(screen.getByTestId('name-field')).toBeInTheDocument();
     expect(screen.getByTestId('email-field')).toBeInTheDocument();
     expect(screen.getByTestId('password-field')).toBeInTheDocument();
@@ -36,13 +35,11 @@ describe('Sign Up Page', () => {
 
     await user.type(nameInput, '123User');
     expect(
-      screen.getByText(`${validMessages.name.startLetter}`)
+      screen.getByText(validMessages.name.startLetter)
     ).toBeInTheDocument();
     await user.clear(nameInput);
 
-    expect(
-      screen.getByText(`${validMessages.name.required}`)
-    ).toBeInTheDocument();
+    expect(screen.getByText(validMessages.name.required)).toBeInTheDocument();
   });
 
   it('Validate confirm password field correctly', async () => {
@@ -56,13 +53,13 @@ describe('Sign Up Page', () => {
     await user.type(confirmPasswordInput, '12345678');
 
     expect(
-      screen.getByText(`${validMessages.confirmPassword.matchPassword}`)
+      screen.getByText(validMessages.confirmPassword.matchPassword)
     ).toBeInTheDocument();
     await user.clear(confirmPasswordInput);
 
     await user.type(confirmPasswordInput, '12345678letters!');
     expect(
-      screen.queryByText(`${validMessages.confirmPassword.matchPassword}`)
+      screen.queryByText(validMessages.confirmPassword.matchPassword)
     ).not.toBeInTheDocument();
   });
 
@@ -115,8 +112,7 @@ describe('Sign Up Page', () => {
     const user = userEvent.setup();
 
     await user.click(screen.getByRole('link', { name: /sign in!/i }));
-    expect(
-      (await screen.findAllByText(/Sign In/i))[FIRST_ELEM]
-    ).toBeInTheDocument();
+
+    expect(router.state.location.pathname).toContain(AppRoutes.signIn);
   });
 });

@@ -24,33 +24,27 @@ export const validMessages = {
 
 export const name = yup
   .string()
-  .required(`${validMessages.name.required}`)
-  .max(32, `${validMessages.name.max}`)
-  .matches(/^\p{Letter}/u, `${validMessages.name.startLetter}`);
+  .required(validMessages.name.required)
+  .max(32, validMessages.name.max)
+  .matches(/^\p{Letter}/u, validMessages.name.startLetter);
 
 export const email = yup
   .string()
   .email()
-  .required(`${validMessages.email.required}`);
+  .required(validMessages.email.required);
 
 const password = yup
   .string()
-  .required(`${validMessages.password.required}`)
-  .min(8, `${validMessages.password.min}`)
-  .matches(/\p{Number}/gu, `${validMessages.password.hasNumber}`)
-  .matches(/\p{Letter}/gu, `${validMessages.password.hasLetter}`)
-  .matches(
-    /\p{Symbol}|\p{Punctuation}/gu,
-    `${validMessages.password.hasSpecial}`
-  );
+  .required(validMessages.password.required)
+  .min(8, validMessages.password.min)
+  .matches(/\p{Number}/gu, validMessages.password.hasNumber)
+  .matches(/\p{Letter}/gu, validMessages.password.hasLetter)
+  .matches(/\p{Symbol}|\p{Punctuation}/gu, validMessages.password.hasSpecial);
 
 const confirmPassword = yup
   .string()
-  .required(`${validMessages.confirmPassword.required}`)
-  .oneOf(
-    [yup.ref('password')],
-    `${validMessages.confirmPassword.matchPassword}`
-  );
+  .required(validMessages.confirmPassword.required)
+  .oneOf([yup.ref('password')], validMessages.confirmPassword.matchPassword);
 
 export const validationSchemaSignUp = yup.object().shape({
   name: name,

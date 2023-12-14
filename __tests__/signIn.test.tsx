@@ -3,7 +3,6 @@ import { AppRoutes, routesConfig } from '../src/router/router';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
-import { FIRST_ELEM } from '../src/constants';
 import { validMessages } from '../src/utils/validationRules';
 
 describe('Sign In Page', () => {
@@ -15,8 +14,7 @@ describe('Sign In Page', () => {
   it('Render Sign In elements', async () => {
     render(<RouterProvider router={router} />);
 
-    expect(screen.getAllByText(/Sign In/i)[FIRST_ELEM]).toBeInTheDocument();
-
+    expect(screen.getByTestId('sign-in-title')).toBeInTheDocument();
     expect(screen.getByTestId('email-field')).toBeInTheDocument();
     expect(screen.getByTestId('password-field')).toBeInTheDocument();
 
@@ -44,9 +42,7 @@ describe('Sign In Page', () => {
     ).not.toBeInTheDocument();
     await user.clear(emailInput);
 
-    expect(
-      screen.getByText(`${validMessages.email.required}`)
-    ).toBeInTheDocument();
+    expect(screen.getByText(validMessages.email.required)).toBeInTheDocument();
   });
 
   it('Validate password field correctly', async () => {
@@ -56,31 +52,29 @@ describe('Sign In Page', () => {
     const passwordInput = screen.getByLabelText(/password:/i);
 
     await user.type(passwordInput, '123');
-    expect(
-      screen.getByText(`${validMessages.password.min}`)
-    ).toBeInTheDocument();
+    expect(screen.getByText(validMessages.password.min)).toBeInTheDocument();
     await user.clear(passwordInput);
 
     await user.type(passwordInput, '12345678letters');
     expect(
-      screen.getByText(`${validMessages.password.hasSpecial}`)
+      screen.getByText(validMessages.password.hasSpecial)
     ).toBeInTheDocument();
     await user.clear(passwordInput);
 
     await user.type(passwordInput, '12345678!');
     expect(
-      screen.getByText(`${validMessages.password.hasLetter}`)
+      screen.getByText(validMessages.password.hasLetter)
     ).toBeInTheDocument();
     await user.clear(passwordInput);
 
     await user.type(passwordInput, 'letters!');
     expect(
-      screen.getByText(`${validMessages.password.hasNumber}`)
+      screen.getByText(validMessages.password.hasNumber)
     ).toBeInTheDocument();
     await user.clear(passwordInput);
 
     expect(
-      screen.getByText(`${validMessages.password.required}`)
+      screen.getByText(validMessages.password.required)
     ).toBeInTheDocument();
   });
 
@@ -127,8 +121,7 @@ describe('Sign In Page', () => {
     const user = userEvent.setup();
 
     await user.click(screen.getByRole('link', { name: /sign up!/i }));
-    expect(
-      (await screen.findAllByText(/Sign Up/i))[FIRST_ELEM]
-    ).toBeInTheDocument();
+
+    expect(router.state.location.pathname).toContain(AppRoutes.signUp);
   });
 });

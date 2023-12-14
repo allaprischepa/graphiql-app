@@ -44,7 +44,9 @@ export default function SignUp() {
       <Header />
       <section className="sign-section">
         <div className="sign-container">
-          <div className="sign-title">Sign Up</div>
+          <div className="sign-title" data-testid="sign-up-title">
+            Sign Up
+          </div>
           <form
             onSubmit={handleSubmit(onFormSubmit)}
             className="sign-form"

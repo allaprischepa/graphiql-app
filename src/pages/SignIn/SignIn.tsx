@@ -42,7 +42,9 @@ export default function SignIn() {
       <Header />
       <section className="sign-section">
         <div className="sign-container">
-          <div className="sign-title">Sign In</div>
+          <div className="sign-title" data-testid="sign-in-title">
+            Sign In
+          </div>
           <form
             onSubmit={handleSubmit(onFormSubmit)}
             className="sign-form"

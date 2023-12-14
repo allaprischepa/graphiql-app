@@ -6,7 +6,6 @@ import Hero from '../src/components/Hero/Hero';
 import Features from '../src/components/Features/Features';
 import Team from '../src/components/Team/Team';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
-import { FIRST_ELEM } from '../src/constants';
 
 describe('Welcome Page', () => {
   it('Hero displayed on welcome page', async () => {
@@ -39,9 +38,7 @@ describe('Welcome Page', () => {
     expect(screen.getByText(/Sign In/i)).toBeInTheDocument();
 
     await user.click(screen.getByText(/Sign In/i));
-    expect(
-      (await screen.findAllByText(/Sign In/i))[FIRST_ELEM]
-    ).toBeInTheDocument();
+    expect(await screen.findByTestId('sign-in-title')).toBeInTheDocument();
   });
 
   it('Should navigate to page Sign Up on button click', async () => {
@@ -53,6 +50,6 @@ describe('Welcome Page', () => {
     expect(screen.getByText(/Sign Up/i)).toBeInTheDocument();
 
     await user.click(screen.getByText(/Sign Up/i));
-    expect(screen.getAllByText(/Sign Up/i)[FIRST_ELEM]).toBeInTheDocument();
+    expect(await screen.findByTestId('sign-up-title')).toBeInTheDocument();
   });
 });
