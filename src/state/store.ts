@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { requestReducer } from './request/requestSlice';
 import { useSelector } from 'react-redux';
 import { graphqlApi, graphqlApiReducer } from '../api/graphqlApi';
+import { rtkQueryErrorLogger } from '../api/errorLogger';
 
 const rootReducer = combineReducers({
   request: requestReducer,
@@ -12,7 +13,7 @@ export const configureAppStore = () =>
   configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(graphqlApi.middleware),
+      getDefaultMiddleware().concat(graphqlApi.middleware, rtkQueryErrorLogger),
   });
 
 export const store = configureAppStore();

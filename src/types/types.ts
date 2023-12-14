@@ -51,3 +51,7 @@ export interface ContextProps {
     translate: (key: string) => string;
   };
 }
+
+export interface GraphQLError {
+  message: string;
+}
