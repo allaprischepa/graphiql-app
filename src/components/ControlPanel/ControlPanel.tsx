@@ -56,13 +56,13 @@ export default function ControlPanel({
   return (
     <div className="control-panel">
       <button
-        className="btn run"
+        className="ctrl-btn run"
         onClick={run}
         title={titles.runBtn[Languages.EN]}
         data-testid={RUN_BTN_TEST_ID}
       />
       <button
-        className="btn prettify"
+        className="ctrl-btn prettify"
         onClick={prettify}
         title={titles.prettifyBtn[Languages.EN]}
         data-testid={PRETTIFY_BTN_TEST_ID}
