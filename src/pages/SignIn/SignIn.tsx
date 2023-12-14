@@ -30,7 +30,6 @@ export default function SignIn() {
       await userAuth.logInWithEmailAndPassword(data);
       navigate('/graphiql');
     } catch (err) {
-      console.log(err);
       alert(err);
     } finally {
       setLoggingIn(false);

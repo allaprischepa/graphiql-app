@@ -32,7 +32,6 @@ export default function SignUp() {
       await userAuth.registerWithEmailAndPassword(data);
       navigate('/sign-in');
     } catch (err) {
-      console.log(err);
       alert(err);
     } finally {
       setIsRegistering(false);
