@@ -6,12 +6,15 @@ import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import { Provider } from 'react-redux';
 import { store } from './state/store';
 
+import LangState from './languages/LangState';
+import initialState from './languages/initialState';
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <ErrorBoundary>
-      <Provider store={store}>
+  <ErrorBoundary>
+    <Provider store={store}>
+      <LangState initialState={initialState}>
         <App />
-      </Provider>
-    </ErrorBoundary>
-  </React.StrictMode>
+      </LangState>
+    </Provider>
+  </ErrorBoundary>
 );

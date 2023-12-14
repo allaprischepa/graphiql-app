@@ -4,13 +4,7 @@ import SignIn from '../pages/SignIn/SignIn';
 import Welcome from '../pages/Welcome/Welcome';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import SignUp from '../pages/SignUp/SignUp';
-
-export enum AppRoutes {
-  welcome = '/',
-  main = '/graphiql',
-  signIn = '/sign-in',
-  signUp = '/sign-up',
-}
+import { AppRoutes } from '../utils/enums';
 
 export const routesConfig = [
   {
