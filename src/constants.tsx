@@ -29,3 +29,16 @@ export const ZENA_TEXT = 'ZENA_TEXT';
 
 export const TEAM_LEAD = 'TEAM_LEAD';
 export const LANG_LABEL = 'LANG_LABEL';
+
+export const API_URL = 'https://rickandmortyapi.com/graphql';
+
+export const QUERY_EXAMPLE = `
+
+  query Characters {
+    characters {
+      results {
+        name
+      }
+    }
+  }
+`;

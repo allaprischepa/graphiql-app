@@ -1,3 +1,6 @@
+import { EditorView } from 'codemirror';
+import { MutableRefObject } from 'react';
+
 export const commentOutString = (str: string) => {
   return str
     .split('\n')
@@ -11,6 +14,22 @@ export const sanitizeString = (str: string) => {
     .filter((s) => s[0] !== '#')
     .filter((s) => s.trim().length > 0)
     .join('\n');
+};
+
+export const replaceEditorText = (
+  editorViewRef: MutableRefObject<EditorView | null>,
+  text: string
+) => {
+  if (editorViewRef.current) {
+    const transaction = {
+      changes: {
+        from: 0,
+        to: editorViewRef.current.state.doc.length,
+        insert: text,
+      },
+    };
+    editorViewRef.current.dispatch(transaction);
+  }
 };
 
 const setTabs = (str: string) => {
