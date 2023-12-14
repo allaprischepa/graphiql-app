@@ -1,8 +1,7 @@
 import { Languages } from '../utils/enums';
 
 export const intro = {
-  [Languages.EN]: `
-  Welcome to GraphiQL
+  [Languages.EN]: `  Welcome to GraphiQL
 
   GraphiQL is an in-browser tool for writing, validating, and
   testing GraphQL queries.
@@ -17,13 +16,13 @@ export const intro = {
   An example GraphQL query might look like:
 
     {
-       field(arg: "value") {
-         subField
-       }
-     }
+      field(arg: "value") {
+        subField
+      }
+    }
 
-  Prettify query:  press the prettify button
-  Run Query:  press the play button
+  Run Query:         press the play button
+  Prettify query:    press the prettify button
   `,
 };
 
