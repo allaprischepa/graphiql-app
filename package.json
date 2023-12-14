@@ -14,8 +14,14 @@
     "coverage": "vitest run --coverage --passWithNoTests"
   },
   "dependencies": {
+    "@codemirror/lang-json": "^6.0.1",
+    "@reduxjs/toolkit": "^2.0.1",
+    "cm6-graphql": "^0.0.12",
+    "codemirror": "^6.0.1",
+    "graphql": "^16.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^9.0.2",
     "react-router-dom": "^6.20.1"
   },
   "devDependencies": {
