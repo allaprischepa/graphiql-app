@@ -34,12 +34,12 @@
 }
 
 .sign-form {
-  padding: 20px 40px;
+  padding: 20px 40px 34px 40px;
   border-radius: 10px;
   background-color: $main-color;
 
   @media screen and (max-width: 533px) {
-    padding: 10px 35px 20px 35px;
+    padding: 10px 35px 30px 35px;
   }
 }
 
@@ -64,6 +64,10 @@
   border: solid 0 transparent;
   cursor: pointer;
   transition: $trans;
+
+  @media screen and (max-width: 533px) {
+    margin: 25px 0 0 0;
+  }
 
   &:hover {
     background-color: $accent-light-x2;
