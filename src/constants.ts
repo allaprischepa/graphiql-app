@@ -4,9 +4,9 @@ export const QUERY_EXAMPLE = `
 
   query Characters {
     characters {
-        results {
-            name
-        }
+      results {
+        name
+      }
     }
   }
 `;
