@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { AppRoutes } from '../../router/router';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -30,7 +31,7 @@ export default function SignUp() {
     setIsRegistering(true);
     try {
       await userAuth.registerWithEmailAndPassword(data);
-      navigate('/sign-in');
+      navigate(AppRoutes.signIn);
     } catch (err) {
       alert(err);
     } finally {
@@ -62,7 +63,7 @@ export default function SignUp() {
           </form>
           <div className="sign-text">
             Already have an account?{' '}
-            <Link to="/sign-in" className="sign-link">
+            <Link to={AppRoutes.signIn} className="sign-link">
               Sign in!
             </Link>
           </div>

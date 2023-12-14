@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { AppRoutes } from '../../router/router';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -28,7 +29,7 @@ export default function SignIn() {
     setLoggingIn(true);
     try {
       await userAuth.logInWithEmailAndPassword(data);
-      navigate('/graphiql');
+      navigate(AppRoutes.main);
     } catch (err) {
       alert(err);
     } finally {
@@ -58,7 +59,7 @@ export default function SignIn() {
           </form>
           <div className="sign-text">
             Don&apos;t have an account?{' '}
-            <Link to="/sign-up" className="sign-link">
+            <Link to={AppRoutes.signUp} className="sign-link">
               Sign up!
             </Link>
           </div>

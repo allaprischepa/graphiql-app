@@ -1,5 +1,6 @@
 import { userAuth } from '../../services/firebaseAuth';
 import { useNavigate } from 'react-router-dom';
+import { AppRoutes } from '../../router/router';
 
 import './SignOut.scss';
 
@@ -9,7 +10,7 @@ const SignOut = () => {
   const userLogOut = async (): Promise<void> => {
     try {
       await userAuth.logOut();
-      navigate('/');
+      navigate(AppRoutes.main);
     } catch (err) {
       alert(err);
     }
