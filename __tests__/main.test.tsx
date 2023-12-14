@@ -15,7 +15,7 @@ import ControlPanel, {
 } from '../src/components/ControlPanel/ControlPanel';
 import { queries } from './test-utils/test-utils';
 import userEvent from '@testing-library/user-event';
-import { prettifyGraphQLString, replaceEditorText } from '../src/utils/utils';
+import { replaceEditorText } from '../src/utils/utils';
 
 describe('Main Page', () => {
   it('contains Request and Response Sections', () => {
@@ -119,7 +119,7 @@ describe('Prettify button', () => {
     if (requestEditor instanceof EditorView) {
       for (const query of queries) {
         const initial = query.initial;
-        const prettified = prettifyGraphQLString(initial);
+        const prettified = query.prettified;
 
         replaceEditorText(requestViewRef, initial);
         expect(requestEditor.state.doc.toString()).toEqual(initial);
