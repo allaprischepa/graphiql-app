@@ -56,6 +56,7 @@ export const prettifyGraphQLString = (str: string) => {
     .replaceAll(/(\s*{\s*)/g, ' {\n')
     .replaceAll(/(\s*})/g, '\n}')
     .replaceAll(/(\w+)\s+(?=\w)/g, '$1\n')
+    .replaceAll(/(\s+)(query)/g, '$2')
     .replaceAll(/(query)(\s+)/g, '$1 ')
     .replaceAll(/(query\s+{)/g, '{');
   newStr = setTabs(newStr);
