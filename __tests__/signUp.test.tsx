@@ -1,11 +1,12 @@
 import { describe, it, expect, vi } from 'vitest';
 import { routesConfig } from '../src/router/router';
-import { AppRoutes } from '../src/utils/enums';
+import { AppRoutes, Languages } from '../src/utils/enums';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { FIRST_ELEM } from '../src/constants';
 import { validMessages } from '../src/utils/validationRules';
+import LangState from '../src/languages/LangState';
 
 describe('Sign Up Page', () => {
   const route = AppRoutes.signUp;
@@ -14,7 +15,11 @@ describe('Sign Up Page', () => {
   });
 
   it('Render Sign Up elements', async () => {
-    render(<RouterProvider router={router} />);
+    render(
+      <LangState initialState={{ language: Languages.EN }}>
+        <RouterProvider router={router} />
+      </LangState>
+    );
 
     expect(screen.getByTestId('sign-up-title')).toBeInTheDocument();
     expect(screen.getByTestId('name-field')).toBeInTheDocument();
@@ -29,7 +34,11 @@ describe('Sign Up Page', () => {
   });
 
   it('Validate name field correctly', async () => {
-    render(<RouterProvider router={router} />);
+    render(
+      <LangState initialState={{ language: Languages.EN }}>
+        <RouterProvider router={router} />
+      </LangState>
+    );
     const user = userEvent.setup();
 
     const nameInput = screen.getByRole('textbox', { name: /name:/i });
@@ -44,7 +53,11 @@ describe('Sign Up Page', () => {
   });
 
   it('Validate confirm password field correctly', async () => {
-    render(<RouterProvider router={router} />);
+    render(
+      <LangState initialState={{ language: Languages.EN }}>
+        <RouterProvider router={router} />
+      </LangState>
+    );
     const user = userEvent.setup();
 
     const passwordInput = screen.getAllByLabelText(/password:/i)[FIRST_ELEM];
@@ -65,7 +78,11 @@ describe('Sign Up Page', () => {
   });
 
   it('User can switch confirm password visibility', async () => {
-    render(<RouterProvider router={router} />);
+    render(
+      <LangState initialState={{ language: Languages.EN }}>
+        <RouterProvider router={router} />
+      </LangState>
+    );
     const user = userEvent.setup();
 
     const confirmPasswordInput = screen.getByLabelText(/confirm password:/i);
@@ -82,7 +99,11 @@ describe('Sign Up Page', () => {
 
   it('Submit form only with correct data', async () => {
     const mockSubmit = vi.fn();
-    render(<RouterProvider router={router} />);
+    render(
+      <LangState initialState={{ language: Languages.EN }}>
+        <RouterProvider router={router} />
+      </LangState>
+    );
     const user = userEvent.setup();
 
     const signUpForm = screen.getByTestId('sign-up-form');
@@ -109,7 +130,11 @@ describe('Sign Up Page', () => {
   });
 
   it('Navigate to page Sign In with link below the form', async () => {
-    render(<RouterProvider router={router} />);
+    render(
+      <LangState initialState={{ language: Languages.EN }}>
+        <RouterProvider router={router} />
+      </LangState>
+    );
     const user = userEvent.setup();
 
     await user.click(screen.getByRole('link', { name: /sign in!/i }));

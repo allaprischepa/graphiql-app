@@ -29,7 +29,11 @@ describe('Sign In Page', () => {
       initialEntries: [route],
     });
 
-    render(<RouterProvider router={router} />);
+    render(
+      <LangState initialState={{ language: Languages.EN }}>
+        <RouterProvider router={router} />
+      </LangState>
+    );
 
     const signIn = await screen.findByTestId('sign-in-title');
     expect(signIn).toBeInTheDocument();
@@ -43,7 +47,11 @@ describe('Sign Up Page', () => {
       initialEntries: [route],
     });
 
-    render(<RouterProvider router={router} />);
+    render(
+      <LangState initialState={{ language: Languages.EN }}>
+        <RouterProvider router={router} />
+      </LangState>
+    );
 
     const signUp = await screen.findByTestId('sign-up-title');
     expect(signUp).toBeInTheDocument();
