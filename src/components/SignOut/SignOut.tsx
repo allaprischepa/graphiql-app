@@ -1,6 +1,6 @@
 import { userAuth } from '../../services/firebaseAuth';
 import { useNavigate } from 'react-router-dom';
-import { AppRoutes } from '../../router/router';
+import { AppRoutes } from '../../../src/utils/enums';
 
 import './SignOut.scss';
 

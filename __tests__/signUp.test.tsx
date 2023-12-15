@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
-import { AppRoutes, routesConfig } from '../src/router/router';
+import { routesConfig } from '../src/router/router';
+import { AppRoutes } from '../src/utils/enums';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
