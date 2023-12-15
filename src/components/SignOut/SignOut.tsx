@@ -10,7 +10,7 @@ const SignOut = () => {
   const userLogOut = async (): Promise<void> => {
     try {
       await userAuth.logOut();
-      navigate(AppRoutes.main);
+      navigate(AppRoutes.welcome);
     } catch (err) {
       alert(err);
     }
