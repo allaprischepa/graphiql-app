@@ -1,22 +1,19 @@
-import { Link } from 'react-router-dom';
-import { AppRoutes } from '../../router/router';
 import './Navigation.scss';
+import NavigationLink from '../NavigationLink/NavigationLink';
+import { useContext } from 'react';
+import { getNavigation } from '../../data/getNavigation';
+import { langContext } from '../../languages/langContext';
 
 const Navigation = () => {
-  return (
-    <ul>
-      <li>
-        <Link to={AppRoutes.signIn} className="btn">
-          Sign In
-        </Link>
-      </li>
-      <li>
-        <Link to={AppRoutes.signUp} className="btn">
-          Sign Up
-        </Link>
-      </li>
-    </ul>
-  );
+  const {
+    dispatch: { translate },
+  } = useContext(langContext);
+
+  const navigationList = getNavigation(translate).map((link) => (
+    <NavigationLink key={link.text} text={link.text} to={link.to} />
+  ));
+
+  return <ul>{navigationList}</ul>;
 };
 
 export default Navigation;

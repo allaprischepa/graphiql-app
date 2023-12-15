@@ -1,7 +1,12 @@
 import { describe, it, expect } from 'vitest';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
-import { AppRoutes, routesConfig } from '../src/router/router';
+import { routesConfig } from '../src/router/router';
 import { render, screen } from '@testing-library/react';
+import { TEST_ID as MAIN_PAGE_TEST_ID } from '../src/pages/Main/Main';
+import { Provider } from 'react-redux';
+import { configureAppStore } from '../src/state/store';
+import { AppRoutes, Languages } from '../src/utils/enums';
+import LangState from '../src/languages/LangState';
 
 describe('404 Page', () => {
   it('is displayed when navigating to an invalid route', async () => {
@@ -52,9 +57,32 @@ describe('Welcome Page', () => {
       initialEntries: [route],
     });
 
-    render(<RouterProvider router={router} />);
+    render(
+      <LangState initialState={{ language: Languages.EN }}>
+        <RouterProvider router={router} />
+      </LangState>
+    );
 
     const welcome = await screen.findByText('GraphiQL');
     expect(welcome).toBeInTheDocument();
+  });
+});
+
+describe('Main Page', () => {
+  it('is displayed when navigating to the corresponding route', () => {
+    const store = configureAppStore();
+    const route = AppRoutes.main;
+    const router = createMemoryRouter(routesConfig, {
+      initialEntries: [route],
+    });
+
+    render(
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    );
+
+    const mainPage = screen.getByTestId(MAIN_PAGE_TEST_ID);
+    expect(mainPage).toBeInTheDocument();
   });
 });
