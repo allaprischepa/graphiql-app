@@ -12,6 +12,11 @@ import {
   replaceEditorText,
 } from '../../utils/utils';
 import { toastError } from '../../utils/toastify-utils';
+import {
+  headerNameValidation,
+  headerValueValidation,
+} from '../../utils/headersValidationRules';
+import { Schema, ValidationError } from 'yup';
 
 export const RUN_BTN_TEST_ID = 'run-btn';
 export const PRETTIFY_BTN_TEST_ID = 'prettify-btn';
@@ -31,21 +36,50 @@ export default function ControlPanel({
 }: Props) {
   const dispatch = useDispatch<AppDispatch>();
 
+  const parseJsonFromEditorValue = (
+    viewRef: MutableRefObject<EditorView | null>
+  ) => {
+    const str = viewRef.current?.state.doc.toString() ?? '';
+    return parseJsonFromString(str);
+  };
+
+  const validateWithSchema = async (
+    value: string,
+    schema: Schema
+  ): Promise<{ error: null | string }> =>
+    schema
+      .validate(value, { abortEarly: false })
+      .then(() => ({ error: null }))
+      .catch((err: ValidationError) => ({ error: err.message }));
+
   const run = async () => {
     const query = requestViewRef.current?.state.doc.toString() ?? '';
-    const variablesString =
-      variablesViewRef.current?.state.doc.toString() ?? '';
-    const headersString = headersViewRef.current?.state.doc.toString() ?? '';
 
     const { object: variables, error: varsError } =
-      parseJsonFromString(variablesString);
+      parseJsonFromEditorValue(variablesViewRef);
     const { object: headers, error: headersError } =
-      parseJsonFromString(headersString);
+      parseJsonFromEditorValue(headersViewRef);
 
     if (varsError)
       return toastError(`Variables are invalid JSON: ${varsError.message}`);
     if (headersError)
       return toastError(`Headers are invalid JSON: ${headersError.message}`);
+
+    for (const [name, value] of Object.entries(headers)) {
+      const { error: nameErr } = await validateWithSchema(
+        name,
+        headerNameValidation
+      );
+      if (nameErr)
+        return toastError(`Header name "${name}" is invalid: ${nameErr}`);
+
+      const { error: valueErr } = await validateWithSchema(
+        value,
+        headerValueValidation
+      );
+      if (valueErr)
+        return toastError(`Header value "${value}" is invalid: ${valueErr}`);
+    }
 
     const action = graphqlApi.endpoints.getQueryResponse.initiate({
       query,
