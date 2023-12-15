@@ -3,7 +3,7 @@ import { EditorState } from '@codemirror/state';
 import { MutableRefObject, useEffect, useRef } from 'react';
 import { graphql } from 'cm6-graphql';
 import { useDispatch } from 'react-redux';
-import { defaultEditorTheme, requestEditorTheme } from './QueryEditorTheme';
+import { defaultEditorTheme, responseEditorTheme } from './QueryEditorTheme';
 import { json } from '@codemirror/lang-json';
 
 interface Props {
@@ -19,7 +19,8 @@ export default function QueryEditor({ viewRef, mode, text }: Props) {
   useEffect(() => {
     if (editorRef.current instanceof HTMLDivElement) {
       const requestMode = mode === 'request';
-      const theme = requestMode ? requestEditorTheme : defaultEditorTheme;
+      const responseMode = mode === 'response';
+      const theme = responseMode ? responseEditorTheme : defaultEditorTheme;
       const language = requestMode ? graphql() : json();
       const editable = mode !== 'response';
 
@@ -31,7 +32,7 @@ export default function QueryEditor({ viewRef, mode, text }: Props) {
         theme,
       ];
 
-      if (mode === 'response') extensions.push(EditorView.lineWrapping);
+      if (responseMode) extensions.push(EditorView.lineWrapping);
 
       const editorView = new EditorView({
         doc: text,

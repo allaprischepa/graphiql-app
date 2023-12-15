@@ -100,6 +100,7 @@ describe('Prettify button', () => {
     const requestViewRef = React.createRef<EditorView | null>();
     const responseViewRef = React.createRef<EditorView | null>();
     const variablesViewRef = React.createRef<EditorView | null>();
+    const headersViewRef = React.createRef<EditorView | null>();
 
     render(
       <Provider store={store}>
@@ -108,6 +109,7 @@ describe('Prettify button', () => {
           requestViewRef={requestViewRef}
           responseViewRef={responseViewRef}
           variablesViewRef={variablesViewRef}
+          headersViewRef={headersViewRef}
         />
       </Provider>
     );

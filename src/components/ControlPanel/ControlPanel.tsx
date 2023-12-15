@@ -20,12 +20,14 @@ interface Props {
   requestViewRef: MutableRefObject<EditorView | null>;
   responseViewRef: MutableRefObject<EditorView | null>;
   variablesViewRef: MutableRefObject<EditorView | null>;
+  headersViewRef: MutableRefObject<EditorView | null>;
 }
 
 export default function ControlPanel({
   requestViewRef,
   responseViewRef,
   variablesViewRef,
+  headersViewRef,
 }: Props) {
   const dispatch = useDispatch<AppDispatch>();
 
@@ -33,15 +35,24 @@ export default function ControlPanel({
     const query = requestViewRef.current?.state.doc.toString() ?? '';
     const variablesString =
       variablesViewRef.current?.state.doc.toString() ?? '';
-    const { object: variables, error } = parseJsonFromString(variablesString);
+    const headersString = headersViewRef.current?.state.doc.toString() ?? '';
 
-    if (error)
-      return toastError(`Variables are invalid JSON: ${error.message}`);
+    const { object: variables, error: varsError } =
+      parseJsonFromString(variablesString);
+    const { object: headers, error: headersError } =
+      parseJsonFromString(headersString);
+
+    if (varsError)
+      return toastError(`Variables are invalid JSON: ${varsError.message}`);
+    if (headersError)
+      return toastError(`Headers are invalid JSON: ${headersError.message}`);
 
     const action = graphqlApi.endpoints.getQueryResponse.initiate({
       query,
       variables,
+      headers,
     });
+
     const { data } = await dispatch(action);
 
     if (data) replaceEditorText(responseViewRef, JSON.stringify(data, null, 2));

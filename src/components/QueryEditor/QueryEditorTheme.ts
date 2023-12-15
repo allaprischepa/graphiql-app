@@ -1,6 +1,9 @@
 import { EditorView } from 'codemirror';
 
 const defaultThemeSettings = {
+  '&.cm-editor.cm-focused': {
+    outline: 'none',
+  },
   '.cm-content': {
     fontSize: '15px',
   },
@@ -10,14 +13,16 @@ const defaultThemeSettings = {
   },
   '.cm-scroller': {
     overflowX: 'hidden',
-  },
-};
-const requestThemeSettings = {
-  ...defaultThemeSettings,
-  '.cm-scroller': {
     width: 'max-content',
   },
 };
 
+const responseThemeSettings = {
+  ...defaultThemeSettings,
+  '.cm-scroller': {
+    width: 'auto',
+  },
+};
+
 export const defaultEditorTheme = EditorView.theme(defaultThemeSettings);
-export const requestEditorTheme = EditorView.theme(requestThemeSettings);
+export const responseEditorTheme = EditorView.theme(responseThemeSettings);

@@ -33,6 +33,7 @@ export default function Main() {
               requestViewRef={requestViewRef}
               responseViewRef={responseViewRef}
               variablesViewRef={variablesViewRef}
+              headersViewRef={headersViewRef}
             />
           </div>
           <div className="tools-section">

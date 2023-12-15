@@ -68,6 +68,7 @@ interface QueryResponse {
 interface RequestObject {
   query: string;
   variables: object;
+  headers: object;
 }
 
 const dynamicBaseQuery: BaseQueryFn<
@@ -100,12 +101,13 @@ export const graphqlApi = createApi({
       }),
     }),
     getQueryResponse: builder.query<QueryResponse, RequestObject>({
-      query: ({ query, variables }) => ({
+      query: ({ query, variables, headers }) => ({
         url: '',
         body: JSON.stringify({
           query,
           variables,
         }),
+        headers: { ...headers },
       }),
     }),
   }),
