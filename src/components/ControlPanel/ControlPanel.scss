@@ -6,7 +6,7 @@
   width: 40px;
   gap: 10px;
 
-  .btn {
+  .ctrl-btn {
     display: flex;
     align-items: center;
     width: 40px;
@@ -17,7 +17,7 @@
   }
 
   .run {
-    background-color: $accent-dark;
+    background-color: $accent-light;
 
     &::before {
       content: '';
@@ -30,16 +30,32 @@
         contain;
       mask: url('../../assets/icons/play.png') no-repeat center / contain;
     }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: $accent-dark;
+      }
+    }
   }
 
-  .prettify::before {
-    content: '';
-    display: block;
-    width: 80%;
-    height: 80%;
-    margin: auto;
-    background-color: $accent-light;
-    -webkit-mask: url('/clean.svg') no-repeat center / contain;
-    mask: url('/clean.svg') no-repeat center / contain;
+  .prettify {
+    background: none;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 80%;
+      height: 80%;
+      margin: auto;
+      background-color: $accent-light;
+      -webkit-mask: url('/clean.svg') no-repeat center / contain;
+      mask: url('/clean.svg') no-repeat center / contain;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: $light-gray;
+      }
+    }
   }
 }

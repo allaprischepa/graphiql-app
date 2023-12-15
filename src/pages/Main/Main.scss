@@ -16,12 +16,24 @@
 
     .request-section {
       display: flex;
-      gap: 15px;
+      flex-direction: column;
       margin: 10px;
       flex: 1.2 1 0%;
       border-radius: 10px;
       background-color: rgba(255, 255, 255, 0.7);
       box-shadow: 5px 0px 10px 0px $main-color-dark;
+
+      .editor-section {
+        display: flex;
+        gap: 15px;
+        flex: 1;
+        overflow: hidden;
+      }
+
+      .tools-section {
+        flex: 0.01;
+        border-top: 1px solid $main-color-dark;
+      }
     }
 
     .response-section {

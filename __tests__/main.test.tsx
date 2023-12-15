@@ -99,6 +99,7 @@ describe('Prettify button', () => {
     const store = configureAppStore();
     const requestViewRef = React.createRef<EditorView | null>();
     const responseViewRef = React.createRef<EditorView | null>();
+    const variablesViewRef = React.createRef<EditorView | null>();
 
     render(
       <Provider store={store}>
@@ -106,6 +107,7 @@ describe('Prettify button', () => {
         <ControlPanel
           requestViewRef={requestViewRef}
           responseViewRef={responseViewRef}
+          variablesViewRef={variablesViewRef}
         />
       </Provider>
     );
