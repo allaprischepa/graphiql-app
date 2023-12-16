@@ -56,7 +56,7 @@ describe('Welcome Page', () => {
     expect(screen.getByText(/Sign In/i)).toBeInTheDocument();
 
     await user.click(screen.getByText(/Sign In/i));
-    expect(screen.getByText(/Sign In/i)).toBeInTheDocument();
+    expect(await screen.findByTestId('sign-in-title')).toBeInTheDocument();
   });
 
   it('Should navigate to page Sign Up on button click', async () => {
@@ -72,6 +72,6 @@ describe('Welcome Page', () => {
     expect(screen.getByText(/Sign Up/i)).toBeInTheDocument();
 
     await user.click(screen.getByText(/Sign Up/i));
-    expect(screen.getByText(/Sign Up/i)).toBeInTheDocument();
+    expect(await screen.findByTestId('sign-up-title')).toBeInTheDocument();
   });
 });

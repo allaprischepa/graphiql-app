@@ -1,4 +1,6 @@
 export const SCROLL_OFFSET = 20;
+export const FIRST_ELEM = 0;
+
 export const RSS_HREF = 'https://rs.school/react/';
 
 export const SIGN_IN = 'SIGN_IN';
