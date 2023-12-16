@@ -12,6 +12,11 @@ import {
   replaceEditorText,
 } from '../../utils/utils';
 import { toastError } from '../../utils/toastify-utils';
+import {
+  headerNameValidation,
+  headerValueValidation,
+} from '../../utils/headersValidationRules';
+import { Schema, ValidationError } from 'yup';
 
 export const RUN_BTN_TEST_ID = 'run-btn';
 export const PRETTIFY_BTN_TEST_ID = 'prettify-btn';
@@ -20,28 +25,68 @@ interface Props {
   requestViewRef: MutableRefObject<EditorView | null>;
   responseViewRef: MutableRefObject<EditorView | null>;
   variablesViewRef: MutableRefObject<EditorView | null>;
+  headersViewRef: MutableRefObject<EditorView | null>;
 }
 
 export default function ControlPanel({
   requestViewRef,
   responseViewRef,
   variablesViewRef,
+  headersViewRef,
 }: Props) {
   const dispatch = useDispatch<AppDispatch>();
 
+  const parseJsonFromEditorValue = (
+    viewRef: MutableRefObject<EditorView | null>
+  ) => {
+    const str = viewRef.current?.state.doc.toString() ?? '';
+    return parseJsonFromString(str);
+  };
+
+  const validateWithSchema = async (
+    value: string,
+    schema: Schema
+  ): Promise<{ error: null | string }> =>
+    schema
+      .validate(value, { abortEarly: false })
+      .then(() => ({ error: null }))
+      .catch((err: ValidationError) => ({ error: err.message }));
+
   const run = async () => {
     const query = requestViewRef.current?.state.doc.toString() ?? '';
-    const variablesString =
-      variablesViewRef.current?.state.doc.toString() ?? '';
-    const { object: variables, error } = parseJsonFromString(variablesString);
 
-    if (error)
-      return toastError(`Variables are invalid JSON: ${error.message}`);
+    const { object: variables, error: varsError } =
+      parseJsonFromEditorValue(variablesViewRef);
+    const { object: headers, error: headersError } =
+      parseJsonFromEditorValue(headersViewRef);
+
+    if (varsError)
+      return toastError(`Variables are invalid JSON: ${varsError.message}`);
+    if (headersError)
+      return toastError(`Headers are invalid JSON: ${headersError.message}`);
+
+    for (const [name, value] of Object.entries(headers)) {
+      const { error: nameErr } = await validateWithSchema(
+        name,
+        headerNameValidation
+      );
+      if (nameErr)
+        return toastError(`Header name "${name}" is invalid: ${nameErr}`);
+
+      const { error: valueErr } = await validateWithSchema(
+        value,
+        headerValueValidation
+      );
+      if (valueErr)
+        return toastError(`Header value "${value}" is invalid: ${valueErr}`);
+    }
 
     const action = graphqlApi.endpoints.getQueryResponse.initiate({
       query,
       variables,
+      headers,
     });
+
     const { data } = await dispatch(action);
 
     if (data) replaceEditorText(responseViewRef, JSON.stringify(data, null, 2));
