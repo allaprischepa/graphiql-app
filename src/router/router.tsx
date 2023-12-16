@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { Navigate, createBrowserRouter } from 'react-router-dom';
 import Main from '../pages/Main/Main';
 import SignIn from '../pages/SignIn/SignIn';
 import Welcome from '../pages/Welcome/Welcome';
@@ -9,6 +9,11 @@ import ProtectedRoute from './ProtectedRoute';
 import PrivateRoute from './PrivateRoute';
 
 export const routesConfig = [
+  {
+    path: AppRoutes.home,
+    element: <Navigate to={AppRoutes.welcome} />,
+    errorElement: <ErrorPage />,
+  },
   {
     path: AppRoutes.main,
     element: (
