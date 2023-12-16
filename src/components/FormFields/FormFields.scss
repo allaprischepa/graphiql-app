@@ -1,0 +1,62 @@
+@import './../../styles/abstracts/variables';
+
+.field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 0;
+
+  @media screen and (max-width: 533px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0;
+  }
+
+  & input {
+    box-sizing: border-box;
+    width: 210px;
+    height: 1.5rem;
+    padding: 0 8px;
+    border: solid 1px $accent-medium;
+    border-radius: 5px;
+
+    &:focus {
+      outline: none;
+      border-width: 2px;
+    }
+  }
+}
+
+.password-opened-eye,
+.password-closed-eye {
+  position: absolute;
+  right: -24px;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+
+  @media screen and (max-width: 533px) {
+    top: 40px;
+  }
+}
+
+.password-opened-eye {
+  content: url('../../assets/icons/opened-eye.svg');
+}
+
+.password-closed-eye {
+  content: url('../../assets/icons/closed-eye.svg');
+}
+
+.error-message {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  font-size: 0.7rem;
+  font-weight: 500;
+  height: 0;
+  margin: 0;
+}
