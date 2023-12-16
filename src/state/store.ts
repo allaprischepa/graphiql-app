@@ -3,10 +3,12 @@ import { requestReducer } from './request/requestSlice';
 import { useSelector } from 'react-redux';
 import { graphqlApi, graphqlApiReducer } from '../api/graphqlApi';
 import { rtkQueryErrorLogger } from '../api/errorLogger';
+import { authReducer } from '../services/authSlice';
 
 const rootReducer = combineReducers({
   request: requestReducer,
   graphqlApi: graphqlApiReducer,
+  auth: authReducer,
 });
 
 export const configureAppStore = () =>
@@ -22,7 +24,7 @@ export type AppStore = typeof store;
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppDispatch = typeof store.dispatch;
 
-type Keys = 'request';
+type Keys = 'request' | 'auth';
 
 export function useAppSelector<K extends Keys, SK extends keyof RootState[K]>(
   key: K,

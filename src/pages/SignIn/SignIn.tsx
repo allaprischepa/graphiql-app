@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { AppRoutes } from '../../../src/utils/enums';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignInForm } from '../../types/forms';
@@ -10,6 +11,7 @@ import { userAuth } from '../../services/firebaseAuth';
 import Header from '../../components/Header/Header';
 import { EmailField } from '../../components/FormFields/EmailField';
 import { PasswordField } from '../../components/FormFields/PasswordField';
+import { setIsUserLoggedIn } from '../../services/authSlice';
 
 import '../SignUp/SignUp.scss';
 
@@ -17,6 +19,7 @@ export default function SignIn() {
   const [isLoggingIn, setLoggingIn] = useState(false);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const form = useForm({
     mode: 'all',
@@ -30,6 +33,7 @@ export default function SignIn() {
     try {
       await userAuth.logInWithEmailAndPassword(data);
       navigate(AppRoutes.main);
+      dispatch(setIsUserLoggedIn(true));
     } catch (err) {
       alert(err);
     } finally {
