@@ -10,6 +10,9 @@ export interface DocTypeProps {
 function DocType({ type }: DocTypeProps) {
   const dispatch = useDispatch();
   const types = useSelector((state: RootState) => state.documentation.types);
+  const history = useSelector(
+    (state: RootState) => state.documentation.history
+  );
 
   const handleClick = (fieldType: string): void => {
     const type = types.find(
@@ -17,7 +20,7 @@ function DocType({ type }: DocTypeProps) {
     );
 
     if (type) {
-      dispatch(updateHistory(type));
+      dispatch(updateHistory([...history, type]));
     }
   };
 

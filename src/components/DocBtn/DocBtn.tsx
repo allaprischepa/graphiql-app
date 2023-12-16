@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { updateIsActive } from '../../state/documentation/documentationSlice';
 import { RootState } from '../../state/store';
+import './DocBtn.scss';
 
 function DocBtn() {
   const dispatch = useDispatch();
@@ -13,9 +14,9 @@ function DocBtn() {
   };
 
   return (
-    <div>
-      <button onClick={handleDocClick}>doc</button>
-    </div>
+    <button className="doc-btn" onClick={handleDocClick}>
+      <img src="public/docs.svg" alt="documentation" width={40} />
+    </button>
   );
 }
 

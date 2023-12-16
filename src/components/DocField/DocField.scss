@@ -1,11 +1,17 @@
 @import './../../styles/abstracts/variables';
 
 .field {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 16px;
   color: $value2-color;
 
   & .additional {
     color: $accent-light;
   }
+}
+
+.descr {
+  color: $accent-light;
+  font-size: 14px;
+  margin-top: 5px;
 }

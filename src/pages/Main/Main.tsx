@@ -35,7 +35,9 @@ export default function Main() {
   return (
     <main className="graphiql-container" data-testid={TEST_ID}>
       <section className="graphiql-main">
-        <DocBtn />
+        <section className="tools">
+          <DocBtn />
+        </section>
         <section className={isActive ? 'doc active' : 'doc'}>
           {data ? (
             <Documentation schema={buildClientSchema(data.data)} />

@@ -1,22 +1,24 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { DocTypes } from '../../types/types';
 
-const initRoot: DocTypes = {
-  name: 'Docs',
-  descr: 'A GraphQL schema provides a root type for each kind of operation.',
-  fields: [
-    {
-      name: '',
-      type: '',
-      args: [],
-      descr: '',
-    },
-  ],
-};
+const initRoot: DocTypes[] = [
+  {
+    name: 'Docs',
+    descr: 'A GraphQL schema provides a root type for each kind of operation.',
+    fields: [
+      {
+        name: '',
+        type: '',
+        args: [],
+        descr: '',
+      },
+    ],
+  },
+];
 
 const initialState = {
-  history: [initRoot],
-  types: [initRoot],
+  history: initRoot,
+  types: initRoot,
   isActive: false,
 };
 
@@ -24,8 +26,8 @@ export const documentationSlice = createSlice({
   name: 'documentation',
   initialState,
   reducers: {
-    updateHistory: (state, action: PayloadAction<DocTypes>) => {
-      state.history.push(action.payload);
+    updateHistory: (state, action: PayloadAction<DocTypes[]>) => {
+      state.history = action.payload;
     },
 
     updateTypes: (state, action: PayloadAction<DocTypes[]>) => {

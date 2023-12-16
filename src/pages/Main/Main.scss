@@ -66,22 +66,29 @@
       }
     }
   }
-}
 
-// My styles
+  section.doc,
+  section.tools {
+    padding: 15px;
+  }
 
-section.doc {
-  padding: 15px;
-}
+  .doc {
+    display: none;
+    max-width: 300px;
+    width: 100%;
+    max-height: calc(100vh - 30px);
+    overflow-y: scroll;
 
-.doc {
-  display: none;
-  max-width: 500px;
-  width: 100%;
-  max-height: calc(100vh - 30px);
-  overflow-y: scroll;
+    &.active {
+      display: block;
+    }
 
-  &.active {
-    display: block;
+    h3 {
+      margin-bottom: 20px;
+    }
+  }
+
+  .tools + .doc.active {
+    border-left: 1px solid $main-color-dark;
   }
 }

@@ -6,5 +6,10 @@
   font-size: 16px;
   display: inline;
   color: $value-color;
+  transition: $trans;
   cursor: pointer;
+
+  &:hover {
+    color: $accent-light;
+  }
 }

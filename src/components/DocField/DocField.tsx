@@ -22,7 +22,7 @@ function DocField({ field }: FieldProps) {
       )}
       <span className="additional">:&nbsp;</span>
       <DocType type={type} />
-      {descr && args.length === 0 && <p>{descr}</p>}
+      {descr && <p className="descr">{descr}</p>}
     </div>
   );
 }
