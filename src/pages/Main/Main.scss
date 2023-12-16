@@ -67,3 +67,21 @@
     }
   }
 }
+
+// My styles
+
+section.doc {
+  padding: 15px;
+}
+
+.doc {
+  display: none;
+  max-width: 500px;
+  width: 100%;
+  max-height: calc(100vh - 30px);
+  overflow-y: scroll;
+
+  &.active {
+    display: block;
+  }
+}

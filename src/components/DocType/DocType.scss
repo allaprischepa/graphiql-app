@@ -1,0 +1,10 @@
+@import './../../styles/abstracts/variables';
+
+.type {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  display: inline;
+  color: $value-color;
+  cursor: pointer;
+}

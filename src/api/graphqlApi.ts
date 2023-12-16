@@ -7,6 +7,8 @@ import {
 } from '@reduxjs/toolkit/query/react';
 import { RootState } from '../state/store';
 
+import { IntrospectionQuery, getIntrospectionQuery } from 'graphql';
+
 const schemaQuery = `{
   __schema {
     types {
@@ -108,8 +110,18 @@ export const graphqlApi = createApi({
         }),
       }),
     }),
+    getDocSchema: builder.query<IntrospectionQuery, void>({
+      query: () => ({
+        url: '',
+        body: JSON.stringify({ query: getIntrospectionQuery() }),
+      }),
+    }),
   }),
 });
 
-export const { useGetSchemaQuery, useGetQueryResponseQuery } = graphqlApi;
+export const {
+  useGetSchemaQuery,
+  useGetQueryResponseQuery,
+  useGetDocSchemaQuery,
+} = graphqlApi;
 export const graphqlApiReducer = graphqlApi.reducer;
