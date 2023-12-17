@@ -1,5 +1,5 @@
-import { GraphQLSchema } from 'graphql';
-import { useEffect } from 'react';
+import { IntrospectionQuery, buildClientSchema } from 'graphql';
+import { Suspense, useEffect } from 'react';
 import DocFieldsList from '../DocFieldsList/DocFieldsList';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
@@ -14,8 +14,16 @@ import './Documentation.scss';
 import DocSubtitle from '../DocSubtitle/DocSubtitle';
 import './Documentation.scss';
 import DocNav from '../DocNav/DocNav';
+import { useGetDocSchemaQuery } from '../../api/graphqlApi';
+import Loader from '../Loader/Loader';
 
-function Documentation({ schema }: { schema: GraphQLSchema }) {
+interface IntrospectionQueryResp {
+  data: { data: IntrospectionQuery };
+  isLoading: boolean;
+  isError: boolean;
+}
+
+function Documentation() {
   const dispatch = useDispatch();
   const history = useSelector(
     (state: RootState) => state.documentation.history
@@ -24,13 +32,12 @@ function Documentation({ schema }: { schema: GraphQLSchema }) {
 
   const types = useSelector((state: RootState) => state.documentation.types);
 
-  const root = schema.getQueryType();
+  const { data, isLoading, isError } =
+    useGetDocSchemaQuery<IntrospectionQueryResp>();
 
   useEffect(() => {
-    dispatch(updateTypes(getDocTypes(schema)));
-  }, [dispatch, schema]);
-
-  useEffect(() => {
+    const schema = data?.data ? buildClientSchema(data.data) : null;
+    const root = schema?.getQueryType();
     const initRoot: DocTypes[] = [
       {
         name: 'Docs',
@@ -47,30 +54,41 @@ function Documentation({ schema }: { schema: GraphQLSchema }) {
       },
     ];
     dispatch(updateHistory(initRoot));
-  }, [dispatch, root?.name, root?.description]);
+    dispatch(updateTypes(schema === null ? [] : getDocTypes(schema)));
+  }, [dispatch, data]);
 
   return (
-    <div className="documentation">
-      <DocNav />
-      <h3>{name}</h3>
-      {descr && <p>{descr}</p>}
-      {fields && (
-        <>
-          {name === 'Docs' ? (
-            <DocSubtitle text="Root Types" icon="types.svg" />
-          ) : (
-            <DocSubtitle text="Fields" icon="fields.svg" />
+    <>
+      <Suspense fallback={<Loader />}>
+        <div className="documentation">
+          {isLoading && <Loader />}
+          {isError && <p>Schema not found</p>}
+          {data && (
+            <>
+              <DocNav />
+              <h3>{name}</h3>
+              {descr && <p>{descr}</p>}
+              {fields && (
+                <>
+                  {name === 'Docs' ? (
+                    <DocSubtitle text="Root Types" icon="types.svg" />
+                  ) : (
+                    <DocSubtitle text="Fields" icon="fields.svg" />
+                  )}
+                  <DocFieldsList fields={fields} />
+                </>
+              )}
+              {name === 'Docs' && types && (
+                <>
+                  <DocSubtitle text="All Schema Types" icon="root.svg" />
+                  <DocTypesList types={types} />
+                </>
+              )}
+            </>
           )}
-          <DocFieldsList fields={fields} />
-        </>
-      )}
-      {name === 'Docs' && types && (
-        <>
-          <DocSubtitle text="All Schema Types" icon="root.svg" />
-          <DocTypesList types={types} />
-        </>
-      )}
-    </div>
+        </div>
+      </Suspense>
+    </>
   );
 }
 

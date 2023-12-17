@@ -115,6 +115,7 @@ export const graphqlApi = createApi({
         url: '',
         body: JSON.stringify({ query: getIntrospectionQuery() }),
       }),
+      keepUnusedDataFor: 9999,
     }),
   }),
 });

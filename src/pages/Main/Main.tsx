@@ -6,8 +6,6 @@ import { EditorView } from 'codemirror';
 import './Main.scss';
 import EditorTools from '../../components/EditorTools/EditorTools';
 import Documentation from '../../components/Documentation/Documentation';
-import { useGetDocSchemaQuery } from '../../api/graphqlApi';
-import { IntrospectionQuery, buildClientSchema } from 'graphql';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
 import DocBtn from '../../components/DocBtn/DocBtn';
@@ -22,12 +20,6 @@ export default function Main() {
   const variablesViewRef = useRef<EditorView | null>(null);
   const headersViewRef = useRef<EditorView | null>(null);
 
-  interface IntrospectionQueryResp {
-    data: { data: IntrospectionQuery };
-  }
-
-  const { data } = useGetDocSchemaQuery<IntrospectionQueryResp>();
-
   const isActive = useSelector(
     (state: RootState) => state.documentation.isActive
   );
@@ -39,11 +31,7 @@ export default function Main() {
           <DocBtn />
         </section>
         <section className={isActive ? 'doc active' : 'doc'}>
-          {data ? (
-            <Documentation schema={buildClientSchema(data.data)} />
-          ) : (
-            <></>
-          )}
+          {isActive && <Documentation />}
         </section>
         <section
           className="request-section"
