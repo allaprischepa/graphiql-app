@@ -1,6 +1,9 @@
 export const SCROLL_OFFSET = 20;
 export const FIRST_ELEM = 0;
 
+export const USER_EMAIL = 'correct-email@mail.com';
+export const USER_PASSWORD = '12345678letters!';
+
 export const RSS_HREF = 'https://rs.school/react/';
 
 export const SIGN_IN = 'SIGN_IN';

@@ -4,9 +4,10 @@ import { routesConfig } from '../src/router/router';
 import { render, screen } from '@testing-library/react';
 import { TEST_ID as MAIN_PAGE_TEST_ID } from '../src/pages/Main/Main';
 import { Provider } from 'react-redux';
-import { configureAppStore } from '../src/state/store';
+import { configureAppStore, store } from '../src/state/store';
 import { AppRoutes, Languages } from '../src/utils/enums';
 import LangState from '../src/languages/LangState';
+import { logWithUserCredentials } from './test-utils/test-utils';
 
 describe('404 Page', () => {
   it('is displayed when navigating to an invalid route', async () => {
@@ -30,9 +31,11 @@ describe('Sign In Page', () => {
     });
 
     render(
-      <LangState initialState={{ language: Languages.EN }}>
-        <RouterProvider router={router} />
-      </LangState>
+      <Provider store={store}>
+        <LangState initialState={{ language: Languages.EN }}>
+          <RouterProvider router={router} />
+        </LangState>
+      </Provider>
     );
 
     const signIn = await screen.findByTestId('sign-in-title');
@@ -48,9 +51,11 @@ describe('Sign Up Page', () => {
     });
 
     render(
-      <LangState initialState={{ language: Languages.EN }}>
-        <RouterProvider router={router} />
-      </LangState>
+      <Provider store={store}>
+        <LangState initialState={{ language: Languages.EN }}>
+          <RouterProvider router={router} />
+        </LangState>
+      </Provider>
     );
 
     const signUp = await screen.findByTestId('sign-up-title');
@@ -66,9 +71,11 @@ describe('Welcome Page', () => {
     });
 
     render(
-      <LangState initialState={{ language: Languages.EN }}>
-        <RouterProvider router={router} />
-      </LangState>
+      <Provider store={store}>
+        <LangState initialState={{ language: Languages.EN }}>
+          <RouterProvider router={router} />
+        </LangState>
+      </Provider>
     );
 
     const welcome = await screen.findByText('GraphiQL');
@@ -77,20 +84,28 @@ describe('Welcome Page', () => {
 });
 
 describe('Main Page', () => {
-  it('is displayed when navigating to the corresponding route', () => {
+  it('is displayed when navigating to the corresponding route', async () => {
     const store = configureAppStore();
-    const route = AppRoutes.main;
+    const route = AppRoutes.signIn;
     const router = createMemoryRouter(routesConfig, {
       initialEntries: [route],
     });
 
     render(
       <Provider store={store}>
-        <RouterProvider router={router} />
+        <LangState initialState={{ language: Languages.EN }}>
+          <RouterProvider router={router} />
+        </LangState>
       </Provider>
     );
 
-    const mainPage = screen.getByTestId(MAIN_PAGE_TEST_ID);
+    await logWithUserCredentials();
+
+    const mainPage = await screen.findByTestId(
+      MAIN_PAGE_TEST_ID,
+      {},
+      { timeout: 1000 }
+    );
     expect(mainPage).toBeInTheDocument();
   });
 });

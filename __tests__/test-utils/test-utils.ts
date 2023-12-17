@@ -1,3 +1,7 @@
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { USER_EMAIL, USER_PASSWORD } from '../../src/constants';
+
 export const queries = [
   {
     initial: `
@@ -57,3 +61,19 @@ Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Praesent ac
     sanitized: `Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Praesent ac massa at ligula laoreet iaculis.`,
   },
 ];
+
+export const logWithUserCredentials = async (
+  email = USER_EMAIL,
+  password = USER_PASSWORD
+) => {
+  const user = userEvent.setup();
+
+  const emailInput = screen.getByRole('textbox', { name: /e\-mail:/i });
+  const passwordInput = screen.getByLabelText(/password:/i);
+  const submitButton = screen.getByRole('button', { name: /sign in/i });
+
+  await user.type(emailInput, email);
+  await user.type(passwordInput, password);
+
+  await user.click(submitButton);
+};

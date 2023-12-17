@@ -6,6 +6,8 @@ import { userEvent } from '@testing-library/user-event';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { validMessages } from '../src/utils/validationRules';
 import LangState from '../src/languages/LangState';
+import { store } from '../src/state/store';
+import { Provider } from 'react-redux';
 
 describe('Sign In Page', () => {
   const route = AppRoutes.signIn;
@@ -15,9 +17,11 @@ describe('Sign In Page', () => {
 
   it('Render Sign In elements', async () => {
     render(
-      <LangState initialState={{ language: Languages.EN }}>
-        <RouterProvider router={router} />
-      </LangState>
+      <Provider store={store}>
+        <LangState initialState={{ language: Languages.EN }}>
+          <RouterProvider router={router} />
+        </LangState>
+      </Provider>
     );
 
     expect(screen.getByTestId('sign-in-title')).toBeInTheDocument();
@@ -32,9 +36,11 @@ describe('Sign In Page', () => {
 
   it('Validate e-mail field correctly', async () => {
     render(
-      <LangState initialState={{ language: Languages.EN }}>
-        <RouterProvider router={router} />
-      </LangState>
+      <Provider store={store}>
+        <LangState initialState={{ language: Languages.EN }}>
+          <RouterProvider router={router} />
+        </LangState>
+      </Provider>
     );
     const user = userEvent.setup();
 
@@ -57,9 +63,11 @@ describe('Sign In Page', () => {
 
   it('Validate password field correctly', async () => {
     render(
-      <LangState initialState={{ language: Languages.EN }}>
-        <RouterProvider router={router} />
-      </LangState>
+      <Provider store={store}>
+        <LangState initialState={{ language: Languages.EN }}>
+          <RouterProvider router={router} />
+        </LangState>
+      </Provider>
     );
     const user = userEvent.setup();
 
@@ -94,9 +102,11 @@ describe('Sign In Page', () => {
 
   it('User can switch password visibility', async () => {
     render(
-      <LangState initialState={{ language: Languages.EN }}>
-        <RouterProvider router={router} />
-      </LangState>
+      <Provider store={store}>
+        <LangState initialState={{ language: Languages.EN }}>
+          <RouterProvider router={router} />
+        </LangState>
+      </Provider>
     );
     const user = userEvent.setup();
 
@@ -113,9 +123,11 @@ describe('Sign In Page', () => {
   it('Submit form only with correct data', async () => {
     const mockSubmit = vi.fn();
     render(
-      <LangState initialState={{ language: Languages.EN }}>
-        <RouterProvider router={router} />
-      </LangState>
+      <Provider store={store}>
+        <LangState initialState={{ language: Languages.EN }}>
+          <RouterProvider router={router} />
+        </LangState>
+      </Provider>
     );
     const user = userEvent.setup();
 
@@ -140,9 +152,11 @@ describe('Sign In Page', () => {
 
   it('Navigate to page Sign Up with link below the form', async () => {
     render(
-      <LangState initialState={{ language: Languages.EN }}>
-        <RouterProvider router={router} />
-      </LangState>
+      <Provider store={store}>
+        <LangState initialState={{ language: Languages.EN }}>
+          <RouterProvider router={router} />
+        </LangState>
+      </Provider>
     );
     const user = userEvent.setup();
 

@@ -8,6 +8,8 @@ import Team from '../src/components/Team/Team';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { Languages } from '../src/utils/enums';
 import LangState from './../src/languages/LangState';
+import { store } from '../src/state/store';
+import { Provider } from 'react-redux';
 
 describe('Welcome Page', () => {
   it('Hero displayed on welcome page', async () => {
@@ -47,9 +49,11 @@ describe('Welcome Page', () => {
     const router = createMemoryRouter(routesConfig);
 
     render(
-      <LangState initialState={{ language: Languages.EN }}>
-        <RouterProvider router={router} />
-      </LangState>
+      <Provider store={store}>
+        <LangState initialState={{ language: Languages.EN }}>
+          <RouterProvider router={router} />
+        </LangState>
+      </Provider>
     );
     const user = userEvent.setup();
 
@@ -63,9 +67,11 @@ describe('Welcome Page', () => {
     const router = createMemoryRouter(routesConfig);
 
     render(
-      <LangState initialState={{ language: Languages.EN }}>
-        <RouterProvider router={router} />
-      </LangState>
+      <Provider store={store}>
+        <LangState initialState={{ language: Languages.EN }}>
+          <RouterProvider router={router} />
+        </LangState>
+      </Provider>
     );
     const user = userEvent.setup();
 
