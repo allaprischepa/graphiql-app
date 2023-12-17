@@ -2,6 +2,10 @@
   padding: 15px;
   position: relative;
 
+  @media screen and (max-width: 679px) {
+    padding: 0 15px;
+  }
+
   ul {
     padding: 0;
   }

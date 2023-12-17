@@ -67,9 +67,20 @@
     }
   }
 
-  section.doc,
   section.tools {
     padding: 15px;
+
+    @media screen and (max-width: 679px) {
+      padding: 10px 15px 5px;
+    }
+  }
+
+  section.doc {
+    padding: 15px;
+
+    @media screen and (max-width: 679px) {
+      padding: 10px 15px 5px 0;
+    }
   }
 
   .doc {
@@ -78,6 +89,10 @@
     width: 100%;
     max-height: calc(100vh - 30px);
     overflow-y: scroll;
+
+    @media screen and (max-width: 679px) {
+      max-width: 100%;
+    }
 
     &.active {
       display: block;

@@ -1,6 +1,6 @@
 import { GraphQLSchema } from 'graphql';
-import { DocTypes } from '../components/Documentation/Documentation';
 import getDocFields from './getDocFields';
+import { DocTypes } from '../types/types';
 
 const getDocTypes = (schema: GraphQLSchema): DocTypes[] => {
   const typeMap = schema.getTypeMap();

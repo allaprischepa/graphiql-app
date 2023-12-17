@@ -1,6 +1,8 @@
 import {
   ALLA_NAME,
   ALLA_TEXT,
+  DOC_DESCR,
+  DOC_TITLE,
   FEATURE_DOCUMENTATION,
   FEATURE_ENDPOINTS,
   FEATURE_HIGHLIGHTING,
@@ -56,6 +58,10 @@ const en = {
     'She has good commercial experience in website development using HTML, CSS and JavaScript. And now she is learning React to reach a new development level.',
 
   [TEAM_LEAD]: 'Team lead',
+
+  [DOC_TITLE]: 'Docs',
+  [DOC_DESCR]:
+    'A GraphQL schema provides a root type for each kind of operation.',
 };
 
 export default en;

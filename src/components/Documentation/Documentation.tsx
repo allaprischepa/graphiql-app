@@ -1,5 +1,5 @@
 import { IntrospectionQuery, buildClientSchema } from 'graphql';
-import { Suspense, useEffect } from 'react';
+import { Suspense, useContext, useEffect } from 'react';
 import DocFieldsList from '../DocFieldsList/DocFieldsList';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
@@ -16,6 +16,8 @@ import './Documentation.scss';
 import DocNav from '../DocNav/DocNav';
 import { useGetDocSchemaQuery } from '../../api/graphqlApi';
 import Loader from '../Loader/Loader';
+import { DOC_DESCR, DOC_TITLE } from '../../constants';
+import { langContext } from '../../languages/langContext';
 
 interface IntrospectionQueryResp {
   data: { data: IntrospectionQuery };
@@ -32,17 +34,19 @@ function Documentation() {
 
   const types = useSelector((state: RootState) => state.documentation.types);
 
-  const { data, isLoading, isError } =
-    useGetDocSchemaQuery<IntrospectionQueryResp>();
+  const { data, isLoading } = useGetDocSchemaQuery<IntrospectionQueryResp>();
+
+  const {
+    dispatch: { translate },
+  } = useContext(langContext);
 
   useEffect(() => {
     const schema = data?.data ? buildClientSchema(data.data) : null;
     const root = schema?.getQueryType();
     const initRoot: DocTypes[] = [
       {
-        name: 'Docs',
-        descr:
-          'A GraphQL schema provides a root type for each kind of operation.',
+        name: translate(DOC_TITLE),
+        descr: translate(DOC_DESCR),
         fields: [
           {
             name: root?.name ?? '',
@@ -55,14 +59,13 @@ function Documentation() {
     ];
     dispatch(updateHistory(initRoot));
     dispatch(updateTypes(schema === null ? [] : getDocTypes(schema)));
-  }, [dispatch, data]);
+  }, [dispatch, data, translate]);
 
   return (
     <>
       <Suspense fallback={<Loader />}>
         <div className="documentation">
           {isLoading && <Loader />}
-          {isError && <p>Schema not found</p>}
           {data && (
             <>
               <DocNav />
@@ -70,7 +73,7 @@ function Documentation() {
               {descr && <p>{descr}</p>}
               {fields && (
                 <>
-                  {name === 'Docs' ? (
+                  {name === DOC_TITLE ? (
                     <DocSubtitle text="Root Types" icon="types.svg" />
                   ) : (
                     <DocSubtitle text="Fields" icon="fields.svg" />
@@ -78,7 +81,7 @@ function Documentation() {
                   <DocFieldsList fields={fields} />
                 </>
               )}
-              {name === 'Docs' && types && (
+              {name === DOC_TITLE && types && (
                 <>
                   <DocSubtitle text="All Schema Types" icon="root.svg" />
                   <DocTypesList types={types} />
