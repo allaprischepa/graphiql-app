@@ -5,7 +5,7 @@ interface authState {
 }
 
 const initialState: authState = {
-  isUserLoggedIn: Boolean(localStorage.getItem('token')),
+  isUserLoggedIn: Boolean(localStorage.getItem('isUserLoggedIn')),
 };
 
 export const authSlice = createSlice({

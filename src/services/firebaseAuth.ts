@@ -29,19 +29,10 @@ export const userAuth = {
 
   logInWithEmailAndPassword: async (data: SignInForm) => {
     const { email, password } = data;
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const idTokenResult = await userCredential.user.getIdTokenResult();
-    localStorage.setItem('expirationTime', idTokenResult.expirationTime);
-    localStorage.setItem('token', idTokenResult.token);
+    await signInWithEmailAndPassword(auth, email, password);
   },
 
   logOut: async () => {
     signOut(auth);
-    localStorage.removeItem('expirationTime');
-    localStorage.removeItem('token');
   },
 };
