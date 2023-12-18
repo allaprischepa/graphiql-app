@@ -17,7 +17,7 @@ export const routesConfig = [
   {
     path: AppRoutes.main,
     element: (
-      <ProtectedRoute redirectPath={AppRoutes.signIn}>
+      <ProtectedRoute redirectPath={AppRoutes.welcome}>
         <Main />
       </ProtectedRoute>
     ),

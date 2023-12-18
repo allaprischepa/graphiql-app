@@ -1,11 +1,12 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { IS_USER_LOGGED_IN } from '../constants';
 
 interface authState {
   isUserLoggedIn: boolean;
 }
 
 const initialState: authState = {
-  isUserLoggedIn: Boolean(localStorage.getItem('isUserLoggedIn')),
+  isUserLoggedIn: Boolean(localStorage.getItem(IS_USER_LOGGED_IN)),
 };
 
 export const authSlice = createSlice({

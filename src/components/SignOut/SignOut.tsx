@@ -1,23 +1,24 @@
 import { userAuth } from '../../services/firebaseAuth';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { setIsUserLoggedIn } from '../../services/authSlice';
-import { AppRoutes } from '../../utils/enums';
 
 import './SignOut.scss';
+import { useNavigate } from 'react-router-dom';
+import { AppRoutes } from '../../utils/enums';
+import { IS_USER_LOGGED_IN } from '../../constants';
 
 const SignOut = () => {
   const auth = getAuth();
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      localStorage.setItem('isUserLoggedIn', 'true');
+      localStorage.setItem(IS_USER_LOGGED_IN, 'true');
     } else {
-      localStorage.removeItem('isUserLoggedIn');
+      localStorage.removeItem(IS_USER_LOGGED_IN);
       dispatch(setIsUserLoggedIn(false));
       navigate(AppRoutes.welcome);
     }

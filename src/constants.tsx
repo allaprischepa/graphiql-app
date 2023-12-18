@@ -1,6 +1,7 @@
 export const SCROLL_OFFSET = 20;
 export const FIRST_ELEM = 0;
 
+export const IS_USER_LOGGED_IN = 'isUserLoggedIn';
 export const USER_EMAIL = 'correct-email@mail.com';
 export const USER_PASSWORD = '12345678letters!';
 

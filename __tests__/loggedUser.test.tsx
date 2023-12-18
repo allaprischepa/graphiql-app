@@ -41,7 +41,7 @@ describe('Redirection and navigation if user logs in', async () => {
 
     act(() => {
       renderApp(router);
-      router.navigate(AppRoutes.signUp);
+      router.navigate(AppRoutes.welcome);
     });
 
     expect(router.state.location.pathname).toContain(AppRoutes.main);
@@ -62,7 +62,7 @@ describe('Redirection and navigation if user logs in', async () => {
   });
 
   it('Logo button leads to Main page', async () => {
-    renderApp(router);
+    const routerMain = renderAppWithRoute(AppRoutes.main);
 
     await waitFor(async () => {
       const logoBtn = screen.getByRole('link', {
@@ -70,18 +70,18 @@ describe('Redirection and navigation if user logs in', async () => {
       });
       const user = userEvent.setup();
       await user.click(logoBtn);
-      expect(router.state.location.pathname).toContain(AppRoutes.main);
+      expect(routerMain.state.location.pathname).toContain(AppRoutes.main);
     });
   });
 
   it('Redirect to Welcome page if user logs out', async () => {
-    renderApp(router);
+    const routerMain = renderAppWithRoute(AppRoutes.main);
 
     await waitFor(async () => {
       const signOutBtn = screen.getByTestId('sign-out-btn');
       const user = userEvent.setup();
       await user.click(signOutBtn);
-      expect(router.state.location.pathname).toContain(AppRoutes.welcome);
+      expect(routerMain.state.location.pathname).toContain(AppRoutes.welcome);
     });
   });
 });
