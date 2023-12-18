@@ -13,7 +13,7 @@ import { defaultQueryString } from '../src/state/request/requestSlice';
 import ControlPanel, {
   PRETTIFY_BTN_TEST_ID,
 } from '../src/components/ControlPanel/ControlPanel';
-import { logWithUserCredentials, queries } from './test-utils/test-utils';
+import { logInWithUserCredentials, queries } from './test-utils/test-utils';
 import userEvent from '@testing-library/user-event';
 import { replaceEditorText } from '../src/utils/utils';
 import { AppRoutes, Languages } from '../src/utils/enums';
@@ -37,7 +37,7 @@ describe('Main Page', () => {
       </Provider>
     );
 
-    await logWithUserCredentials();
+    await logInWithUserCredentials();
 
     const requestSection = await screen.findByTestId(
       REQUEST_SECTION_TEST_ID,

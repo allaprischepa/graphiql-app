@@ -62,7 +62,7 @@ Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Praesent ac
   },
 ];
 
-export const logWithUserCredentials = async (
+export const logInWithUserCredentials = async (
   email = USER_EMAIL,
   password = USER_PASSWORD
 ) => {
