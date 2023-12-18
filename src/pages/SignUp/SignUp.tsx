@@ -39,7 +39,7 @@ export default function SignUp() {
   };
 
   return (
-    <>
+    <main>
       <section className="sign-section">
         <div className="sign-container">
           <div className="sign-title" data-testid="sign-up-title">
@@ -69,6 +69,6 @@ export default function SignUp() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

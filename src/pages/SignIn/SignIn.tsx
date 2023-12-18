@@ -37,7 +37,7 @@ export default function SignIn() {
   };
 
   return (
-    <>
+    <main>
       <section className="sign-section">
         <div className="sign-container">
           <div className="sign-title" data-testid="sign-in-title">
@@ -65,6 +65,6 @@ export default function SignIn() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

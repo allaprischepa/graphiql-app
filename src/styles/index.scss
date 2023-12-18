@@ -14,11 +14,16 @@
   color: $accent-medium;
 }
 
+main {
+  flex-grow: 1;
+}
+
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
   background-color: $main-color-light;
+  min-height: 100vh;
 }
 
 section {
