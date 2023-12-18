@@ -3,7 +3,14 @@ import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { routesConfig } from '../src/router/router';
 import { render, screen } from '@testing-library/react';
 import { AppRoutes } from '../src/utils/enums';
-import { renderAppWithRoute } from './test-utils/test-utils';
+import {
+  fixCodeMirrorTypeError,
+  logInWithUserCredentials,
+  renderAppWithRoute,
+} from './test-utils/test-utils';
+import { TEST_ID as MAIN_PAGE_TEST_ID } from '../src/pages/Main/Main';
+
+fixCodeMirrorTypeError();
 
 describe('404 Page', () => {
   it('is displayed when navigating to an invalid route', async () => {
@@ -46,18 +53,12 @@ describe('Welcome Page', () => {
   });
 });
 
-/* describe('Main Page', () => {
+describe('Main Page', () => {
   it('is displayed when navigating to the corresponding route', async () => {
     renderAppWithRoute(AppRoutes.signIn);
     await logInWithUserCredentials();
 
-    const mainPage = await screen.findByTestId(
-      MAIN_PAGE_TEST_ID,
-      {},
-      { timeout: 1000 }
-    );
+    const mainPage = await screen.findByTestId(MAIN_PAGE_TEST_ID);
     expect(mainPage).toBeInTheDocument();
   });
-}); */
-
-/**/
+});

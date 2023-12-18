@@ -13,13 +13,19 @@ import { defaultQueryString } from '../src/state/request/requestSlice';
 import ControlPanel, {
   PRETTIFY_BTN_TEST_ID,
 } from '../src/components/ControlPanel/ControlPanel';
-import { logInWithUserCredentials, queries } from './test-utils/test-utils';
+import {
+  fixCodeMirrorTypeError,
+  logInWithUserCredentials,
+  queries,
+} from './test-utils/test-utils';
 import userEvent from '@testing-library/user-event';
 import { replaceEditorText } from '../src/utils/utils';
 import { AppRoutes, Languages } from '../src/utils/enums';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { routesConfig } from '../src/router/router';
 import LangState from '../src/languages/LangState';
+
+fixCodeMirrorTypeError();
 
 describe('Main Page', () => {
   it('contains Request and Response Sections', async () => {
