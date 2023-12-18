@@ -1,8 +1,9 @@
 export enum AppRoutes {
-  welcome = '/',
-  main = '/graphiql',
-  signIn = '/sign-in',
-  signUp = '/sign-up',
+  layout = '/',
+  welcome = '',
+  main = 'graphiql',
+  signIn = 'sign-in',
+  signUp = 'sign-up',
 }
 
 export enum HttpStatusCode {
