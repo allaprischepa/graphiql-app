@@ -31,7 +31,13 @@ const SignOut = () => {
     }
   };
 
-  return <button className="signout" onClick={userLogOut} />;
+  return (
+    <button
+      className="signout"
+      onClick={userLogOut}
+      data-testid="sign-out-btn"
+    />
+  );
 };
 
 export default SignOut;

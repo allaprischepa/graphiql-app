@@ -1,6 +1,13 @@
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { USER_EMAIL, USER_PASSWORD } from '../../src/constants';
+import { AppRoutes, Languages } from '../../src/utils/enums';
+import { RouterProvider, createMemoryRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import LangState from '../../src/languages/LangState';
+import { routesConfig } from '../../src/router/router';
+import { store } from '../../src/state/store';
+import { Router } from '@remix-run/router';
 
 export const queries = [
   {
@@ -76,4 +83,30 @@ export const logInWithUserCredentials = async (
   await user.type(passwordInput, password);
 
   await user.click(submitButton);
+};
+
+export const renderAppWithRoute = (route: AppRoutes) => {
+  const router = createMemoryRouter(routesConfig, {
+    initialEntries: [route],
+  });
+
+  render(
+    <Provider store={store}>
+      <LangState initialState={{ language: Languages.EN }}>
+        <RouterProvider router={router} />
+      </LangState>
+    </Provider>
+  );
+
+  return router;
+};
+
+export const renderApp = (router: Router) => {
+  render(
+    <Provider store={store}>
+      <LangState initialState={{ language: Languages.EN }}>
+        <RouterProvider router={router} />
+      </LangState>
+    </Provider>
+  );
 };

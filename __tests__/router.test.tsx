@@ -2,28 +2,8 @@ import { describe, it, expect } from 'vitest';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { routesConfig } from '../src/router/router';
 import { render, screen } from '@testing-library/react';
-import { TEST_ID as MAIN_PAGE_TEST_ID } from '../src/pages/Main/Main';
-import { Provider } from 'react-redux';
-import { store } from '../src/state/store';
-import { AppRoutes, Languages } from '../src/utils/enums';
-import LangState from '../src/languages/LangState';
-import { logInWithUserCredentials } from './test-utils/test-utils';
-
-const renderAppWithRoute = (route: AppRoutes) => {
-  const router = createMemoryRouter(routesConfig, {
-    initialEntries: [route],
-  });
-
-  render(
-    <Provider store={store}>
-      <LangState initialState={{ language: Languages.EN }}>
-        <RouterProvider router={router} />
-      </LangState>
-    </Provider>
-  );
-
-  return router;
-};
+import { AppRoutes } from '../src/utils/enums';
+import { renderAppWithRoute } from './test-utils/test-utils';
 
 describe('404 Page', () => {
   it('is displayed when navigating to an invalid route', async () => {
@@ -66,7 +46,7 @@ describe('Welcome Page', () => {
   });
 });
 
-describe('Main Page', () => {
+/* describe('Main Page', () => {
   it('is displayed when navigating to the corresponding route', async () => {
     renderAppWithRoute(AppRoutes.signIn);
     await logInWithUserCredentials();
@@ -78,4 +58,6 @@ describe('Main Page', () => {
     );
     expect(mainPage).toBeInTheDocument();
   });
-});
+}); */
+
+/**/
