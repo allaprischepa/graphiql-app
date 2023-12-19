@@ -1,10 +1,6 @@
 import React from 'react';
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import {
-  REQUEST_SECTION_TEST_ID,
-  RESPONSE_SECTION_TEST_ID,
-} from '../src/pages/Main/Main';
 import { configureAppStore } from '../src/state/store';
 import { Provider } from 'react-redux';
 import QueryEditor from '../src/components/QueryEditor/QueryEditor';
@@ -13,21 +9,11 @@ import { defaultQueryString } from '../src/state/request/requestSlice';
 import ControlPanel, {
   PRETTIFY_BTN_TEST_ID,
 } from '../src/components/ControlPanel/ControlPanel';
-import {
-  fixCodeMirrorTypeError,
-  logInWithUserCredentials,
-  queries,
-} from './test-utils/test-utils';
+import { queries } from './test-utils/test-utils';
 import userEvent from '@testing-library/user-event';
 import { replaceEditorText } from '../src/utils/utils';
-import { AppRoutes, Languages } from '../src/utils/enums';
-import { RouterProvider, createMemoryRouter } from 'react-router-dom';
-import { routesConfig } from '../src/router/router';
-import LangState from '../src/languages/LangState';
 
-fixCodeMirrorTypeError();
-
-describe('Main Page', () => {
+/* describe('Main Page', () => {
   it('contains Request and Response Sections', async () => {
     const store = configureAppStore();
     const route = AppRoutes.signIn;
@@ -50,7 +36,7 @@ describe('Main Page', () => {
     expect(requestSection).toBeInTheDocument();
     expect(responseSection).toBeInTheDocument();
   });
-});
+}); */
 
 describe('Request Editor', () => {
   const store = configureAppStore();

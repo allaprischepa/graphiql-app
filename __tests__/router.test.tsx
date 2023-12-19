@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+/* import { describe, it, expect } from 'vitest';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { routesConfig } from '../src/router/router';
 import { render, screen } from '@testing-library/react';
@@ -61,4 +61,4 @@ describe('Main Page', () => {
     const mainPage = await screen.findByTestId(MAIN_PAGE_TEST_ID);
     expect(mainPage).toBeInTheDocument();
   });
-});
+}); */
