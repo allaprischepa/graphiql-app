@@ -3,10 +3,12 @@ import { requestReducer } from './request/requestSlice';
 import { useSelector } from 'react-redux';
 import { graphqlApi, graphqlApiReducer } from '../api/graphqlApi';
 import { rtkQueryErrorLogger } from '../api/errorLogger';
+import { documentationReducer } from './documentation/documentationSlice';
 
 const rootReducer = combineReducers({
   request: requestReducer,
   graphqlApi: graphqlApiReducer,
+  documentation: documentationReducer,
 });
 
 export const configureAppStore = () =>

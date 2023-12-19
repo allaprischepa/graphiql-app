@@ -55,3 +55,21 @@ export interface ContextProps {
 export interface GraphQLError {
   message: string;
 }
+
+export interface Arg {
+  name: string;
+  type: string;
+}
+
+export interface Field {
+  name: string;
+  type: string;
+  args: Arg[];
+  descr: string;
+}
+
+export interface DocTypes {
+  name: string;
+  descr: string;
+  fields: Field[] | null;
+}
