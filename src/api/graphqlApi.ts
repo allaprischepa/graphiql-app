@@ -9,60 +9,6 @@ import { RootState } from '../state/store';
 
 import { IntrospectionQuery, getIntrospectionQuery } from 'graphql';
 
-const schemaQuery = `{
-  __schema {
-    types {
-      kind
-      name
-      description
-      fields {
-        name
-        description
-        type {
-          name
-          kind
-        }
-      }
-      inputFields {
-        name
-        description
-        type {
-          name
-          kind
-        }
-      }
-      interfaces {
-        name
-        kind
-      }
-      enumValues {
-        name
-        description
-      }
-    }
-    directives {
-      name
-      description
-      locations
-      args {
-        name
-        description
-        type {
-          name
-          kind
-        }
-        defaultValue
-      }
-    }
-  }
-}`;
-
-interface SchemaResponse {
-  data: {
-    __schema: object;
-  };
-}
-
 interface QueryResponse {
   data: object;
 }
@@ -93,14 +39,6 @@ export const graphqlApi = createApi({
   reducerPath: 'graphqlApi',
   baseQuery: dynamicBaseQuery,
   endpoints: (builder) => ({
-    getSchema: builder.query<SchemaResponse, void>({
-      query: () => ({
-        url: '',
-        body: JSON.stringify({
-          query: schemaQuery,
-        }),
-      }),
-    }),
     getQueryResponse: builder.query<QueryResponse, RequestObject>({
       query: ({ query, variables }) => ({
         url: '',
@@ -110,7 +48,7 @@ export const graphqlApi = createApi({
         }),
       }),
     }),
-    getDocSchema: builder.query<IntrospectionQuery, void>({
+    getSchema: builder.query<IntrospectionQuery, void>({
       query: () => ({
         url: '',
         body: JSON.stringify({ query: getIntrospectionQuery() }),
@@ -119,9 +57,5 @@ export const graphqlApi = createApi({
   }),
 });
 
-export const {
-  useGetSchemaQuery,
-  useGetQueryResponseQuery,
-  useGetDocSchemaQuery,
-} = graphqlApi;
+export const { useGetQueryResponseQuery, useGetSchemaQuery } = graphqlApi;
 export const graphqlApiReducer = graphqlApi.reducer;

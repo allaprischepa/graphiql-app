@@ -15,7 +15,7 @@ function DocBtn() {
 
   return (
     <button className="doc-btn" onClick={handleDocClick}>
-      <img src="public/docs.svg" alt="documentation" width={40} />
+      <img src="docs.svg" alt="documentation" width={40} />
     </button>
   );
 }

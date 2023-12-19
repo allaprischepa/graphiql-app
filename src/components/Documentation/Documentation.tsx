@@ -14,7 +14,7 @@ import './Documentation.scss';
 import DocSubtitle from '../DocSubtitle/DocSubtitle';
 import './Documentation.scss';
 import DocNav from '../DocNav/DocNav';
-import { useGetDocSchemaQuery } from '../../api/graphqlApi';
+import { useGetSchemaQuery } from '../../api/graphqlApi';
 import Loader from '../Loader/Loader';
 import { DOC_DESCR, DOC_TITLE } from '../../constants';
 import { langContext } from '../../languages/langContext';
@@ -34,7 +34,7 @@ function Documentation() {
 
   const types = useSelector((state: RootState) => state.documentation.types);
 
-  const { data, isLoading } = useGetDocSchemaQuery<IntrospectionQueryResp>();
+  const { data, isLoading } = useGetSchemaQuery<IntrospectionQueryResp>();
 
   const {
     dispatch: { translate },
@@ -73,7 +73,7 @@ function Documentation() {
               {descr && <p>{descr}</p>}
               {fields && (
                 <>
-                  {name === DOC_TITLE ? (
+                  {name === translate(DOC_TITLE) ? (
                     <DocSubtitle text="Root Types" icon="types.svg" />
                   ) : (
                     <DocSubtitle text="Fields" icon="fields.svg" />
@@ -81,7 +81,7 @@ function Documentation() {
                   <DocFieldsList fields={fields} />
                 </>
               )}
-              {name === DOC_TITLE && types && (
+              {name === translate(DOC_TITLE) && types && (
                 <>
                   <DocSubtitle text="All Schema Types" icon="root.svg" />
                   <DocTypesList types={types} />
