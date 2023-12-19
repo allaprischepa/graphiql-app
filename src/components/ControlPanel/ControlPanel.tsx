@@ -46,7 +46,7 @@ export default function ControlPanel({
   };
 
   const validateWithSchema = async (
-    value: string,
+    value: unknown,
     schema: Schema
   ): Promise<{ error: null | string }> =>
     schema
