@@ -11,8 +11,8 @@ function DocField({ field }: FieldProps) {
   const { name, args, type, descr } = field;
 
   return (
-    <div className="field" key={name}>
-      <span className="field">{name}</span>
+    <div className="doc-field" key={name}>
+      <span>{name}</span>
       {!!args.length && (
         <>
           <span className="additional">(</span>
