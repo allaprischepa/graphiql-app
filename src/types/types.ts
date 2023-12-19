@@ -52,10 +52,6 @@ export interface ContextProps {
   };
 }
 
-export interface GraphQLError {
-  message: string;
-}
-
 export interface Arg {
   name: string;
   type: string;
