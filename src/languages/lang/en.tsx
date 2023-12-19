@@ -23,6 +23,11 @@ import {
   TITLE_TEAM,
   ZENA_NAME,
   ZENA_TEXT,
+  MAIN_INTRO,
+  EXECUTE_QUERY,
+  PRETTIFY_QUERY,
+  VARIABLES,
+  HEADERS,
 } from '../../constants';
 
 const en = {
@@ -62,6 +67,33 @@ const en = {
   [DOC_TITLE]: 'Docs',
   [DOC_DESCR]:
     'A GraphQL schema provides a root type for each kind of operation.',
+
+  [MAIN_INTRO]: `  Welcome to GraphiQL!
+
+  GraphiQL is an in-browser tool for writing, validating,
+  and testing GraphQL queries.
+
+  Start typing your queries into this side of the screen.
+  Enjoy the convenience of intelligent syntax highlighting
+  as you compose your GraphQL requests.
+
+  GraphQL queries typically start with a "{" character.
+  Lines that start with a # are ignored.
+
+  An example GraphQL query might look like:
+
+    {
+      field(arg: "value") {
+        subField
+      }
+    }
+
+  Run Query:         press the play button
+  Prettify query:    press the prettify button`,
+  [EXECUTE_QUERY]: 'Execute query',
+  [PRETTIFY_QUERY]: 'Prettify query',
+  [VARIABLES]: 'Variables',
+  [HEADERS]: 'Headers',
 };
 
 export default en;

@@ -1,11 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { graphqlApi } from '../../api/graphqlApi';
 import { AppDispatch } from '../../state/store';
-import { MutableRefObject } from 'react';
+import { MutableRefObject, useContext } from 'react';
 import { EditorView } from 'codemirror';
 import './ControlPanel.scss';
-import { titles } from '../../data/graphiql';
-import { Languages } from '../../utils/enums';
 import {
   parseJsonFromString,
   prettifyGraphQLString,
@@ -17,6 +15,8 @@ import {
   headerValueValidation,
 } from '../../utils/headersValidationRules';
 import { Schema, ValidationError } from 'yup';
+import { langContext } from '../../languages/langContext';
+import { EXECUTE_QUERY, PRETTIFY_QUERY } from '../../constants';
 
 export const RUN_BTN_TEST_ID = 'run-btn';
 export const PRETTIFY_BTN_TEST_ID = 'prettify-btn';
@@ -35,6 +35,9 @@ export default function ControlPanel({
   headersViewRef,
 }: Props) {
   const dispatch = useDispatch<AppDispatch>();
+  const {
+    dispatch: { translate },
+  } = useContext(langContext);
 
   const parseJsonFromEditorValue = (
     viewRef: MutableRefObject<EditorView | null>
@@ -103,13 +106,13 @@ export default function ControlPanel({
       <button
         className="ctrl-btn run"
         onClick={run}
-        title={titles.runBtn[Languages.EN]}
+        title={translate(EXECUTE_QUERY)}
         data-testid={RUN_BTN_TEST_ID}
       />
       <button
         className="ctrl-btn prettify"
         onClick={prettify}
-        title={titles.prettifyBtn[Languages.EN]}
+        title={translate(PRETTIFY_QUERY)}
         data-testid={PRETTIFY_BTN_TEST_ID}
       />
     </div>

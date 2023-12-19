@@ -35,6 +35,12 @@ export const LANG_LABEL = 'LANG_LABEL';
 export const DOC_TITLE = 'DOC_TITLE';
 export const DOC_DESCR = 'DOC_DESCR';
 
+export const MAIN_INTRO = 'MAIN_INTRO';
+export const EXECUTE_QUERY = 'EXECUTE_QUERY';
+export const PRETTIFY_QUERY = 'PRETTIFY_QUERY';
+export const VARIABLES = 'VARIABLES';
+export const HEADERS = 'HEADERS';
+
 export const API_URL = 'https://rickandmortyapi.com/graphql';
 
 export const QUERY_EXAMPLE = `

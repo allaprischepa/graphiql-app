@@ -1,8 +1,9 @@
 import { EditorView } from 'codemirror';
-import { MutableRefObject, useState } from 'react';
+import { MutableRefObject, useContext, useState } from 'react';
 import QueryEditor from '../QueryEditor/QueryEditor';
-import { capitalize } from '../../utils/utils';
 import './EditorTools.scss';
+import { HEADERS, VARIABLES } from '../../constants';
+import { langContext } from '../../languages/langContext';
 
 interface Props {
   variablesViewRef: MutableRefObject<EditorView | null>;
@@ -14,8 +15,11 @@ export default function EditorTools({
   headersViewRef,
 }: Props) {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('variables');
-  const tabs = ['variables', 'headers'];
+  const [activeTab, setActiveTab] = useState(VARIABLES);
+  const tabs = [VARIABLES, HEADERS];
+  const {
+    dispatch: { translate },
+  } = useContext(langContext);
 
   return (
     <div className={`vh-section ${isOpen ? 'open' : ''}`}>
@@ -31,7 +35,7 @@ export default function EditorTools({
                 setActiveTab(tab);
               }}
             >
-              {capitalize(tab)}
+              {translate(tab)}
             </div>
           );
         })}
@@ -39,13 +43,11 @@ export default function EditorTools({
       </div>
       <div className="section-content">
         <div
-          className={`tab-content ${activeTab === 'variables' ? 'active' : ''}`}
+          className={`tab-content ${activeTab === VARIABLES ? 'active' : ''}`}
         >
           <QueryEditor mode="default" viewRef={variablesViewRef} />
         </div>
-        <div
-          className={`tab-content ${activeTab === 'headers' ? 'active' : ''}`}
-        >
+        <div className={`tab-content ${activeTab === HEADERS ? 'active' : ''}`}>
           <QueryEditor mode="default" viewRef={headersViewRef} />
         </div>
       </div>
