@@ -17,7 +17,7 @@ function DocNav() {
   return (
     <>
       {history.length > 1 && (
-        <button className="doc-nav" onClick={handleClick}>
+        <button className="doc-nav" onClick={handleClick} data-testid="doc-nav">
           {history[history.length - 2].name}
         </button>
       )}
