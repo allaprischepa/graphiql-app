@@ -57,6 +57,12 @@ export default function Main() {
             />
           </div>
         </section>
+        <section
+          className="response-section"
+          data-testid={RESPONSE_SECTION_TEST_ID}
+        >
+          <QueryEditor viewRef={responseViewRef} mode="response" />
+        </section>
       </section>
     </main>
   );
