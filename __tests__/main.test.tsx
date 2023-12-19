@@ -45,16 +45,8 @@ describe('Main Page', () => {
 
     await logInWithUserCredentials();
 
-    const requestSection = await screen.findByTestId(
-      REQUEST_SECTION_TEST_ID,
-      {},
-      { timeout: 1000 }
-    );
-    const responseSection = await screen.findByTestId(
-      RESPONSE_SECTION_TEST_ID,
-      {},
-      { timeout: 1000 }
-    );
+    const requestSection = await screen.findByTestId(REQUEST_SECTION_TEST_ID);
+    const responseSection = await screen.findByTestId(RESPONSE_SECTION_TEST_ID);
     expect(requestSection).toBeInTheDocument();
     expect(responseSection).toBeInTheDocument();
   });
