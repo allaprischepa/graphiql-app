@@ -7,7 +7,6 @@ import { SignUpForm } from '../../types/forms';
 import { validationSchemaSignUp } from '../../utils/validationRules';
 import { userAuth } from '../../services/firebaseAuth';
 
-import Header from '../../components/Header/Header';
 import { NameField } from '../../components/FormFields/NameField';
 import { EmailField } from '../../components/FormFields/EmailField';
 import { PasswordField } from '../../components/FormFields/PasswordField';
@@ -40,8 +39,7 @@ export default function SignUp() {
   };
 
   return (
-    <>
-      <Header />
+    <main>
       <section className="sign-section">
         <div className="sign-container">
           <div className="sign-title" data-testid="sign-up-title">
@@ -71,6 +69,6 @@ export default function SignUp() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

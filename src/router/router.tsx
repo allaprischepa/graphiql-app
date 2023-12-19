@@ -8,46 +8,54 @@ import { AppRoutes } from '../utils/enums';
 import ProtectedRoute from './ProtectedRoute';
 import PrivateRoute from './PrivateRoute';
 
+import Layout from '../components/Layout/Layout';
+
 export const routesConfig = [
   {
-    path: AppRoutes.home,
-    element: <Navigate to={AppRoutes.welcome} />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: AppRoutes.main,
-    element: (
-      <ProtectedRoute redirectPath={AppRoutes.welcome}>
-        <Main />
-      </ProtectedRoute>
-    ),
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: AppRoutes.signIn,
-    element: (
-      <PrivateRoute redirectPath={AppRoutes.main}>
-        <SignIn />
-      </PrivateRoute>
-    ),
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: AppRoutes.signUp,
-    element: (
-      <PrivateRoute redirectPath={AppRoutes.main}>
-        <SignUp />
-      </PrivateRoute>
-    ),
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: AppRoutes.welcome,
-    element: (
-      <PrivateRoute redirectPath={AppRoutes.main}>
-        <Welcome />
-      </PrivateRoute>
-    ),
+    path: AppRoutes.layout,
+    element: <Layout />,
+    children: [
+      {
+        path: AppRoutes.layout,
+        element: <Navigate to={AppRoutes.welcome} />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: AppRoutes.main,
+        element: (
+          <ProtectedRoute redirectPath={AppRoutes.welcome}>
+            <Main />
+          </ProtectedRoute>
+        ),
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: AppRoutes.signIn,
+        element: (
+          <PrivateRoute redirectPath={AppRoutes.main}>
+            <SignIn />
+          </PrivateRoute>
+        ),
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: AppRoutes.signUp,
+        element: (
+          <PrivateRoute redirectPath={AppRoutes.main}>
+            <SignUp />
+          </PrivateRoute>
+        ),
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: AppRoutes.welcome,
+        element: (
+          <PrivateRoute redirectPath={AppRoutes.main}>
+            <Welcome />
+          </PrivateRoute>
+        ),
+      },
+    ],
     errorElement: <ErrorPage />,
   },
 ];
