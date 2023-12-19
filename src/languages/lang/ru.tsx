@@ -1,6 +1,8 @@
 import {
   ALLA_NAME,
   ALLA_TEXT,
+  DOC_DESCR,
+  DOC_TITLE,
   FEATURE_DOCUMENTATION,
   FEATURE_ENDPOINTS,
   FEATURE_HIGHLIGHTING,
@@ -57,6 +59,10 @@ const ru = {
     'Имеет хороший коммерческий опыт разработки веб-сайтов с использованием HTML, CSS и JavaScript. На данный момент изучает React, чтобы выйти на новый уровень разработки.',
 
   [TEAM_LEAD]: 'Тимлид',
+
+  [DOC_TITLE]: 'Документация',
+  [DOC_DESCR]:
+    'Схема GraphQL предоставляет корневой тип для каждого типа операций.',
 };
 
 export default ru;

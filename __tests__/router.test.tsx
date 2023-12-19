@@ -86,7 +86,9 @@ describe('Main Page', () => {
 
     render(
       <Provider store={store}>
-        <RouterProvider router={router} />
+        <LangState initialState={{ language: Languages.EN }}>
+          <RouterProvider router={router} />
+        </LangState>
       </Provider>
     );
 

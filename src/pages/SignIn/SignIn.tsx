@@ -7,7 +7,6 @@ import { SignInForm } from '../../types/forms';
 import { validationSchemaSignIn } from '../../utils/validationRules';
 import { userAuth } from '../../services/firebaseAuth';
 
-import Header from '../../components/Header/Header';
 import { EmailField } from '../../components/FormFields/EmailField';
 import { PasswordField } from '../../components/FormFields/PasswordField';
 
@@ -38,8 +37,7 @@ export default function SignIn() {
   };
 
   return (
-    <>
-      <Header />
+    <main>
       <section className="sign-section">
         <div className="sign-container">
           <div className="sign-title" data-testid="sign-in-title">
@@ -67,6 +65,6 @@ export default function SignIn() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

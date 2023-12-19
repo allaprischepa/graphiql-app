@@ -1,5 +1,6 @@
 export enum AppRoutes {
-  welcome = '/',
+  layout = '/',
+  welcome = '',
   main = '/graphiql',
   signIn = '/sign-in',
   signUp = '/sign-up',

@@ -7,59 +7,7 @@ import {
 } from '@reduxjs/toolkit/query/react';
 import { RootState } from '../state/store';
 
-const schemaQuery = `{
-  __schema {
-    types {
-      kind
-      name
-      description
-      fields {
-        name
-        description
-        type {
-          name
-          kind
-        }
-      }
-      inputFields {
-        name
-        description
-        type {
-          name
-          kind
-        }
-      }
-      interfaces {
-        name
-        kind
-      }
-      enumValues {
-        name
-        description
-      }
-    }
-    directives {
-      name
-      description
-      locations
-      args {
-        name
-        description
-        type {
-          name
-          kind
-        }
-        defaultValue
-      }
-    }
-  }
-}`;
-
-interface SchemaResponse {
-  data: {
-    __schema: object;
-  };
-}
+import { IntrospectionQuery, getIntrospectionQuery } from 'graphql';
 
 interface QueryResponse {
   data: object;
@@ -92,14 +40,6 @@ export const graphqlApi = createApi({
   reducerPath: 'graphqlApi',
   baseQuery: dynamicBaseQuery,
   endpoints: (builder) => ({
-    getSchema: builder.query<SchemaResponse, void>({
-      query: () => ({
-        url: '',
-        body: JSON.stringify({
-          query: schemaQuery,
-        }),
-      }),
-    }),
     getQueryResponse: builder.query<QueryResponse, RequestObject>({
       query: ({ query, variables, headers }) => ({
         url: '',
@@ -110,8 +50,14 @@ export const graphqlApi = createApi({
         headers: { ...headers },
       }),
     }),
+    getSchema: builder.query<IntrospectionQuery, void>({
+      query: () => ({
+        url: '',
+        body: JSON.stringify({ query: getIntrospectionQuery() }),
+      }),
+    }),
   }),
 });
 
-export const { useGetSchemaQuery, useGetQueryResponseQuery } = graphqlApi;
+export const { useGetQueryResponseQuery, useGetSchemaQuery } = graphqlApi;
 export const graphqlApiReducer = graphqlApi.reducer;

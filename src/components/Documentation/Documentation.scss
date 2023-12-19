@@ -1,0 +1,17 @@
+.documentation {
+  padding: 15px;
+  position: relative;
+
+  @media screen and (max-width: 679px) {
+    padding: 0 15px;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+}
