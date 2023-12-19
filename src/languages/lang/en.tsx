@@ -28,6 +28,15 @@ import {
   PRETTIFY_QUERY,
   VARIABLES,
   HEADERS,
+  QUERY_ERR_MSG_PREFIX,
+  DEFAULT_QUERY_ERR_MSG,
+  INVALID_VARIABLES_ERR_MSG,
+  INVALID_HEADERS_ERR_MSG,
+  HEADER_NAME,
+  HEADER_VALUE,
+  IS_INVALID,
+  HEADER_VALIDATION_MSG,
+  TYPE_STRING_VALIDATION_MSG,
 } from '../../constants';
 
 const en = {
@@ -94,6 +103,17 @@ const en = {
   [PRETTIFY_QUERY]: 'Prettify query',
   [VARIABLES]: 'Variables',
   [HEADERS]: 'Headers',
+  [QUERY_ERR_MSG_PREFIX]: 'Query error',
+  [DEFAULT_QUERY_ERR_MSG]:
+    'Something went wrong. Please, try again later or choose another endpoint.',
+  [INVALID_VARIABLES_ERR_MSG]: 'Variables are invalid JSON',
+  [INVALID_HEADERS_ERR_MSG]: 'Headers are invalid JSON',
+  [HEADER_NAME]: 'Header name',
+  [HEADER_VALUE]: 'Header value',
+  [IS_INVALID]: 'is invalid',
+  [HEADER_VALIDATION_MSG]:
+    'It can contain only alphanumeric characters and the following special characters',
+  [TYPE_STRING_VALIDATION_MSG]: 'It should be a string only',
 };
 
 export default en;

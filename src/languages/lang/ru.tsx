@@ -28,6 +28,15 @@ import {
   PRETTIFY_QUERY,
   VARIABLES,
   HEADERS,
+  QUERY_ERR_MSG_PREFIX,
+  DEFAULT_QUERY_ERR_MSG,
+  INVALID_VARIABLES_ERR_MSG,
+  INVALID_HEADERS_ERR_MSG,
+  HEADER_NAME,
+  HEADER_VALUE,
+  IS_INVALID,
+  HEADER_VALIDATION_MSG,
+  TYPE_STRING_VALIDATION_MSG,
 } from '../../constants';
 
 const ru = {
@@ -95,6 +104,17 @@ const ru = {
   [PRETTIFY_QUERY]: 'Форматировать запрос',
   [VARIABLES]: 'Переменные',
   [HEADERS]: 'Заголовки',
+  [QUERY_ERR_MSG_PREFIX]: 'Ошибка запроса',
+  [DEFAULT_QUERY_ERR_MSG]:
+    'Что-то пошло не так. Пожалуйста, повторите попытку позже или выберите другую конечную точку.',
+  [INVALID_VARIABLES_ERR_MSG]: 'Переменные содержат некорректный JSON',
+  [INVALID_HEADERS_ERR_MSG]: 'Заголовки содержат некорректный JSON',
+  [HEADER_NAME]: 'Имя заголовка',
+  [HEADER_VALUE]: 'Значение заголовка',
+  [IS_INVALID]: 'некорректно',
+  [HEADER_VALIDATION_MSG]:
+    'Оно может содержать только буквенно-цифровые символы и следующие специальные символы',
+  [TYPE_STRING_VALIDATION_MSG]: 'Это должна быть только строка',
 };
 
 export default ru;
