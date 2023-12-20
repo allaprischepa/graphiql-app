@@ -4,13 +4,10 @@ import { routesConfig } from '../src/router/router';
 import { render, screen } from '@testing-library/react';
 import { AppRoutes } from '../src/utils/enums';
 import {
-  fixCodeMirrorTypeError,
   logInWithUserCredentials,
   renderAppWithRoute,
 } from './test-utils/test-utils';
 import { TEST_ID as MAIN_PAGE_TEST_ID } from '../src/pages/Main/Main';
-
-fixCodeMirrorTypeError();
 
 describe('404 Page', () => {
   it('is displayed when navigating to an invalid route', async () => {
@@ -61,4 +58,5 @@ describe('Main Page', () => {
     const mainPage = await screen.findByTestId(MAIN_PAGE_TEST_ID);
     expect(mainPage).toBeInTheDocument();
   });
-}); */
+});
+ */

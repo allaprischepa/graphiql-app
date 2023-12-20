@@ -155,5 +155,4 @@ describe('Sign Up Page', () => {
 
     expect(router.state.location.pathname).toContain(AppRoutes.signIn);
   });
-});
- */
+}); */

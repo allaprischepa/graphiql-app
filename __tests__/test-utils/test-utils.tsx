@@ -8,7 +8,6 @@ import LangState from '../../src/languages/LangState';
 import { routesConfig } from '../../src/router/router';
 import { store } from '../../src/state/store';
 import { Router } from '@remix-run/router';
-import { vi } from 'vitest';
 
 export const queries = [
   {
@@ -110,12 +109,4 @@ export const renderApp = (router: Router) => {
       </LangState>
     </Provider>
   );
-};
-
-export const fixCodeMirrorTypeError = () => {
-  Range.prototype.getClientRects = () => ({
-    item: () => null,
-    length: 0,
-    [Symbol.iterator]: vi.fn(),
-  });
 };

@@ -2,15 +2,12 @@
 import { screen, waitFor } from '@testing-library/react';
 import { AppRoutes } from '../src/utils/enums';
 import {
-  fixCodeMirrorTypeError,
   logInWithUserCredentials,
   renderApp,
   renderAppWithRoute,
 } from './test-utils/test-utils';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react-dom/test-utils';
-
-fixCodeMirrorTypeError();
 
 describe('Redirection and navigation if user logs in', async () => {
   const router = renderAppWithRoute(AppRoutes.signIn);
