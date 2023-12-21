@@ -1,5 +1,5 @@
 import React from 'react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { configureAppStore } from '../src/state/store';
 import { Provider } from 'react-redux';
@@ -9,34 +9,35 @@ import { defaultQueryString } from '../src/state/request/requestSlice';
 import ControlPanel, {
   PRETTIFY_BTN_TEST_ID,
 } from '../src/components/ControlPanel/ControlPanel';
-import { queries } from './test-utils/test-utils';
+import { queries, renderAppWithRoute } from './test-utils/test-utils';
 import userEvent from '@testing-library/user-event';
 import { replaceEditorText } from '../src/utils/utils';
+import { AppRoutes } from '../src/utils/enums';
+import {
+  REQUEST_SECTION_TEST_ID,
+  RESPONSE_SECTION_TEST_ID,
+} from '../src/pages/Main/Main';
+import { IS_USER_LOGGED_IN } from '../src/constants';
 
-/* describe('Main Page', () => {
+describe('Main Page', () => {
   it('contains Request and Response Sections', async () => {
-    const store = configureAppStore();
-    const route = AppRoutes.signIn;
-    const router = createMemoryRouter(routesConfig, {
-      initialEntries: [route],
+    localStorage.setItem(IS_USER_LOGGED_IN, 'true');
+
+    vi.mock('firebase/auth', () => {
+      return {
+        getAuth: vi.fn().mockImplementationOnce(() => {}),
+        onAuthStateChanged: vi.fn().mockImplementationOnce(() => {}),
+      };
     });
 
-    render(
-      <Provider store={store}>
-        <LangState initialState={{ language: Languages.EN }}>
-          <RouterProvider router={router} />
-        </LangState>
-      </Provider>
-    );
+    renderAppWithRoute(AppRoutes.main);
 
-    await logInWithUserCredentials();
-
-    const requestSection = await screen.findByTestId(REQUEST_SECTION_TEST_ID);
-    const responseSection = await screen.findByTestId(RESPONSE_SECTION_TEST_ID);
+    const requestSection = screen.getByTestId(REQUEST_SECTION_TEST_ID);
+    const responseSection = screen.getByTestId(RESPONSE_SECTION_TEST_ID);
     expect(requestSection).toBeInTheDocument();
     expect(responseSection).toBeInTheDocument();
   });
-}); */
+});
 
 describe('Request Editor', () => {
   const store = configureAppStore();

@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "prettier-fix": "prettier . --write",
     "prepare": "husky install",
-    "test": "vitest run --passWithNoTests",
+    "test": "vitest run --passWithNoTests --pool=forks",
     "coverage": "vitest run --coverage --passWithNoTests"
   },
   "dependencies": {

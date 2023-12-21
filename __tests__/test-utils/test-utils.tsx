@@ -6,7 +6,7 @@ import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import LangState from '../../src/languages/LangState';
 import { routesConfig } from '../../src/router/router';
-import { store } from '../../src/state/store';
+import { configureAppStore } from '../../src/state/store';
 import { Router } from '@remix-run/router';
 
 export const queries = [
@@ -86,6 +86,7 @@ export const logInWithUserCredentials = async (
 };
 
 export const renderAppWithRoute = (route: AppRoutes) => {
+  const store = configureAppStore();
   const router = createMemoryRouter(routesConfig, {
     initialEntries: [route],
   });
@@ -102,6 +103,8 @@ export const renderAppWithRoute = (route: AppRoutes) => {
 };
 
 export const renderApp = (router: Router) => {
+  const store = configureAppStore();
+
   render(
     <Provider store={store}>
       <LangState initialState={{ language: Languages.EN }}>

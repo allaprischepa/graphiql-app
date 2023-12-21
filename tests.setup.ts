@@ -1,8 +1,8 @@
-import { afterEach, beforeEach, vi } from 'vitest';
+import { afterEach, beforeAll, vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/vitest';
 
-beforeEach(() => {
+beforeAll(() => {
   Range.prototype.getClientRects = () => ({
     item: () => null,
     length: 0,

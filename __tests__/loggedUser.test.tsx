@@ -1,44 +1,41 @@
-/* import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { screen, waitFor } from '@testing-library/react';
 import { AppRoutes } from '../src/utils/enums';
-import {
-  logInWithUserCredentials,
-  renderApp,
-  renderAppWithRoute,
-} from './test-utils/test-utils';
+import { renderApp, renderAppWithRoute } from './test-utils/test-utils';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react-dom/test-utils';
+import { IS_USER_LOGGED_IN } from '../src/constants';
 
-describe('Redirection and navigation if user logs in', async () => {
-  const router = renderAppWithRoute(AppRoutes.signIn);
-  await logInWithUserCredentials();
+describe('Redirection and navigation if user is logged in', async () => {
+  localStorage.setItem(IS_USER_LOGGED_IN, 'true');
 
-  it('Redirect to Main page', async () => {
-    renderApp(router);
-
-    await waitFor(() => {
-      expect(router.state.location.pathname).toContain(AppRoutes.main);
-    });
+  vi.mock('firebase/auth', () => {
+    return {
+      getAuth: vi.fn().mockImplementationOnce(() => {}),
+      onAuthStateChanged: vi.fn().mockImplementationOnce(() => {}),
+    };
   });
+
+  const router = renderAppWithRoute(AppRoutes.main);
 
   it('Redirect to Main page if navigate to another pages', async () => {
     act(() => {
-      renderApp(router);
       router.navigate(AppRoutes.signIn);
+      renderApp(router);
     });
 
     expect(router.state.location.pathname).toContain(AppRoutes.main);
 
     act(() => {
-      renderApp(router);
       router.navigate(AppRoutes.signUp);
+      renderApp(router);
     });
 
     expect(router.state.location.pathname).toContain(AppRoutes.main);
 
     act(() => {
-      renderApp(router);
       router.navigate(AppRoutes.welcome);
+      renderApp(router);
     });
 
     expect(router.state.location.pathname).toContain(AppRoutes.main);
@@ -59,27 +56,14 @@ describe('Redirection and navigation if user logs in', async () => {
   });
 
   it('Logo button leads to Main page', async () => {
-    const routerMain = renderAppWithRoute(AppRoutes.main);
+    renderApp(router);
 
     await waitFor(async () => {
       const logoBtn = screen.getByRole('link', {
         name: /logo reactivebuqlya/i,
       });
-      const user = userEvent.setup();
-      await user.click(logoBtn);
-      expect(routerMain.state.location.pathname).toContain(AppRoutes.main);
-    });
-  });
-
-  it('Redirect to Welcome page if user logs out', async () => {
-    const routerMain = renderAppWithRoute(AppRoutes.main);
-
-    await waitFor(async () => {
-      const signOutBtn = screen.getByTestId('sign-out-btn');
-      const user = userEvent.setup();
-      await user.click(signOutBtn);
-      expect(routerMain.state.location.pathname).toContain(AppRoutes.welcome);
+      await userEvent.click(logoBtn);
+      expect(router.state.location.pathname).toContain(AppRoutes.main);
     });
   });
 });
- */

@@ -5,13 +5,13 @@ interface authState {
   isUserLoggedIn: boolean;
 }
 
-const initialState: authState = {
-  isUserLoggedIn: Boolean(localStorage.getItem(IS_USER_LOGGED_IN)),
-};
-
 export const authSlice = createSlice({
   name: 'auth',
-  initialState,
+  initialState: (): authState => {
+    return {
+      isUserLoggedIn: Boolean(localStorage.getItem(IS_USER_LOGGED_IN)),
+    };
+  },
   reducers: {
     setIsUserLoggedIn: (state, action: PayloadAction<boolean>) => {
       state.isUserLoggedIn = action.payload;

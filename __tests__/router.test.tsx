@@ -1,13 +1,11 @@
-/* import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { routesConfig } from '../src/router/router';
 import { render, screen } from '@testing-library/react';
 import { AppRoutes } from '../src/utils/enums';
-import {
-  logInWithUserCredentials,
-  renderAppWithRoute,
-} from './test-utils/test-utils';
+import { renderAppWithRoute } from './test-utils/test-utils';
 import { TEST_ID as MAIN_PAGE_TEST_ID } from '../src/pages/Main/Main';
+import { IS_USER_LOGGED_IN } from '../src/constants';
 
 describe('404 Page', () => {
   it('is displayed when navigating to an invalid route', async () => {
@@ -52,11 +50,18 @@ describe('Welcome Page', () => {
 
 describe('Main Page', () => {
   it('is displayed when navigating to the corresponding route', async () => {
-    renderAppWithRoute(AppRoutes.signIn);
-    await logInWithUserCredentials();
+    localStorage.setItem(IS_USER_LOGGED_IN, 'true');
 
-    const mainPage = await screen.findByTestId(MAIN_PAGE_TEST_ID);
+    vi.mock('firebase/auth', () => {
+      return {
+        getAuth: vi.fn().mockImplementationOnce(() => {}),
+        onAuthStateChanged: vi.fn().mockImplementationOnce(() => {}),
+      };
+    });
+
+    renderAppWithRoute(AppRoutes.main);
+
+    const mainPage = screen.getByTestId(MAIN_PAGE_TEST_ID);
     expect(mainPage).toBeInTheDocument();
   });
 });
- */
