@@ -35,7 +35,7 @@ export default function ErrorPage() {
   return (
     <>
       <main className="error-page">
-        <img className="error-pic" src="favicon.png" alt="logo" />
+        <img className="error-pic" src="/favicon.png" alt="logo" />
         <div>
           <h2>{translate(ERROR_PAGE_TITLE)}</h2>
           <p>{translate(ERROR_PAGE_TEXT)}</p>
