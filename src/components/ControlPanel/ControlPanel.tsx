@@ -1,11 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { graphqlApi } from '../../api/graphqlApi';
 import { AppDispatch } from '../../state/store';
-import { MutableRefObject } from 'react';
+import { MutableRefObject, useContext } from 'react';
 import { EditorView } from 'codemirror';
 import './ControlPanel.scss';
-import { titles } from '../../data/graphiql';
-import { Languages } from '../../utils/enums';
 import {
   parseJsonFromString,
   prettifyGraphQLString,
@@ -17,6 +15,16 @@ import {
   headerValueValidation,
 } from '../../utils/headersValidationRules';
 import { Schema, ValidationError } from 'yup';
+import { langContext } from '../../languages/langContext';
+import {
+  EXECUTE_QUERY,
+  HEADER_NAME,
+  HEADER_VALUE,
+  INVALID_HEADERS_ERR_MSG,
+  INVALID_VARIABLES_ERR_MSG,
+  IS_INVALID,
+  PRETTIFY_QUERY,
+} from '../../constants';
 
 export const RUN_BTN_TEST_ID = 'run-btn';
 export const PRETTIFY_BTN_TEST_ID = 'prettify-btn';
@@ -37,6 +45,9 @@ export default function ControlPanel({
   setIsLoading,
 }: Props) {
   const dispatch = useDispatch<AppDispatch>();
+  const {
+    dispatch: { translate },
+  } = useContext(langContext);
 
   const parseJsonFromEditorValue = (
     viewRef: MutableRefObject<EditorView | null>
@@ -56,16 +67,20 @@ export default function ControlPanel({
 
   const run = async () => {
     const query = requestViewRef.current?.state.doc.toString() ?? '';
+    const invalidVarsMsg = translate(INVALID_VARIABLES_ERR_MSG);
+    const invalidHdrsMsg = translate(INVALID_HEADERS_ERR_MSG);
+    const hdrsName = translate(HEADER_NAME);
+    const hdrsValue = translate(HEADER_VALUE);
+    const isInvalid = translate(IS_INVALID);
 
     const { object: variables, error: varsError } =
       parseJsonFromEditorValue(variablesViewRef);
     const { object: headers, error: headersError } =
       parseJsonFromEditorValue(headersViewRef);
 
-    if (varsError)
-      return toastError(`Variables are invalid JSON: ${varsError.message}`);
+    if (varsError) return toastError(`${invalidVarsMsg}: ${varsError.message}`);
     if (headersError)
-      return toastError(`Headers are invalid JSON: ${headersError.message}`);
+      return toastError(`${invalidHdrsMsg}: ${headersError.message}`);
 
     for (const [name, value] of Object.entries(headers)) {
       const { error: nameErr } = await validateWithSchema(
@@ -73,14 +88,14 @@ export default function ControlPanel({
         headerNameValidation
       );
       if (nameErr)
-        return toastError(`Header name "${name}" is invalid: ${nameErr}`);
+        return toastError(`${hdrsName} "${name}" ${isInvalid}: ${nameErr}`);
 
       const { error: valueErr } = await validateWithSchema(
         value,
         headerValueValidation
       );
       if (valueErr)
-        return toastError(`Header value "${value}" is invalid: ${valueErr}`);
+        return toastError(`${hdrsValue} "${value}" ${isInvalid}: ${valueErr}`);
     }
 
     replaceEditorText(responseViewRef, '');
@@ -109,13 +124,13 @@ export default function ControlPanel({
       <button
         className="ctrl-btn run"
         onClick={run}
-        title={titles.runBtn[Languages.EN]}
+        title={translate(EXECUTE_QUERY)}
         data-testid={RUN_BTN_TEST_ID}
       />
       <button
         className="ctrl-btn prettify"
         onClick={prettify}
-        title={titles.prettifyBtn[Languages.EN]}
+        title={translate(PRETTIFY_QUERY)}
         data-testid={PRETTIFY_BTN_TEST_ID}
       />
     </div>
