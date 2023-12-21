@@ -54,6 +54,8 @@ export const ENDPOINT_SETUP_LABEL = 'ENDPOINT_SETUP_LABEL';
 export const ENDPOINT_SETUP_SAVE = 'ENDPOINT_SETUP_SAVE';
 export const ENDPOINT_SETUP_INTRO = 'ENDPOINT_SETUP_INTRO';
 
+export const API_ENDPOINT = 'apiEndpoint';
+
 export const API_URL = 'https://rickandmortyapi.com/graphql';
 
 export const QUERY_EXAMPLE = `

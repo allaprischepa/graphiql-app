@@ -1,3 +1,5 @@
+@import './variables';
+
 @mixin editorToolsBtn($iconImgUrl, $btnSize: 36px, $iconSize: 80%) {
   width: $btnSize;
   height: $btnSize;
@@ -13,7 +15,9 @@
     width: $iconSize;
     height: $iconSize;
     margin: auto;
-    background: center / contain no-repeat url($iconImgUrl);
+    background-color: $accent-medium;
+    -webkit-mask: url($iconImgUrl) no-repeat center / contain;
+    mask: url($iconImgUrl) no-repeat center / contain;
   }
 
   @media (hover: hover) {

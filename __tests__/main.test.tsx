@@ -21,8 +21,9 @@ import en from '../src/languages/lang/en';
 import { MAIN_INTRO } from '../src/constants';
 
 describe('Main Page', () => {
-  it('contains Request and Response Sections', () => {
+  it('contains Request and Response Sections', async () => {
     const store = configureAppStore();
+
     render(
       <LangState initialState={{ language: Languages.EN }}>
         <Provider store={store}>
@@ -31,8 +32,8 @@ describe('Main Page', () => {
       </LangState>
     );
 
-    const requestSection = screen.getByTestId(REQUEST_SECTION_TEST_ID);
-    const responseSection = screen.getByTestId(RESPONSE_SECTION_TEST_ID);
+    const requestSection = await screen.findByTestId(REQUEST_SECTION_TEST_ID);
+    const responseSection = await screen.findByTestId(RESPONSE_SECTION_TEST_ID);
 
     expect(requestSection).toBeInTheDocument();
     expect(responseSection).toBeInTheDocument();

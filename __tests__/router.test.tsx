@@ -77,7 +77,7 @@ describe('Welcome Page', () => {
 });
 
 describe('Main Page', () => {
-  it('is displayed when navigating to the corresponding route', () => {
+  it('is displayed when navigating to the corresponding route', async () => {
     const store = configureAppStore();
     const route = AppRoutes.main;
     const router = createMemoryRouter(routesConfig, {
@@ -92,7 +92,7 @@ describe('Main Page', () => {
       </Provider>
     );
 
-    const mainPage = screen.getByTestId(MAIN_PAGE_TEST_ID);
+    const mainPage = await screen.findByTestId(MAIN_PAGE_TEST_ID);
     expect(mainPage).toBeInTheDocument();
   });
 });

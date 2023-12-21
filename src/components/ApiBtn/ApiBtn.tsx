@@ -4,6 +4,7 @@ import { useContext, useState } from 'react';
 import { useAppSelector } from '../../state/store';
 import { langContext } from '../../languages/langContext';
 import {
+  API_ENDPOINT,
   API_SETTINGS,
   ENDPOINT_SETUP_INTRO,
   ENDPOINT_SETUP_LABEL,
@@ -42,8 +43,11 @@ function ApiBtn() {
   const closeModal = () => setIsOpen(false);
 
   const onFormSubmit = (data: { endpointUrl: string }) => {
-    if (data.endpointUrl !== endpoint) {
-      dispatch(setEndpoint(data.endpointUrl));
+    const newEndpoint = data.endpointUrl;
+
+    if (newEndpoint !== endpoint) {
+      localStorage.setItem(API_ENDPOINT, newEndpoint);
+      dispatch(setEndpoint(newEndpoint));
       dispatch(graphqlApi.util.resetApiState());
     }
 
