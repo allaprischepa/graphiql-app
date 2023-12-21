@@ -35,6 +35,21 @@ export const LANG_LABEL = 'LANG_LABEL';
 export const DOC_TITLE = 'DOC_TITLE';
 export const DOC_DESCR = 'DOC_DESCR';
 
+export const MAIN_INTRO = 'MAIN_INTRO';
+export const EXECUTE_QUERY = 'EXECUTE_QUERY';
+export const PRETTIFY_QUERY = 'PRETTIFY_QUERY';
+export const VARIABLES = 'VARIABLES';
+export const HEADERS = 'HEADERS';
+export const QUERY_ERR_MSG_PREFIX = 'QUERY_ERR_MSG_PREFIX';
+export const DEFAULT_QUERY_ERR_MSG = 'DEFAULT_QUERY_ERR_MSG';
+export const INVALID_VARIABLES_ERR_MSG = 'INVALID_VARIABLES_ERR_MSG';
+export const INVALID_HEADERS_ERR_MSG = 'INVALID_HEADERS_ERR_MSG';
+export const HEADER_NAME = 'HEADER_NAME';
+export const HEADER_VALUE = 'HEADER_VALUE';
+export const IS_INVALID = 'IS_INVALID';
+export const HEADER_VALIDATION_MSG = 'HEADER_VALIDATION_MSG';
+export const TYPE_STRING_VALIDATION_MSG = 'TYPE_STRING_VALIDATION_MSG';
+
 export const API_URL = 'https://rickandmortyapi.com/graphql';
 
 export const QUERY_EXAMPLE = `
