@@ -15,7 +15,11 @@ describe('404 Page', () => {
       initialEntries: [invalidRoute],
     });
 
-    render(<RouterProvider router={router} />);
+    render(
+      <LangState initialState={{ language: Languages.EN }}>
+        <RouterProvider router={router} />
+      </LangState>
+    );
 
     const notFound = await screen.findByText(/The page is not found/);
     expect(notFound).toBeInTheDocument();

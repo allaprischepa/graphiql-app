@@ -15,22 +15,18 @@ export const routesConfig = [
       {
         path: AppRoutes.main,
         element: <Main />,
-        errorElement: <ErrorPage />,
       },
       {
         path: AppRoutes.signIn,
         element: <SignIn />,
-        errorElement: <ErrorPage />,
       },
       {
         path: AppRoutes.signUp,
         element: <SignUp />,
-        errorElement: <ErrorPage />,
       },
       {
         index: true,
         element: <Welcome />,
-        errorElement: <ErrorPage />,
       },
     ],
     errorElement: <ErrorPage />,
