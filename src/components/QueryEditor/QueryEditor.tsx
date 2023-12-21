@@ -5,6 +5,11 @@ import { graphql } from 'cm6-graphql';
 import { useDispatch } from 'react-redux';
 import { defaultEditorTheme, responseEditorTheme } from './QueryEditorTheme';
 import { json } from '@codemirror/lang-json';
+import {
+  editorSyntaxHighlight,
+  specificWordsHighlight,
+} from './QueryEditorHighlight';
+import './QueryEditor.scss';
 
 interface Props {
   viewRef: MutableRefObject<EditorView | null>;
@@ -30,9 +35,11 @@ export default function QueryEditor({ viewRef, mode, text }: Props) {
         EditorState.tabSize.of(2),
         language,
         theme,
+        editorSyntaxHighlight,
       ];
 
-      if (responseMode) extensions.push(EditorView.lineWrapping);
+      if (responseMode)
+        extensions.push(EditorView.lineWrapping, specificWordsHighlight);
 
       const editorView = new EditorView({
         doc: text,

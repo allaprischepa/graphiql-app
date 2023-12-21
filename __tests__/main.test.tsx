@@ -1,5 +1,5 @@
 import React from 'react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import Main, {
   REQUEST_SECTION_TEST_ID,
@@ -108,6 +108,7 @@ describe('Prettify button', () => {
     const responseViewRef = React.createRef<EditorView | null>();
     const variablesViewRef = React.createRef<EditorView | null>();
     const headersViewRef = React.createRef<EditorView | null>();
+    const setIsLoading = vi.fn();
 
     render(
       <LangState initialState={{ language: Languages.EN }}>
@@ -118,6 +119,7 @@ describe('Prettify button', () => {
             responseViewRef={responseViewRef}
             variablesViewRef={variablesViewRef}
             headersViewRef={headersViewRef}
+            setIsLoading={setIsLoading}
           />
         </Provider>
       </LangState>

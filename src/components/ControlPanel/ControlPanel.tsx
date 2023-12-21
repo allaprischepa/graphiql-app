@@ -34,6 +34,7 @@ interface Props {
   responseViewRef: MutableRefObject<EditorView | null>;
   variablesViewRef: MutableRefObject<EditorView | null>;
   headersViewRef: MutableRefObject<EditorView | null>;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function ControlPanel({
@@ -41,6 +42,7 @@ export default function ControlPanel({
   responseViewRef,
   variablesViewRef,
   headersViewRef,
+  setIsLoading,
 }: Props) {
   const dispatch = useDispatch<AppDispatch>();
   const {
@@ -55,7 +57,7 @@ export default function ControlPanel({
   };
 
   const validateWithSchema = async (
-    value: string,
+    value: unknown,
     schema: Schema
   ): Promise<{ error: null | string }> =>
     schema
@@ -96,6 +98,9 @@ export default function ControlPanel({
         return toastError(`${hdrsValue} "${value}" ${isInvalid}: ${valueErr}`);
     }
 
+    replaceEditorText(responseViewRef, '');
+    setIsLoading(true);
+
     const action = graphqlApi.endpoints.getQueryResponse.initiate({
       query,
       variables,
@@ -104,6 +109,7 @@ export default function ControlPanel({
 
     const { data } = await dispatch(action);
 
+    setIsLoading(false);
     if (data) replaceEditorText(responseViewRef, JSON.stringify(data, null, 2));
   };
 

@@ -69,3 +69,8 @@ export interface DocTypes {
   descr: string;
   fields: Field[] | null;
 }
+
+export interface ParseJsonResult {
+  object: Record<string, unknown>;
+  error: Error | null;
+}

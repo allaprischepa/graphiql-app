@@ -6,7 +6,9 @@ import {
   sanitizedStrings,
 } from './test-utils/test-utils';
 import {
+  capitalize,
   commentOutString,
+  parseJsonFromString,
   prettifyGraphQLString,
   replaceEditorText,
   sanitizeString,
@@ -51,5 +53,50 @@ describe('Function replaceEditorText()', () => {
     replaceEditorText(editorViewRef, text);
 
     expect(editorViewRef.current.state.doc.toString()).toEqual(text);
+  });
+});
+
+describe('Function capitalize()', () => {
+  it('transforms first letter to uppercase', () => {
+    const strings = [
+      {
+        initial: 'vestibulum',
+        expected: 'Vestibulum',
+      },
+      {
+        initial: 'donec id',
+        expected: 'Donec id',
+      },
+      {
+        initial: 'Aenean viverra rhoncus',
+        expected: 'Aenean viverra rhoncus',
+      },
+      {
+        initial: '',
+        expected: '',
+      },
+    ];
+
+    strings.forEach((obj) => {
+      expect(capitalize(obj.initial)).toEqual(obj.expected);
+    });
+  });
+});
+
+describe('Function parseJsonFromString()', () => {
+  it('parses a valid JSON string', () => {
+    const jsonString = '{"key": "value"}';
+    const { object, error } = parseJsonFromString(jsonString);
+
+    expect(object.key).toEqual('value');
+    expect(error).toBeNull();
+  });
+
+  it('handles invalid JSON string', () => {
+    const jsonString = '{key: "value"}';
+    const { object, error } = parseJsonFromString(jsonString);
+
+    expect(object).toEqual({});
+    expect(error).toBeInstanceOf(Error);
   });
 });
