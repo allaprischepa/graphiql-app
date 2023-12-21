@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import {
+  GraphQLBoolean,
   GraphQLInterfaceType,
   GraphQLObjectType,
   GraphQLSchema,
@@ -51,8 +52,7 @@ describe('Function getObjectFields', () => {
       },
       {
         name: 'String',
-        descr:
-          'The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.',
+        descr: GraphQLString.description,
         fields: null,
       },
       {
@@ -81,7 +81,7 @@ describe('Function getObjectFields', () => {
       },
       {
         name: 'Boolean',
-        descr: 'The `Boolean` scalar type represents `true` or `false`.',
+        descr: GraphQLBoolean.description,
         fields: null,
       },
     ]);
