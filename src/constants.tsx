@@ -49,6 +49,10 @@ export const HEADER_VALUE = 'HEADER_VALUE';
 export const IS_INVALID = 'IS_INVALID';
 export const HEADER_VALIDATION_MSG = 'HEADER_VALIDATION_MSG';
 export const TYPE_STRING_VALIDATION_MSG = 'TYPE_STRING_VALIDATION_MSG';
+export const API_SETTINGS = 'API_SETTINGS';
+export const ENDPOINT_SETUP_LABEL = 'ENDPOINT_SETUP_LABEL';
+export const ENDPOINT_SETUP_SAVE = 'ENDPOINT_SETUP_SAVE';
+export const ENDPOINT_SETUP_INTRO = 'ENDPOINT_SETUP_INTRO';
 
 export const API_URL = 'https://rickandmortyapi.com/graphql';
 

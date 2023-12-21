@@ -25,3 +25,9 @@ $trans: all 0.4s ease 0s;
 
 $scrollbar-width: 4px;
 $scrollbar-width-total: $scrollbar-width * 3;
+
+$header-z-index: 50;
+$overlay-z-index: $header-z-index + 1;
+
+$btn-border-radius: 5px;
+$block-border-radius: 10px;

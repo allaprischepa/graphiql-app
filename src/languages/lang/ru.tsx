@@ -37,6 +37,10 @@ import {
   IS_INVALID,
   HEADER_VALIDATION_MSG,
   TYPE_STRING_VALIDATION_MSG,
+  API_SETTINGS,
+  ENDPOINT_SETUP_LABEL,
+  ENDPOINT_SETUP_SAVE,
+  ENDPOINT_SETUP_INTRO,
 } from '../../constants';
 
 const ru = {
@@ -115,6 +119,11 @@ const ru = {
   [HEADER_VALIDATION_MSG]:
     'Может содержать только буквенно-цифровые символы и следующие специальные символы',
   [TYPE_STRING_VALIDATION_MSG]: 'Это должна быть только строка',
+  [API_SETTINGS]: 'Настройки API',
+  [ENDPOINT_SETUP_LABEL]: 'URL конечной точки',
+  [ENDPOINT_SETUP_SAVE]: 'Сохранить',
+  [ENDPOINT_SETUP_INTRO]:
+    'Настройте URL-адрес конечной точки GraphQL в соответствии с вашими потребностями при выполнении запросов.',
 };
 
 export default ru;

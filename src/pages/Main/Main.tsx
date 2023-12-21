@@ -12,6 +12,7 @@ import { commentOutString } from '../../utils/utils';
 import { MAIN_INTRO, QUERY_EXAMPLE } from '../../constants';
 import { langContext } from '../../languages/langContext';
 import Loader from '../../components/Loader/Loader';
+import ApiBtn from '../../components/ApiBtn/ApiBtn';
 
 export const TEST_ID = 'main-page';
 export const REQUEST_SECTION_TEST_ID = 'request-section';
@@ -40,6 +41,7 @@ export default function Main() {
       <section className="graphiql-main">
         <section className="tools">
           <DocBtn />
+          <ApiBtn />
         </section>
         <section className={isActive ? 'doc active' : 'doc'}>
           {isActive && <Documentation />}

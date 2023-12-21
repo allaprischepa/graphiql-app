@@ -37,6 +37,10 @@ import {
   IS_INVALID,
   HEADER_VALIDATION_MSG,
   TYPE_STRING_VALIDATION_MSG,
+  API_SETTINGS,
+  ENDPOINT_SETUP_LABEL,
+  ENDPOINT_SETUP_SAVE,
+  ENDPOINT_SETUP_INTRO,
 } from '../../constants';
 
 const en = {
@@ -114,6 +118,11 @@ const en = {
   [HEADER_VALIDATION_MSG]:
     'It can contain only alphanumeric characters and the following special characters',
   [TYPE_STRING_VALIDATION_MSG]: 'It should be a string only',
+  [API_SETTINGS]: 'API Settings',
+  [ENDPOINT_SETUP_LABEL]: 'Endpoint URL',
+  [ENDPOINT_SETUP_SAVE]: 'Save',
+  [ENDPOINT_SETUP_INTRO]:
+    'Adjust the GraphQL endpoint URL according to your needs for making requests.',
 };
 
 export default en;

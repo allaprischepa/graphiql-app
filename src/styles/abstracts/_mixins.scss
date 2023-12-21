@@ -1,0 +1,24 @@
+@mixin editorToolsBtn($iconImgUrl, $btnSize: 36px, $iconSize: 80%) {
+  width: $btnSize;
+  height: $btnSize;
+  border: none;
+  border-radius: $btn-border-radius;
+  background: none;
+  margin-left: auto;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    display: block;
+    width: $iconSize;
+    height: $iconSize;
+    margin: auto;
+    background: center / contain no-repeat url($iconImgUrl);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: $light-gray;
+    }
+  }
+}

@@ -57,3 +57,7 @@ export const validationSchemaSignIn = yup.object().shape({
   email: email,
   password: password,
 });
+
+export const validationSchemaEndpoint = yup.object().shape({
+  endpointUrl: yup.string().required().url(),
+});
