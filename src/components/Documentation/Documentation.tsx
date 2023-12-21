@@ -69,7 +69,7 @@ function Documentation() {
           {data && (
             <>
               <DocNav />
-              <h3>{name}</h3>
+              <h3 data-testid="doc-title">{name}</h3>
               {descr && <p>{descr}</p>}
               {fields && (
                 <>

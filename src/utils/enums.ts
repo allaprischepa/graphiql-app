@@ -12,6 +12,7 @@ export enum HttpStatusCode {
 
 export enum LangActionType {
   SET_LANGUAGE = 'SET_LANGUAGE',
+  UNKNOWN = 'UNKNOWN',
 }
 
 export enum Languages {

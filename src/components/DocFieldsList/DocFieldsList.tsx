@@ -8,7 +8,7 @@ export interface DocFieldsProps {
 
 function DocFieldsList({ fields }: DocFieldsProps) {
   const docFields = fields.map((field) => (
-    <li key={field.name}>
+    <li key={field.name} data-testid="doc-field">
       <DocField field={field} />
     </li>
   ));

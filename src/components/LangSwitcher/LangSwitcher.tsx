@@ -31,6 +31,7 @@ const LangSwitcher = () => {
         className="tgl tgl-flip"
         checked={isChecked}
         onChange={changeHandler}
+        data-testid="lang-input"
       />
       <label
         htmlFor="inp"
