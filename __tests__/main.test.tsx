@@ -5,13 +5,16 @@ import { configureAppStore } from '../src/state/store';
 import { Provider } from 'react-redux';
 import QueryEditor from '../src/components/QueryEditor/QueryEditor';
 import { EditorView } from 'codemirror';
-import { defaultQueryString } from '../src/state/request/requestSlice';
 import ControlPanel, {
   PRETTIFY_BTN_TEST_ID,
 } from '../src/components/ControlPanel/ControlPanel';
 import { queries, renderAppWithRoute } from './test-utils/test-utils';
 import userEvent from '@testing-library/user-event';
 import { replaceEditorText } from '../src/utils/utils';
+import LangState from '../src/languages/LangState';
+import { Languages } from '../src/utils/enums';
+import en from '../src/languages/lang/en';
+import { MAIN_INTRO } from '../src/constants';
 import { AppRoutes } from '../src/utils/enums';
 import {
   REQUEST_SECTION_TEST_ID,
@@ -59,6 +62,8 @@ describe('Request Editor', () => {
   });
 
   it('contains introduction text', () => {
+    const defaultQueryString = en[MAIN_INTRO];
+
     render(
       <Provider store={store}>
         <QueryEditor
@@ -106,17 +111,21 @@ describe('Prettify button', () => {
     const responseViewRef = React.createRef<EditorView | null>();
     const variablesViewRef = React.createRef<EditorView | null>();
     const headersViewRef = React.createRef<EditorView | null>();
+    const setIsLoading = vi.fn();
 
     render(
-      <Provider store={store}>
-        <QueryEditor mode="response" viewRef={requestViewRef} />
-        <ControlPanel
-          requestViewRef={requestViewRef}
-          responseViewRef={responseViewRef}
-          variablesViewRef={variablesViewRef}
-          headersViewRef={headersViewRef}
-        />
-      </Provider>
+      <LangState initialState={{ language: Languages.EN }}>
+        <Provider store={store}>
+          <QueryEditor mode="response" viewRef={requestViewRef} />
+          <ControlPanel
+            requestViewRef={requestViewRef}
+            responseViewRef={responseViewRef}
+            variablesViewRef={variablesViewRef}
+            headersViewRef={headersViewRef}
+            setIsLoading={setIsLoading}
+          />
+        </Provider>
+      </LangState>
     );
 
     const requestEditor = requestViewRef.current;

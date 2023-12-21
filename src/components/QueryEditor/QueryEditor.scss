@@ -1,0 +1,53 @@
+@import '../../styles/abstracts/variables';
+
+.cm-editor {
+  color: $gray;
+}
+
+.cm-keyword,
+.cm-null {
+  color: $pink-x2;
+}
+
+.cm-definitionKeyword {
+  color: $pink;
+}
+
+.cm-name,
+.cm-propertyName {
+  color: $blue;
+
+  .specific-word & {
+    color: $blue-x3;
+  }
+}
+
+.cm-string {
+  color: $orange;
+}
+
+.cm-variableName {
+  color: $blue-x2;
+}
+
+.cm-number,
+.cm-integer,
+.cm-float {
+  color: $green;
+}
+
+.cm-bool {
+  color: $blue-x4;
+}
+
+.cm-atom,
+.cm-attributeName {
+  color: $blue-x3;
+}
+
+.cm-Comment,
+.cm-lineComment,
+.cm-blockComment,
+.cm-docComment {
+  color: $gray;
+}

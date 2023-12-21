@@ -52,10 +52,6 @@ export interface ContextProps {
   };
 }
 
-export interface GraphQLError {
-  message: string;
-}
-
 export interface Arg {
   name: string;
   type: string;
@@ -72,4 +68,9 @@ export interface DocTypes {
   name: string;
   descr: string;
   fields: Field[] | null;
+}
+
+export interface ParseJsonResult {
+  object: Record<string, unknown>;
+  error: Error | null;
 }

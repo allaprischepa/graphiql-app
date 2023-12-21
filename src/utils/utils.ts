@@ -1,5 +1,6 @@
 import { EditorView } from 'codemirror';
 import { MutableRefObject } from 'react';
+import { ParseJsonResult } from '../types/types';
 
 export const commentOutString = (str: string) => {
   return str
@@ -68,10 +69,8 @@ export const capitalize = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
-export const parseJsonFromString = (
-  str: string
-): { object: object; error: Error | null } => {
-  let object = {};
+export const parseJsonFromString = (str: string): ParseJsonResult => {
+  let object: Record<string, unknown> = {};
   let error = null;
 
   if (str.length > 0) {
