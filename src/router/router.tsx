@@ -49,11 +49,7 @@ export const routesConfig = [
       },
       {
         path: AppRoutes.welcome,
-        element: (
-          <PrivateRoute redirectPath={AppRoutes.main}>
-            <Welcome />
-          </PrivateRoute>
-        ),
+        element: <Welcome />,
       },
     ],
     errorElement: <ErrorPage />,
