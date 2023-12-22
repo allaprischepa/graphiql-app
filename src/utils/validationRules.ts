@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { getTranslatedMSg } from './utils';
+import { getTranslatedMsg } from './utils';
 import { ENDPOINT_VALIDATION_MSG, REQUIRED_MSG } from '../constants';
 
 export const validMessages = {
@@ -63,6 +63,6 @@ export const validationSchemaSignIn = yup.object().shape({
 export const validationSchemaEndpoint = yup.object().shape({
   endpointUrl: yup
     .string()
-    .required(() => getTranslatedMSg(REQUIRED_MSG))
-    .url(() => getTranslatedMSg(ENDPOINT_VALIDATION_MSG)),
+    .required(() => getTranslatedMsg(REQUIRED_MSG))
+    .url(() => getTranslatedMsg(ENDPOINT_VALIDATION_MSG)),
 });

@@ -88,7 +88,7 @@ export const parseJsonFromString = (str: string): ParseJsonResult => {
   return { object, error };
 };
 
-export const getTranslatedMSg = (CONSTANT: keyof typeof en) => {
+export const getTranslatedMsg = (CONSTANT: keyof typeof en) => {
   const lang = localStorage.getItem('language') ?? Languages.RU;
   const langData = lang === Languages.EN ? en : ru;
 
