@@ -50,6 +50,10 @@ li {
   list-style: none;
 }
 
+button {
+  transition: $trans;
+}
+
 .container {
   max-width: 1280px;
   padding: 0 20px;
