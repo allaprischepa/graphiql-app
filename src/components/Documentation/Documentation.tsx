@@ -16,7 +16,13 @@ import './Documentation.scss';
 import DocNav from '../DocNav/DocNav';
 import { useGetSchemaQuery } from '../../api/graphqlApi';
 import Loader from '../Loader/Loader';
-import { DOC_DESCR, DOC_TITLE } from '../../constants';
+import {
+  DOC_DESCR,
+  DOC_SUBTITLE_ALL_SHEME,
+  DOC_SUBTITLE_FIELDS,
+  DOC_SUBTITLE_ROOT,
+  DOC_TITLE,
+} from '../../constants';
 import { langContext } from '../../languages/langContext';
 
 interface IntrospectionQueryResp {
@@ -74,16 +80,25 @@ function Documentation() {
               {fields && (
                 <>
                   {name === translate(DOC_TITLE) ? (
-                    <DocSubtitle text="Root Types" icon="types.svg" />
+                    <DocSubtitle
+                      text={translate(DOC_SUBTITLE_ROOT)}
+                      icon="types.svg"
+                    />
                   ) : (
-                    <DocSubtitle text="Fields" icon="fields.svg" />
+                    <DocSubtitle
+                      text={translate(DOC_SUBTITLE_FIELDS)}
+                      icon="fields.svg"
+                    />
                   )}
                   <DocFieldsList fields={fields} />
                 </>
               )}
               {name === translate(DOC_TITLE) && types && (
                 <>
-                  <DocSubtitle text="All Schema Types" icon="root.svg" />
+                  <DocSubtitle
+                    text={translate(DOC_SUBTITLE_ALL_SHEME)}
+                    icon="root.svg"
+                  />
                   <DocTypesList types={types} />
                 </>
               )}

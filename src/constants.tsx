@@ -33,6 +33,9 @@ export const TEAM_LEAD = 'TEAM_LEAD';
 export const LANG_LABEL = 'LANG_LABEL';
 
 export const DOC_TITLE = 'DOC_TITLE';
+export const DOC_SUBTITLE_ROOT = 'DOC_SUBTITLE_ROOT';
+export const DOC_SUBTITLE_FIELDS = 'DOC_SUBTITLE_FIELDS';
+export const DOC_SUBTITLE_ALL_SHEME = 'DOC_SUBTITLE_ALL_SHEME';
 export const DOC_DESCR = 'DOC_DESCR';
 
 export const MAIN_INTRO = 'MAIN_INTRO';

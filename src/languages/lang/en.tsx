@@ -37,6 +37,9 @@ import {
   IS_INVALID,
   HEADER_VALIDATION_MSG,
   TYPE_STRING_VALIDATION_MSG,
+  DOC_SUBTITLE_ROOT,
+  DOC_SUBTITLE_FIELDS,
+  DOC_SUBTITLE_ALL_SHEME,
 } from '../../constants';
 
 const en = {
@@ -74,6 +77,9 @@ const en = {
   [TEAM_LEAD]: 'Team lead',
 
   [DOC_TITLE]: 'Docs',
+  [DOC_SUBTITLE_ROOT]: 'Root Types',
+  [DOC_SUBTITLE_FIELDS]: 'Fields',
+  [DOC_SUBTITLE_ALL_SHEME]: 'All Schema Types',
   [DOC_DESCR]:
     'A GraphQL schema provides a root type for each kind of operation.',
 
