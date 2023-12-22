@@ -7,7 +7,7 @@ export interface DocTypesProps {
 
 function DocTypesList({ types }: DocTypesProps) {
   const docTypes = types.map((type) => (
-    <li key={type.name}>
+    <li key={type.name} data-testid="doc-type">
       <DocType key={type.name} type={type.name} />
     </li>
   ));

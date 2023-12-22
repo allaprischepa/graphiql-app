@@ -40,7 +40,7 @@ export interface LangStateProps {
 }
 
 export interface SetLangAction {
-  type: typeof LangActionType.SET_LANGUAGE;
+  type: typeof LangActionType.SET_LANGUAGE | typeof LangActionType.UNKNOWN;
   payload: string;
 }
 

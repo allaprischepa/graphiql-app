@@ -1,9 +1,12 @@
 import { Languages } from '../utils/enums';
 
-const localStorageLang = localStorage.getItem('language');
-
-const initialState = {
-  language: localStorageLang ? localStorageLang : Languages.RU,
+const getInitialState = (): {
+  language: string;
+} => {
+  const localStorageLang = localStorage.getItem('language');
+  return {
+    language: localStorageLang ? localStorageLang : Languages.RU,
+  };
 };
 
-export default initialState;
+export default getInitialState;

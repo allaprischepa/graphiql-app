@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/App/App';
 import './styles/index.scss';
@@ -7,12 +6,12 @@ import { Provider } from 'react-redux';
 import { store } from './state/store';
 
 import LangState from './languages/LangState';
-import initialState from './languages/initialState';
+import getInitialState from './languages/initialState';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <ErrorBoundary>
     <Provider store={store}>
-      <LangState initialState={initialState}>
+      <LangState initialState={getInitialState()}>
         <App />
       </LangState>
     </Provider>
