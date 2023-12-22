@@ -41,6 +41,8 @@ import {
   ENDPOINT_SETUP_LABEL,
   ENDPOINT_SETUP_SAVE,
   ENDPOINT_SETUP_INTRO,
+  ENDPOINT_VALIDATION_MSG,
+  REQUIRED_MSG,
 } from '../../constants';
 
 const ru = {
@@ -124,6 +126,9 @@ const ru = {
   [ENDPOINT_SETUP_SAVE]: 'Сохранить',
   [ENDPOINT_SETUP_INTRO]:
     'Настройте URL-адрес конечной точки GraphQL в соответствии с вашими потребностями при выполнении запросов.',
+  [ENDPOINT_VALIDATION_MSG]:
+    'Конечная точка должна представлять собой корректный URL-адрес',
+  [REQUIRED_MSG]: 'Это поле обязательно для заполнения',
 };
 
 export default ru;

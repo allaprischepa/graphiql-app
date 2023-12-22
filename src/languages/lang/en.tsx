@@ -41,6 +41,8 @@ import {
   ENDPOINT_SETUP_LABEL,
   ENDPOINT_SETUP_SAVE,
   ENDPOINT_SETUP_INTRO,
+  ENDPOINT_VALIDATION_MSG,
+  REQUIRED_MSG,
 } from '../../constants';
 
 const en = {
@@ -123,6 +125,8 @@ const en = {
   [ENDPOINT_SETUP_SAVE]: 'Save',
   [ENDPOINT_SETUP_INTRO]:
     'Adjust the GraphQL endpoint URL according to your needs for making requests.',
+  [ENDPOINT_VALIDATION_MSG]: 'Endpoint must be a valid URL',
+  [REQUIRED_MSG]: 'This field is required',
 };
 
 export default en;

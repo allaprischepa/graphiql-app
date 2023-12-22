@@ -1,6 +1,9 @@
 import { EditorView } from 'codemirror';
 import { MutableRefObject } from 'react';
 import { ParseJsonResult } from '../types/types';
+import { Languages } from './enums';
+import en from '../languages/lang/en';
+import ru from '../languages/lang/ru';
 
 export const commentOutString = (str: string) => {
   return str
@@ -83,4 +86,11 @@ export const parseJsonFromString = (str: string): ParseJsonResult => {
   }
 
   return { object, error };
+};
+
+export const getTranslatedMSg = (CONSTANT: keyof typeof en) => {
+  const lang = localStorage.getItem('language') ?? Languages.RU;
+  const langData = lang === Languages.EN ? en : ru;
+
+  return langData[CONSTANT] ?? '';
 };

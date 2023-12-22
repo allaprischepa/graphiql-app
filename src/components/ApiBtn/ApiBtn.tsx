@@ -26,9 +26,10 @@ function ApiBtn() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isValid },
   } = useForm({
-    defaultValues: {
+    values: {
       endpointUrl: endpoint,
     },
     mode: 'all',
@@ -54,6 +55,11 @@ function ApiBtn() {
     closeModal();
   };
 
+  const handleClose = () => {
+    reset();
+    closeModal();
+  };
+
   return (
     <>
       <button
@@ -65,14 +71,14 @@ function ApiBtn() {
       </button>
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        onRequestClose={handleClose}
         ariaHideApp={false}
         className="modal"
         overlayClassName="overlay"
       >
         <div className="modal-header">
           <h3>{translate(API_SETTINGS)}</h3>
-          <button onClick={closeModal} className="close-btn" />
+          <button onClick={handleClose} className="close-btn" />
         </div>
         <p className="intro">{translate(ENDPOINT_SETUP_INTRO)}</p>
         <form
