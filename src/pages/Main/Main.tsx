@@ -37,13 +37,13 @@ export default function Main() {
 
   return (
     <main className="graphiql-container" data-testid={TEST_ID}>
+      <section className="tools">
+        <DocBtn />
+      </section>
+      <section className={isActive ? 'doc active' : 'doc'}>
+        {isActive && <Documentation />}
+      </section>
       <section className="graphiql-main">
-        <section className="tools">
-          <DocBtn />
-        </section>
-        <section className={isActive ? 'doc active' : 'doc'}>
-          {isActive && <Documentation />}
-        </section>
         <section
           className="request-section"
           data-testid={REQUEST_SECTION_TEST_ID}
