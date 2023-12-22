@@ -70,7 +70,7 @@
   }
 
   section.tools {
-    padding: 15px;
+    padding: 15px 10px;
 
     @media screen and (max-width: 679px) {
       padding: 10px 15px 5px;
@@ -87,10 +87,18 @@
 
   .doc {
     display: none;
-    max-width: 380px;
+    max-width: 340px;
     width: 100%;
     max-height: calc(100vh - 30px);
     overflow-y: scroll;
+
+    @media screen and (max-width: 1200px) {
+      max-width: 300px;
+    }
+
+    @media screen and (max-width: 1024px) {
+      min-width: 25%;
+    }
 
     @media screen and (max-width: 679px) {
       max-width: 100%;

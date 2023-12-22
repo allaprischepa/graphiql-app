@@ -9,7 +9,7 @@ function DocSubtitle({ text, icon }: DocSubtitleProps) {
   return (
     <div className="doc-subtitle">
       <img src={icon} alt={text} />
-      <h5>{text}</h5>
+      <h4>{text}</h4>
     </div>
   );
 }

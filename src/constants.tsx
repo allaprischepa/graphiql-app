@@ -53,8 +53,7 @@ export const IS_INVALID = 'IS_INVALID';
 export const HEADER_VALIDATION_MSG = 'HEADER_VALIDATION_MSG';
 export const TYPE_STRING_VALIDATION_MSG = 'TYPE_STRING_VALIDATION_MSG';
 
-//export const API_URL = 'https://rickandmortyapi.com/graphql';
-export const API_URL = 'https://graphql-pokemon2.vercel.app';
+export const API_URL = 'https://rickandmortyapi.com/graphql';
 
 export const QUERY_EXAMPLE = `
 
