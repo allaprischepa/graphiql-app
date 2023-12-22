@@ -18,7 +18,7 @@ describe('Redirection and navigation if user is logged in', async () => {
 
   const router = renderAppWithRoute(AppRoutes.main);
 
-  it('Redirect to Main page if navigate to another pages', async () => {
+  it('Redirect to Main page if navigate to sign in or sign up page', async () => {
     act(() => {
       router.navigate(AppRoutes.signIn);
       renderApp(router);
@@ -28,13 +28,6 @@ describe('Redirection and navigation if user is logged in', async () => {
 
     act(() => {
       router.navigate(AppRoutes.signUp);
-      renderApp(router);
-    });
-
-    expect(router.state.location.pathname).toContain(AppRoutes.main);
-
-    act(() => {
-      router.navigate(AppRoutes.welcome);
       renderApp(router);
     });
 
@@ -55,7 +48,7 @@ describe('Redirection and navigation if user is logged in', async () => {
     });
   });
 
-  it('Logo button leads to Main page', async () => {
+  it('Logo button leads to Welcome page', async () => {
     renderApp(router);
 
     await waitFor(async () => {
@@ -63,7 +56,7 @@ describe('Redirection and navigation if user is logged in', async () => {
         name: /logo reactivebuqlya/i,
       });
       await userEvent.click(logoBtn);
-      expect(router.state.location.pathname).toContain(AppRoutes.main);
+      expect(router.state.location.pathname).toContain(AppRoutes.welcome);
     });
   });
 });
