@@ -43,6 +43,9 @@ import {
   IS_INVALID,
   HEADER_VALIDATION_MSG,
   TYPE_STRING_VALIDATION_MSG,
+  DOC_SUBTITLE_ROOT,
+  DOC_SUBTITLE_FIELDS,
+  DOC_SUBTITLE_ALL_SHEME,
 } from '../../constants';
 
 const ru = {
@@ -88,6 +91,9 @@ const ru = {
   [TEAM_LEAD]: 'Тимлид',
 
   [DOC_TITLE]: 'Документация',
+  [DOC_SUBTITLE_ROOT]: 'Корневые типы',
+  [DOC_SUBTITLE_FIELDS]: 'Поля',
+  [DOC_SUBTITLE_ALL_SHEME]: 'Все типы схемы',
   [DOC_DESCR]:
     'Схема GraphQL предоставляет корневой тип для каждого типа операций.',
 
