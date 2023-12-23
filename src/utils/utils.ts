@@ -15,8 +15,9 @@ export const commentOutString = (str: string) => {
 export const sanitizeString = (str: string) => {
   return str
     .split('\n')
-    .filter((s) => s[0] !== '#')
+    .filter((s) => s.trim()[0] !== '#')
     .filter((s) => s.trim().length > 0)
+    .map((s) => s.replaceAll(/\s*#.*(?:\r\n|\r|\n|$)/gm, ''))
     .join('\n');
 };
 
