@@ -1,10 +1,13 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { Navigate, createBrowserRouter } from 'react-router-dom';
 import Main from '../pages/Main/Main';
 import SignIn from '../pages/SignIn/SignIn';
 import Welcome from '../pages/Welcome/Welcome';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import SignUp from '../pages/SignUp/SignUp';
 import { AppRoutes } from '../utils/enums';
+import ProtectedRoute from './ProtectedRoute';
+import PrivateRoute from './PrivateRoute';
+
 import Layout from '../components/Layout/Layout';
 
 export const routesConfig = [
@@ -13,24 +16,36 @@ export const routesConfig = [
     element: <Layout />,
     children: [
       {
+        path: AppRoutes.layout,
+        element: <Navigate to={AppRoutes.welcome} />,
+      },
+      {
         path: AppRoutes.main,
-        element: <Main />,
-        errorElement: <ErrorPage />,
+        element: (
+          <ProtectedRoute redirectPath={AppRoutes.welcome}>
+            <Main />
+          </ProtectedRoute>
+        ),
       },
       {
         path: AppRoutes.signIn,
-        element: <SignIn />,
-        errorElement: <ErrorPage />,
+        element: (
+          <PrivateRoute redirectPath={AppRoutes.main}>
+            <SignIn />
+          </PrivateRoute>
+        ),
       },
       {
         path: AppRoutes.signUp,
-        element: <SignUp />,
-        errorElement: <ErrorPage />,
+        element: (
+          <PrivateRoute redirectPath={AppRoutes.main}>
+            <SignUp />
+          </PrivateRoute>
+        ),
       },
       {
-        index: true,
+        path: AppRoutes.welcome,
         element: <Welcome />,
-        errorElement: <ErrorPage />,
       },
     ],
     errorElement: <ErrorPage />,

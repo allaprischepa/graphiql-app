@@ -1,7 +1,18 @@
 export const SCROLL_OFFSET = 20;
 export const FIRST_ELEM = 0;
 
+export const IS_USER_LOGGED_IN = 'isUserLoggedIn';
+export const USER_EMAIL = 'correct-email@mail.com';
+export const USER_PASSWORD = '12345678letters!';
+
 export const RSS_HREF = 'https://rs.school/react/';
+
+export const NOT_FOUND_TITLE = 'NOT_FOUND_TITLE';
+export const NOT_FOUND_TEXT = 'NOT_FOUND_TEXT';
+export const GO_HOME = 'GO_HOME';
+export const ERROR_PAGE_TITLE = 'ERROR_PAGE_TITLE';
+export const ERROR_PAGE_TEXT = 'ERROR_PAGE_TEXT';
+export const RELOAD_PAGE = 'RELOAD_PAGE';
 
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_OUT = 'SIGN_OUT';
@@ -33,6 +44,9 @@ export const TEAM_LEAD = 'TEAM_LEAD';
 export const LANG_LABEL = 'LANG_LABEL';
 
 export const DOC_TITLE = 'DOC_TITLE';
+export const DOC_SUBTITLE_ROOT = 'DOC_SUBTITLE_ROOT';
+export const DOC_SUBTITLE_FIELDS = 'DOC_SUBTITLE_FIELDS';
+export const DOC_SUBTITLE_ALL_SHEME = 'DOC_SUBTITLE_ALL_SHEME';
 export const DOC_DESCR = 'DOC_DESCR';
 
 export const MAIN_INTRO = 'MAIN_INTRO';

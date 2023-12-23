@@ -3,17 +3,23 @@ import {
   ALLA_TEXT,
   DOC_DESCR,
   DOC_TITLE,
+  ERROR_PAGE_TEXT,
+  ERROR_PAGE_TITLE,
   FEATURE_DOCUMENTATION,
   FEATURE_ENDPOINTS,
   FEATURE_HIGHLIGHTING,
   FEATURE_LANGUAGES,
   FEATURE_PRETTIFYING,
   FEATURE_RESPONSIVE,
+  GO_HOME,
   HERO_AUTH,
   HERO_ENDPOINTS,
   HERO_RSS,
   HERO_SUBTITLE,
   LANG_LABEL,
+  NOT_FOUND_TEXT,
+  NOT_FOUND_TITLE,
+  RELOAD_PAGE,
   SASHA_NAME,
   SASHA_TEXT,
   SIGN_IN,
@@ -37,6 +43,9 @@ import {
   IS_INVALID,
   HEADER_VALIDATION_MSG,
   TYPE_STRING_VALIDATION_MSG,
+  DOC_SUBTITLE_ROOT,
+  DOC_SUBTITLE_FIELDS,
+  DOC_SUBTITLE_ALL_SHEME,
   API_SETTINGS,
   ENDPOINT_SETUP_LABEL,
   ENDPOINT_SETUP_SAVE,
@@ -46,6 +55,13 @@ import {
 } from '../../constants';
 
 const en = {
+  [NOT_FOUND_TITLE]: 'Sorry... The page is not found',
+  [NOT_FOUND_TEXT]: 'Please, go to Home page',
+  [GO_HOME]: 'Go Home',
+  [ERROR_PAGE_TITLE]: 'Sorry... The error occurred',
+  [ERROR_PAGE_TEXT]: 'Please, try to reload page',
+  [RELOAD_PAGE]: 'Reload Page',
+
   [LANG_LABEL]: 'EN',
   [SIGN_IN]: 'Sign In',
   [SIGN_OUT]: 'Sign Up',
@@ -80,6 +96,9 @@ const en = {
   [TEAM_LEAD]: 'Team lead',
 
   [DOC_TITLE]: 'Docs',
+  [DOC_SUBTITLE_ROOT]: 'Root Types',
+  [DOC_SUBTITLE_FIELDS]: 'Fields',
+  [DOC_SUBTITLE_ALL_SHEME]: 'All Schema Types',
   [DOC_DESCR]:
     'A GraphQL schema provides a root type for each kind of operation.',
 

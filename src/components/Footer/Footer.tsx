@@ -24,9 +24,9 @@ function Footer() {
         <div className="body">
           <div className="github-body">{teamMembers}</div>
           <a href="https://rs.school/" className="footer-logo">
-            <img src="rs_school_js.svg" alt="RSS" />
+            <img src="/rs_school_js.svg" alt="RSS" />
           </a>
-          <span className="date">2023</span>
+          <span className="date">2024</span>
         </div>
       </div>
     </footer>

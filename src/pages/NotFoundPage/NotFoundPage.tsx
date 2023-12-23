@@ -1,15 +1,23 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { langContext } from '../../languages/langContext';
+import { GO_HOME, NOT_FOUND_TEXT, NOT_FOUND_TITLE } from '../../constants';
 
 export default function NotFoundPage() {
+  const {
+    dispatch: { translate },
+  } = useContext(langContext);
+
   return (
-    <div className="error-page">
-      <div className="error-message">
-        <div>Sorry... The page is not found.</div>
-        <div>Please, go to Home page.</div>
+    <main className="error-page">
+      <img className="error-pic" src="/favicon.png" alt="logo" />
+      <div>
+        <h2>{translate(NOT_FOUND_TITLE)}</h2>
+        <p>{translate(NOT_FOUND_TEXT)}</p>
       </div>
-      <Link className="button home-link" to="/">
-        Go Home
+      <Link className="button" to="/">
+        {translate(GO_HOME)}
       </Link>
-    </div>
+    </main>
   );
 }

@@ -8,7 +8,7 @@ export function EmailField({ register, errors }: FormHandlers) {
 
   return (
     <>
-      <div className="field" data-testid="email-field">
+      <div className="sign-field" data-testid="email-field">
         <label htmlFor="email">E-mail:</label>
         <input type="email" id="email" {...registerSignUp('email')}></input>
       </div>

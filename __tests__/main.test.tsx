@@ -1,10 +1,6 @@
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import Main, {
-  REQUEST_SECTION_TEST_ID,
-  RESPONSE_SECTION_TEST_ID,
-} from '../src/pages/Main/Main';
 import { configureAppStore } from '../src/state/store';
 import { Provider } from 'react-redux';
 import QueryEditor from '../src/components/QueryEditor/QueryEditor';
@@ -12,25 +8,32 @@ import { EditorView } from 'codemirror';
 import ControlPanel, {
   PRETTIFY_BTN_TEST_ID,
 } from '../src/components/ControlPanel/ControlPanel';
-import { queries } from './test-utils/test-utils';
+import { queries, renderAppWithRoute } from './test-utils/test-utils';
 import userEvent from '@testing-library/user-event';
 import { replaceEditorText } from '../src/utils/utils';
 import LangState from '../src/languages/LangState';
 import { Languages } from '../src/utils/enums';
 import en from '../src/languages/lang/en';
 import { MAIN_INTRO } from '../src/constants';
+import { AppRoutes } from '../src/utils/enums';
+import {
+  REQUEST_SECTION_TEST_ID,
+  RESPONSE_SECTION_TEST_ID,
+} from '../src/pages/Main/Main';
+import { IS_USER_LOGGED_IN } from '../src/constants';
 
 describe('Main Page', () => {
   it('contains Request and Response Sections', async () => {
-    const store = configureAppStore();
+    localStorage.setItem(IS_USER_LOGGED_IN, 'true');
 
-    render(
-      <LangState initialState={{ language: Languages.EN }}>
-        <Provider store={store}>
-          <Main />
-        </Provider>
-      </LangState>
-    );
+    vi.mock('firebase/auth', () => {
+      return {
+        getAuth: vi.fn().mockImplementationOnce(() => {}),
+        onAuthStateChanged: vi.fn().mockImplementationOnce(() => {}),
+      };
+    });
+
+    renderAppWithRoute(AppRoutes.main);
 
     const requestSection = await screen.findByTestId(REQUEST_SECTION_TEST_ID);
     const responseSection = await screen.findByTestId(RESPONSE_SECTION_TEST_ID);

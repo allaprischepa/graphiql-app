@@ -3,17 +3,23 @@ import {
   ALLA_TEXT,
   DOC_DESCR,
   DOC_TITLE,
+  ERROR_PAGE_TEXT,
+  ERROR_PAGE_TITLE,
   FEATURE_DOCUMENTATION,
   FEATURE_ENDPOINTS,
   FEATURE_HIGHLIGHTING,
   FEATURE_LANGUAGES,
   FEATURE_PRETTIFYING,
   FEATURE_RESPONSIVE,
+  GO_HOME,
   HERO_AUTH,
   HERO_ENDPOINTS,
   HERO_RSS,
   HERO_SUBTITLE,
   LANG_LABEL,
+  NOT_FOUND_TEXT,
+  NOT_FOUND_TITLE,
+  RELOAD_PAGE,
   SASHA_NAME,
   SASHA_TEXT,
   SIGN_IN,
@@ -37,6 +43,9 @@ import {
   IS_INVALID,
   HEADER_VALIDATION_MSG,
   TYPE_STRING_VALIDATION_MSG,
+  DOC_SUBTITLE_ROOT,
+  DOC_SUBTITLE_FIELDS,
+  DOC_SUBTITLE_ALL_SHEME,
   API_SETTINGS,
   ENDPOINT_SETUP_LABEL,
   ENDPOINT_SETUP_SAVE,
@@ -46,6 +55,13 @@ import {
 } from '../../constants';
 
 const ru = {
+  [NOT_FOUND_TITLE]: 'Извините... Страница не найдена',
+  [NOT_FOUND_TEXT]: 'Пожалуйста, перейдите на домашнюю страницу',
+  [GO_HOME]: 'Домой',
+  [ERROR_PAGE_TITLE]: 'Извините... Произошла ошибка',
+  [ERROR_PAGE_TEXT]: 'Пожалуйста, попробуйте перезагрузить страницу',
+  [RELOAD_PAGE]: 'Перезагрузить страницу',
+
   [LANG_LABEL]: 'РУ',
   [SIGN_IN]: 'Войти',
   [SIGN_OUT]: 'Регистрация',
@@ -81,6 +97,9 @@ const ru = {
   [TEAM_LEAD]: 'Тимлид',
 
   [DOC_TITLE]: 'Документация',
+  [DOC_SUBTITLE_ROOT]: 'Корневые типы',
+  [DOC_SUBTITLE_FIELDS]: 'Поля',
+  [DOC_SUBTITLE_ALL_SHEME]: 'Все типы схемы',
   [DOC_DESCR]:
     'Схема GraphQL предоставляет корневой тип для каждого типа операций.',
 
