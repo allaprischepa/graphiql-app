@@ -29,6 +29,10 @@
     flex-direction: row;
   }
 
+  @media screen and (min-width: 1280px) {
+    right: calc((100% - 1280px) / 2 + 20px);
+  }
+
   @media screen and (max-width: 768px) {
     right: 10px;
   }
