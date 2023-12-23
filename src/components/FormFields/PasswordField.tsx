@@ -11,7 +11,7 @@ export function PasswordField({ register, errors }: FormHandlers) {
 
   return (
     <>
-      <div className="field" data-testid="password-field">
+      <div className="sign-field" data-testid="password-field">
         <label htmlFor="password">Password:</label>
         <input
           type={isOpenedPassword ? 'text' : 'password'}

@@ -5,11 +5,13 @@ import { SCROLL_OFFSET } from '../../constants';
 import './Header.scss';
 import SignOut from '../SignOut/SignOut';
 import LangSwitcher from '../LangSwitcher/LangSwitcher';
+import { useAppSelector } from '../../state/store';
 
 const Header = () => {
   const [isScroll, setIsScroll] = useState(false);
 
   const changeIsScroll = () => setIsScroll(window.scrollY > SCROLL_OFFSET);
+  const isUserLoggedIn = useAppSelector('auth', 'isUserLoggedIn');
 
   useEffect(() => {
     changeIsScroll();
@@ -28,8 +30,8 @@ const Header = () => {
           <Logo />
           <div className="header-right">
             <LangSwitcher />
-            <Navigation />
-            <SignOut />
+            {isUserLoggedIn || <Navigation />}
+            {!isUserLoggedIn || <SignOut />}
           </div>
         </div>
       </div>

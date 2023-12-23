@@ -1,11 +1,11 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { routesConfig } from '../src/router/router';
 import { render, screen } from '@testing-library/react';
-import { TEST_ID as MAIN_PAGE_TEST_ID } from '../src/pages/Main/Main';
-import { Provider } from 'react-redux';
-import { configureAppStore } from '../src/state/store';
 import { AppRoutes, Languages } from '../src/utils/enums';
+import { renderAppWithRoute } from './test-utils/test-utils';
+import { TEST_ID as MAIN_PAGE_TEST_ID } from '../src/pages/Main/Main';
+import { IS_USER_LOGGED_IN } from '../src/constants';
 import LangState from '../src/languages/LangState';
 
 describe('404 Page', () => {
@@ -28,16 +28,7 @@ describe('404 Page', () => {
 
 describe('Sign In Page', () => {
   it('is displayed when navigating to the corresponding route', async () => {
-    const route = AppRoutes.signIn;
-    const router = createMemoryRouter(routesConfig, {
-      initialEntries: [route],
-    });
-
-    render(
-      <LangState initialState={{ language: Languages.EN }}>
-        <RouterProvider router={router} />
-      </LangState>
-    );
+    renderAppWithRoute(AppRoutes.signIn);
 
     const signIn = await screen.findByTestId('sign-in-title');
     expect(signIn).toBeInTheDocument();
@@ -46,16 +37,7 @@ describe('Sign In Page', () => {
 
 describe('Sign Up Page', () => {
   it('is displayed when navigating to the corresponding route', async () => {
-    const route = AppRoutes.signUp;
-    const router = createMemoryRouter(routesConfig, {
-      initialEntries: [route],
-    });
-
-    render(
-      <LangState initialState={{ language: Languages.EN }}>
-        <RouterProvider router={router} />
-      </LangState>
-    );
+    renderAppWithRoute(AppRoutes.signUp);
 
     const signUp = await screen.findByTestId('sign-up-title');
     expect(signUp).toBeInTheDocument();
@@ -64,16 +46,7 @@ describe('Sign Up Page', () => {
 
 describe('Welcome Page', () => {
   it('is displayed when navigating to the corresponding route', async () => {
-    const route = AppRoutes.welcome;
-    const router = createMemoryRouter(routesConfig, {
-      initialEntries: [route],
-    });
-
-    render(
-      <LangState initialState={{ language: Languages.EN }}>
-        <RouterProvider router={router} />
-      </LangState>
-    );
+    renderAppWithRoute(AppRoutes.welcome);
 
     const welcome = await screen.findByText('GraphiQL');
     expect(welcome).toBeInTheDocument();
@@ -81,20 +54,17 @@ describe('Welcome Page', () => {
 });
 
 describe('Main Page', () => {
-  it('is displayed when navigating to the corresponding route', () => {
-    const store = configureAppStore();
-    const route = AppRoutes.main;
-    const router = createMemoryRouter(routesConfig, {
-      initialEntries: [route],
+  it('is displayed when navigating to the corresponding route', async () => {
+    localStorage.setItem(IS_USER_LOGGED_IN, 'true');
+
+    vi.mock('firebase/auth', () => {
+      return {
+        getAuth: vi.fn().mockImplementationOnce(() => {}),
+        onAuthStateChanged: vi.fn().mockImplementationOnce(() => {}),
+      };
     });
 
-    render(
-      <Provider store={store}>
-        <LangState initialState={{ language: Languages.EN }}>
-          <RouterProvider router={router} />
-        </LangState>
-      </Provider>
-    );
+    renderAppWithRoute(AppRoutes.main);
 
     const mainPage = screen.getByTestId(MAIN_PAGE_TEST_ID);
     expect(mainPage).toBeInTheDocument();
