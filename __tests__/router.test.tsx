@@ -2,10 +2,11 @@ import { describe, it, expect, vi } from 'vitest';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { routesConfig } from '../src/router/router';
 import { render, screen } from '@testing-library/react';
-import { AppRoutes } from '../src/utils/enums';
+import { AppRoutes, Languages } from '../src/utils/enums';
 import { renderAppWithRoute } from './test-utils/test-utils';
 import { TEST_ID as MAIN_PAGE_TEST_ID } from '../src/pages/Main/Main';
 import { IS_USER_LOGGED_IN } from '../src/constants';
+import LangState from '../src/languages/LangState';
 
 describe('404 Page', () => {
   it('is displayed when navigating to an invalid route', async () => {
