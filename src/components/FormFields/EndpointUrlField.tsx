@@ -5,14 +5,27 @@ interface Props {
   register: UseFormRegisterReturn<'endpointUrl'>;
   labelText: string;
   errors: FieldErrors<{ endpointUrl: string }>;
+  revertText: string;
+  revertEndpoint: () => void;
 }
 
-export function EndpointUrlField({ register, labelText, errors }: Props) {
+export function EndpointUrlField({
+  register,
+  labelText,
+  errors,
+  revertText,
+  revertEndpoint,
+}: Props) {
   return (
     <>
-      <div className="api-field">
+      <div className="api-field with-icon">
         <label htmlFor="endpoint-url">{labelText}:</label>
         <input type="text" id="endpoint-url" {...register} />
+        <div
+          className="revert-endpoint"
+          title={revertText}
+          onClick={revertEndpoint}
+        />
       </div>
       {errors.endpointUrl && (
         <p className="error-message">{errors.endpointUrl.message}</p>

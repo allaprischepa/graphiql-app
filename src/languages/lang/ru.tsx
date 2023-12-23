@@ -52,6 +52,7 @@ import {
   ENDPOINT_SETUP_INTRO,
   ENDPOINT_VALIDATION_MSG,
   REQUIRED_MSG,
+  REVERT_TEXT,
 } from '../../constants';
 
 const ru = {
@@ -144,10 +145,11 @@ const ru = {
   [ENDPOINT_SETUP_LABEL]: 'URL конечной точки',
   [ENDPOINT_SETUP_SAVE]: 'Сохранить',
   [ENDPOINT_SETUP_INTRO]:
-    'Настройте URL-адрес конечной точки GraphQL в соответствии с вашими потребностями при выполнении запросов.',
+    'Настройте URL-адрес конечной точки GraphQL в соответствии с вашими потребностями при выполнении запросов. Вы можете вернуться к исходной конечной точке, нажав кнопку "Вернуться" и сохранив изменения.',
   [ENDPOINT_VALIDATION_MSG]:
     'Конечная точка должна представлять собой корректный URL-адрес',
   [REQUIRED_MSG]: 'Это поле обязательно для заполнения',
+  [REVERT_TEXT]: 'Установить начальную конечную точку',
 };
 
 export default ru;

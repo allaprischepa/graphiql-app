@@ -52,6 +52,7 @@ import {
   ENDPOINT_SETUP_INTRO,
   ENDPOINT_VALIDATION_MSG,
   REQUIRED_MSG,
+  REVERT_TEXT,
 } from '../../constants';
 
 const en = {
@@ -143,9 +144,10 @@ const en = {
   [ENDPOINT_SETUP_LABEL]: 'Endpoint URL',
   [ENDPOINT_SETUP_SAVE]: 'Save',
   [ENDPOINT_SETUP_INTRO]:
-    'Adjust the GraphQL endpoint URL according to your needs for making requests.',
+    'Adjust the GraphQL endpoint URL according to your needs for making requests. You can revert to the initial endpoint by clicking the "Revert" button and saving your changes.',
   [ENDPOINT_VALIDATION_MSG]: 'Endpoint must be a valid URL',
   [REQUIRED_MSG]: 'This field is required',
+  [REVERT_TEXT]: 'Set the initial endpoint',
 };
 
 export default en;

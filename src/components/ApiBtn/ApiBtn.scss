@@ -55,6 +55,9 @@
 }
 
 .api-settings-form {
+  display: flex;
+  flex-direction: column;
+
   .api-field {
     column-gap: 15px;
 

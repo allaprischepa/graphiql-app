@@ -6,9 +6,11 @@ import { langContext } from '../../languages/langContext';
 import {
   API_ENDPOINT,
   API_SETTINGS,
+  API_URL,
   ENDPOINT_SETUP_INTRO,
   ENDPOINT_SETUP_LABEL,
   ENDPOINT_SETUP_SAVE,
+  REVERT_TEXT,
 } from '../../constants';
 import { useForm } from 'react-hook-form';
 import { validationSchemaEndpoint } from '../../utils/validationRules';
@@ -27,6 +29,7 @@ function ApiBtn() {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors, isValid },
   } = useForm({
     values: {
@@ -89,6 +92,10 @@ function ApiBtn() {
             register={register('endpointUrl')}
             labelText={translate(ENDPOINT_SETUP_LABEL)}
             errors={errors}
+            revertEndpoint={() =>
+              setValue('endpointUrl', API_URL, { shouldValidate: true })
+            }
+            revertText={translate(REVERT_TEXT)}
           />
           <input
             type="submit"

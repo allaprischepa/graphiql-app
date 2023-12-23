@@ -28,15 +28,24 @@
       border-width: 2px;
     }
   }
+
+  &.with-icon input {
+    padding-right: 34px;
+  }
 }
 
 .password-opened-eye,
-.password-closed-eye {
+.password-closed-eye,
+.revert-endpoint {
   position: absolute;
   right: -24px;
   width: 22px;
   height: 22px;
   cursor: pointer;
+
+  .with-icon & {
+    right: 8px;
+  }
 
   @media screen and (max-width: 533px) {
     top: 40px;
@@ -49,6 +58,10 @@
 
 .password-closed-eye {
   content: url('../../assets/icons/closed-eye.svg');
+}
+
+.revert-endpoint {
+  content: url('../../assets/icons/revert.svg');
 }
 
 .error-message {
