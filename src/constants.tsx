@@ -14,9 +14,6 @@ export const ERROR_PAGE_TITLE = 'ERROR_PAGE_TITLE';
 export const ERROR_PAGE_TEXT = 'ERROR_PAGE_TEXT';
 export const RELOAD_PAGE = 'RELOAD_PAGE';
 
-export const SIGN_IN = 'SIGN_IN';
-export const SIGN_OUT = 'SIGN_OUT';
-
 export const TITLE_FEATURES = 'TITLE_FEATURES';
 export const TITLE_TEAM = 'TITLE_TEAM';
 
@@ -41,7 +38,6 @@ export const SASHA_TEXT = 'SASHA_TEXT';
 export const ZENA_TEXT = 'ZENA_TEXT';
 
 export const TEAM_LEAD = 'TEAM_LEAD';
-export const LANG_LABEL = 'LANG_LABEL';
 
 export const DOC_TITLE = 'DOC_TITLE';
 export const DOC_SUBTITLE_ROOT = 'DOC_SUBTITLE_ROOT';
@@ -76,3 +72,12 @@ export const QUERY_EXAMPLE = `
     }
   }
 `;
+
+export const RU_EN = {
+  HEADER_NAV: {
+    LANG_LABEL: 'LANG_LABEL',
+    SIGN_IN: 'NAV_SIGN_IN',
+    SIGN_UP: 'NAV_SIGN_UP',
+    MAIN: 'NAV_MAIN',
+  },
+};

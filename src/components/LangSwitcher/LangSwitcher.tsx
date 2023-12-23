@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { LANG_LABEL } from '../../constants';
+import { RU_EN } from '../../constants';
 import { langContext } from '../../languages/langContext';
 import './LangSwitcher.scss';
 import { Languages } from '../../utils/enums';
@@ -36,7 +36,7 @@ const LangSwitcher = () => {
       <label
         htmlFor="inp"
         className="tgl-btn"
-        data-tg={translate(LANG_LABEL)}
+        data-tg={translate(RU_EN.HEADER_NAV.LANG_LABEL)}
       />
     </div>
   );
