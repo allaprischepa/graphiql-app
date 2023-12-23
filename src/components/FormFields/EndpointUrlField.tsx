@@ -10,7 +10,7 @@ interface Props {
 export function EndpointUrlField({ register, labelText, errors }: Props) {
   return (
     <>
-      <div className="field">
+      <div className="api-field">
         <label htmlFor="endpoint-url">{labelText}:</label>
         <input type="text" id="endpoint-url" {...register} />
       </div>

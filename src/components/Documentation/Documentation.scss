@@ -1,5 +1,7 @@
+@import '../../styles/abstracts/variables';
+
 .documentation {
-  font-size: 15px;
+  font-size: $font-size-15;
   padding: 15px;
   position: relative;
 

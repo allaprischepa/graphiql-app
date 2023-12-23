@@ -26,23 +26,20 @@
   border-radius: $block-border-radius;
   background-color: $main-color-light;
   box-sizing: border-box;
+  font-size: $font-size-15;
 
   .modal-header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
   }
 
   .close-btn {
-    @include editorToolsBtn(
-      $iconImgUrl: '../../assets/icons/close.png',
-      $btnSize: 36px,
-      $iconSize: 50%
-    );
+    @include btnClose();
   }
 
   .intro {
-    font-size: 16px;
+    text-align: justify;
     margin: 20px 0;
   }
 }
@@ -58,7 +55,7 @@
 }
 
 .api-settings-form {
-  .field {
+  .api-field {
     column-gap: 15px;
 
     & input {

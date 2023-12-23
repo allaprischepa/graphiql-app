@@ -1,6 +1,7 @@
 @import './../../styles/abstracts/variables';
 
-.sign-field {
+.sign-field,
+.api-field {
   position: relative;
   display: flex;
   align-items: center;
