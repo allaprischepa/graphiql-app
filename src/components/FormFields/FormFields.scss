@@ -52,6 +52,12 @@
   }
 }
 
+.revert-endpoint {
+  @media screen and (max-width: 533px) {
+    top: 1em + 22px;
+  }
+}
+
 .password-opened-eye {
   content: url('../../assets/icons/opened-eye.svg');
 }
