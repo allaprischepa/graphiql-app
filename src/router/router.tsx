@@ -18,7 +18,6 @@ export const routesConfig = [
       {
         path: AppRoutes.layout,
         element: <Navigate to={AppRoutes.welcome} />,
-        errorElement: <ErrorPage />,
       },
       {
         path: AppRoutes.main,
@@ -27,7 +26,6 @@ export const routesConfig = [
             <Main />
           </ProtectedRoute>
         ),
-        errorElement: <ErrorPage />,
       },
       {
         path: AppRoutes.signIn,
@@ -36,7 +34,6 @@ export const routesConfig = [
             <SignIn />
           </PrivateRoute>
         ),
-        errorElement: <ErrorPage />,
       },
       {
         path: AppRoutes.signUp,
@@ -45,7 +42,6 @@ export const routesConfig = [
             <SignUp />
           </PrivateRoute>
         ),
-        errorElement: <ErrorPage />,
       },
       {
         path: AppRoutes.welcome,

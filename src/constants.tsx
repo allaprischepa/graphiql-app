@@ -7,6 +7,13 @@ export const USER_PASSWORD = '12345678letters!';
 
 export const RSS_HREF = 'https://rs.school/react/';
 
+export const NOT_FOUND_TITLE = 'NOT_FOUND_TITLE';
+export const NOT_FOUND_TEXT = 'NOT_FOUND_TEXT';
+export const GO_HOME = 'GO_HOME';
+export const ERROR_PAGE_TITLE = 'ERROR_PAGE_TITLE';
+export const ERROR_PAGE_TEXT = 'ERROR_PAGE_TEXT';
+export const RELOAD_PAGE = 'RELOAD_PAGE';
+
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_OUT = 'SIGN_OUT';
 

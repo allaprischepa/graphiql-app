@@ -1,6 +1,10 @@
 import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import ErrorBoundary from '../src/components/ErrorBoundary/ErrorBoundary';
+import LangState from '../src/languages/LangState';
+import { Languages } from '../src/utils/enums';
+import { configureAppStore } from '../src/state/store';
+import { Provider } from 'react-redux';
 
 vi.mock('react-router-dom', () => ({
   ...vi.importActual('react-router-dom'),
@@ -23,6 +27,7 @@ describe('ErrorBoundary', () => {
   });
 
   it('renders ErrorPage when there is an error', () => {
+    const store = configureAppStore();
     const spyConsoleError = vi
       .spyOn(console, 'error')
       .mockImplementation(() => null);
@@ -32,9 +37,13 @@ describe('ErrorBoundary', () => {
     };
 
     render(
-      <ErrorBoundary>
-        <ErrorComponent />
-      </ErrorBoundary>
+      <Provider store={store}>
+        <LangState initialState={{ language: Languages.EN }}>
+          <ErrorBoundary>
+            <ErrorComponent />
+          </ErrorBoundary>
+        </LangState>
+      </Provider>
     );
 
     const errorPageElement = screen.getByText(/Sorry... The error occurred/i);
@@ -44,6 +53,7 @@ describe('ErrorBoundary', () => {
   });
 
   it('logs error information to the console', () => {
+    const store = configureAppStore();
     const spyConsoleError = vi
       .spyOn(console, 'error')
       .mockImplementation(() => null);
@@ -54,9 +64,13 @@ describe('ErrorBoundary', () => {
     };
 
     render(
-      <ErrorBoundary>
-        <ErrorComponent />
-      </ErrorBoundary>
+      <Provider store={store}>
+        <LangState initialState={{ language: Languages.EN }}>
+          <ErrorBoundary>
+            <ErrorComponent />
+          </ErrorBoundary>
+        </LangState>
+      </Provider>
     );
 
     expect(spyConsoleError).toHaveBeenCalledWith(
