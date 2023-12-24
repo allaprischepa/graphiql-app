@@ -80,6 +80,22 @@ const en = {
   [RU_EN.FORMS.LINK.SIGN_UP]: 'Sign In!',
   [RU_EN.FORMS.LINK.SIGN_IN]: 'Sign Up!',
 
+  [RU_EN.VALID.NAME.REQUIRED]: 'enter your name',
+  [RU_EN.VALID.NAME.MAX]: 'at most 32 characters',
+  [RU_EN.VALID.NAME.START_LETTER]: 'must start with letter',
+
+  [RU_EN.VALID.EMAIL.REQUIRED]: 'enter your e-mail',
+  [RU_EN.VALID.EMAIL.VALID]: 'must be a valid e-mail',
+
+  [RU_EN.VALID.PASSWORD.REQUIRED]: 'enter your password',
+  [RU_EN.VALID.PASSWORD.MIN]: 'at least 8 characters',
+  [RU_EN.VALID.PASSWORD.HAS_NUMBER]: 'at least 1 number',
+  [RU_EN.VALID.PASSWORD.HAS_LETTER]: 'at least 1 letter',
+  [RU_EN.VALID.PASSWORD.HAS_SPECIAL]: 'at least 1 special character',
+
+  [RU_EN.VALID.CONFIRM.REQUIRED]: 'confirm your password',
+  [RU_EN.VALID.CONFIRM.MATCH_PASSWORD]: 'passwords must match',
+
   [HERO_SUBTITLE]: 'GraphiQL is a playground/IDE for graphQL requests.',
   [HERO_AUTH]:
     'App includes the authorization and authentication capabilities, ensuring access to the tool only for authorized users.',

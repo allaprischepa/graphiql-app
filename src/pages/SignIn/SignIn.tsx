@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AppRoutes } from '../../../src/utils/enums';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignInForm } from '../../types/forms';
 import { validationSchemaSignIn } from '../../utils/validationRules';
@@ -31,7 +31,7 @@ export default function SignIn() {
     mode: 'all',
     resolver: yupResolver(validationSchemaSignIn),
   });
-  const { register, handleSubmit, formState } = form;
+  const { register, handleSubmit, trigger, formState } = form;
   const { errors, isValid } = formState;
 
   const onFormSubmit = async (data: SignInForm): Promise<void> => {
@@ -46,6 +46,10 @@ export default function SignIn() {
       setLoggingIn(false);
     }
   };
+
+  useEffect(() => {
+    trigger();
+  }, [translate, trigger]);
 
   return (
     <main>
