@@ -59,6 +59,20 @@ const en = {
   [RU_EN.HEADER_NAV.SIGN_UP]: 'Sign Up',
   [RU_EN.HEADER_NAV.MAIN]: 'Main',
 
+  [RU_EN.FORMS.FIELD.NAME]: 'Name',
+  [RU_EN.FORMS.FIELD.EMAIL]: 'E-mail',
+  [RU_EN.FORMS.FIELD.PASSWORD]: 'Password',
+  [RU_EN.FORMS.FIELD.CONFIRM_PASSWORD]: 'Confirm password',
+
+  [RU_EN.FORMS.BUTTON.SIGN_UP]: 'SIGN UP',
+  [RU_EN.FORMS.BUTTON.SIGN_IN]: 'SIGN IN',
+
+  [RU_EN.FORMS.QUESTION.SIGN_UP]: 'Already have an account?',
+  [RU_EN.FORMS.QUESTION.SIGN_IN]: "Don't have an account?",
+
+  [RU_EN.FORMS.LINK.SIGN_UP]: 'Sign In!',
+  [RU_EN.FORMS.LINK.SIGN_IN]: 'Sign Up!',
+
   [HERO_SUBTITLE]: 'GraphiQL is a playground/IDE for graphQL requests.',
   [HERO_AUTH]:
     'App includes the authorization and authentication capabilities, ensuring access to the tool only for authorized users.',

@@ -59,6 +59,20 @@ const ru = {
   [RU_EN.HEADER_NAV.SIGN_UP]: 'Регистрация',
   [RU_EN.HEADER_NAV.MAIN]: 'Главная',
 
+  [RU_EN.FORMS.FIELD.NAME]: 'Имя',
+  [RU_EN.FORMS.FIELD.EMAIL]: 'Эл. почта',
+  [RU_EN.FORMS.FIELD.PASSWORD]: 'Пароль',
+  [RU_EN.FORMS.FIELD.CONFIRM_PASSWORD]: 'Повторите пароль',
+
+  [RU_EN.FORMS.BUTTON.SIGN_UP]: 'ЗАРЕГИСТРИРОВАТЬСЯ',
+  [RU_EN.FORMS.BUTTON.SIGN_IN]: 'ВОЙТИ',
+
+  [RU_EN.FORMS.QUESTION.SIGN_UP]: 'Уже есть аккаунт?',
+  [RU_EN.FORMS.QUESTION.SIGN_IN]: 'Нет аккаунта?',
+
+  [RU_EN.FORMS.LINK.SIGN_UP]: 'Войдите!',
+  [RU_EN.FORMS.LINK.SIGN_IN]: 'Зарегистрируйтесь!',
+
   [HERO_SUBTITLE]: 'GraphiQL - это песочница/IDE для graphQL запросов',
   [HERO_AUTH]:
     'Приложение включает в себя возможности авторизации и аутентификации, обеспечивая доступ к инструменту только авторизованным пользователям.',

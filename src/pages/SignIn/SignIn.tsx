@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AppRoutes } from '../../../src/utils/enums';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignInForm } from '../../types/forms';
 import { validationSchemaSignIn } from '../../utils/validationRules';
@@ -12,6 +12,9 @@ import { EmailField } from '../../components/FormFields/EmailField';
 import { PasswordField } from '../../components/FormFields/PasswordField';
 import { setIsUserLoggedIn } from '../../services/authSlice';
 
+import { langContext } from '../../languages/langContext';
+import { RU_EN } from '../../constants';
+
 import '../SignUp/SignUp.scss';
 
 export default function SignIn() {
@@ -19,6 +22,9 @@ export default function SignIn() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {
+    dispatch: { translate },
+  } = useContext(langContext);
 
   const form = useForm({
     mode: 'all',
@@ -45,7 +51,7 @@ export default function SignIn() {
       <section className="sign-section">
         <div className="sign-container">
           <div className="sign-title" data-testid="sign-in-title">
-            Sign In
+            {translate(RU_EN.HEADER_NAV.SIGN_IN)}
           </div>
           <form
             onSubmit={handleSubmit(onFormSubmit)}
@@ -58,13 +64,13 @@ export default function SignIn() {
               <PasswordField {...{ register, errors }}></PasswordField>
             </div>
             <button type="submit" disabled={!isValid} className="submit-btn">
-              {isLoggingIn ? 'LOGGING IN...' : 'SIGN IN'}
+              {isLoggingIn ? '' : translate(RU_EN.FORMS.BUTTON.SIGN_IN)}
             </button>
           </form>
           <div className="sign-text">
-            Don&apos;t have an account?{' '}
+            {translate(RU_EN.FORMS.QUESTION.SIGN_IN)}{' '}
             <Link to={AppRoutes.signUp} className="sign-link">
-              Sign up!
+              {translate(RU_EN.FORMS.LINK.SIGN_IN)}
             </Link>
           </div>
         </div>

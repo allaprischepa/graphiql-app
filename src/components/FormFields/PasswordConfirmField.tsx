@@ -1,15 +1,22 @@
 import { FormHandlersSignUp } from '../../types/forms';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import './FormFields.scss';
+import { langContext } from '../../languages/langContext';
+import { RU_EN } from '../../constants';
 
 export function PasswordFieldConfirm({ register, errors }: FormHandlersSignUp) {
   const [isOpenedPassword, setIsOpenedPassword] = useState(false);
+  const {
+    dispatch: { translate },
+  } = useContext(langContext);
 
   return (
     <>
       <div className="sign-field" data-testid="confirm-password-field">
-        <label htmlFor="confirmPassword">Confirm password:</label>
+        <label htmlFor="confirmPassword">
+          {translate(RU_EN.FORMS.FIELD.CONFIRM_PASSWORD)}:
+        </label>
         <input
           type={isOpenedPassword ? 'text' : 'password'}
           id="confirmPassword"

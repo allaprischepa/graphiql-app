@@ -80,4 +80,24 @@ export const RU_EN = {
     SIGN_UP: 'NAV_SIGN_UP',
     MAIN: 'NAV_MAIN',
   },
+  FORMS: {
+    FIELD: {
+      NAME: 'FORMS_FIELD_NAME',
+      EMAIL: 'FORMS_FIELD_EMAIL',
+      PASSWORD: 'FORMS_FIELD_PASSWORD',
+      CONFIRM_PASSWORD: 'FORMS_FIELD_CONFIRM_PASSWORD',
+    },
+    BUTTON: {
+      SIGN_IN: 'FORMS_BUTTON_SIGN_IN',
+      SIGN_UP: 'FORMS_BUTTON_SIGN_UP',
+    },
+    QUESTION: {
+      SIGN_IN: 'FORMS_QUESTION_SIGN_IN',
+      SIGN_UP: 'FORMS_QUESTION_SIGN_UP',
+    },
+    LINK: {
+      SIGN_IN: 'FORMS_LINK_SIGN_IN',
+      SIGN_UP: 'FORMS_LINK_SIGN_UP',
+    },
+  },
 };
