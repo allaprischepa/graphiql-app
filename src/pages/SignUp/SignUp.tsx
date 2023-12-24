@@ -12,6 +12,7 @@ import { EmailField } from '../../components/FormFields/EmailField';
 import { PasswordField } from '../../components/FormFields/PasswordField';
 import { PasswordFieldConfirm } from '../../components/FormFields/PasswordConfirmField';
 
+import LoaderBtn from '../../components/LoaderBtn/LoaderBtn';
 import { langContext } from '../../languages/langContext';
 import { RU_EN } from '../../constants';
 
@@ -64,7 +65,11 @@ export default function SignUp() {
               <PasswordFieldConfirm {...{ register, errors }} />
             </div>
             <button type="submit" disabled={!isValid} className="submit-btn">
-              {isRegistering ? '' : translate(RU_EN.FORMS.BUTTON.SIGN_UP)}
+              {isRegistering ? (
+                <LoaderBtn />
+              ) : (
+                translate(RU_EN.FORMS.BUTTON.SIGN_UP)
+              )}
             </button>
           </form>
           <div className="sign-text">

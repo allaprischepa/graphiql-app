@@ -12,6 +12,7 @@ import { EmailField } from '../../components/FormFields/EmailField';
 import { PasswordField } from '../../components/FormFields/PasswordField';
 import { setIsUserLoggedIn } from '../../services/authSlice';
 
+import LoaderBtn from '../../components/LoaderBtn/LoaderBtn';
 import { langContext } from '../../languages/langContext';
 import { RU_EN } from '../../constants';
 
@@ -64,7 +65,11 @@ export default function SignIn() {
               <PasswordField {...{ register, errors }}></PasswordField>
             </div>
             <button type="submit" disabled={!isValid} className="submit-btn">
-              {isLoggingIn ? '' : translate(RU_EN.FORMS.BUTTON.SIGN_IN)}
+              {isLoggingIn ? (
+                <LoaderBtn />
+              ) : (
+                translate(RU_EN.FORMS.BUTTON.SIGN_IN)
+              )}
             </button>
           </form>
           <div className="sign-text">
