@@ -1,10 +1,9 @@
 import QueryEditor from '../../components/QueryEditor/QueryEditor';
 import ControlPanel from '../../components/ControlPanel/ControlPanel';
-import { useContext, useRef, useState } from 'react';
+import { Suspense, lazy, useContext, useRef, useState } from 'react';
 import { EditorView } from 'codemirror';
 import './Main.scss';
 import EditorTools from '../../components/EditorTools/EditorTools';
-import Documentation from '../../components/Documentation/Documentation';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
 import DocBtn from '../../components/DocBtn/DocBtn';
@@ -36,6 +35,10 @@ export default function Main() {
   const defaultQueryString =
     commentOutString(translate(MAIN_INTRO)) + QUERY_EXAMPLE;
 
+  const LazyDocumentation = lazy(
+    () => import('../../components/Documentation/Documentation')
+  );
+
   return (
     <main className="graphiql-container" data-testid={TEST_ID}>
       <section className="tools">
@@ -43,7 +46,11 @@ export default function Main() {
         <ApiBtn />
       </section>
       <section className={isActive ? 'doc active' : 'doc'}>
-        {isActive && <Documentation />}
+        {isActive && (
+          <Suspense fallback={<Loader />}>
+            <LazyDocumentation />
+          </Suspense>
+        )}
       </section>
       <section className="graphiql-main">
         <section

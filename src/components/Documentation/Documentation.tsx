@@ -1,5 +1,5 @@
 import { IntrospectionQuery, buildClientSchema } from 'graphql';
-import { Suspense, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import DocFieldsList from '../DocFieldsList/DocFieldsList';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
@@ -15,7 +15,6 @@ import DocSubtitle from '../DocSubtitle/DocSubtitle';
 import './Documentation.scss';
 import DocNav from '../DocNav/DocNav';
 import { useGetSchemaQuery } from '../../api/graphqlApi';
-import Loader from '../Loader/Loader';
 import {
   DOC_DESCR,
   DOC_SUBTITLE_ALL_SHEME,
@@ -40,7 +39,7 @@ function Documentation() {
 
   const types = useSelector((state: RootState) => state.documentation.types);
 
-  const { data, isLoading } = useGetSchemaQuery<IntrospectionQueryResp>();
+  const { data } = useGetSchemaQuery<IntrospectionQueryResp>();
 
   const {
     dispatch: { translate },
@@ -69,43 +68,40 @@ function Documentation() {
 
   return (
     <>
-      <Suspense fallback={<Loader />}>
-        <div className="documentation">
-          {isLoading && <Loader />}
-          {data && (
-            <>
-              <DocNav />
-              <h3 data-testid="doc-title">{name}</h3>
-              {descr && <p>{descr}</p>}
-              {fields && (
-                <>
-                  {name === translate(DOC_TITLE) ? (
-                    <DocSubtitle
-                      text={translate(DOC_SUBTITLE_ROOT)}
-                      icon="types.svg"
-                    />
-                  ) : (
-                    <DocSubtitle
-                      text={translate(DOC_SUBTITLE_FIELDS)}
-                      icon="fields.svg"
-                    />
-                  )}
-                  <DocFieldsList fields={fields} />
-                </>
-              )}
-              {name === translate(DOC_TITLE) && types && (
-                <>
+      <div className="documentation">
+        {data && (
+          <>
+            <DocNav />
+            <h3 data-testid="doc-title">{name}</h3>
+            {descr && <p>{descr}</p>}
+            {fields && (
+              <>
+                {name === translate(DOC_TITLE) ? (
                   <DocSubtitle
-                    text={translate(DOC_SUBTITLE_ALL_SHEME)}
-                    icon="root.svg"
+                    text={translate(DOC_SUBTITLE_ROOT)}
+                    icon="types.svg"
                   />
-                  <DocTypesList types={types} />
-                </>
-              )}
-            </>
-          )}
-        </div>
-      </Suspense>
+                ) : (
+                  <DocSubtitle
+                    text={translate(DOC_SUBTITLE_FIELDS)}
+                    icon="fields.svg"
+                  />
+                )}
+                <DocFieldsList fields={fields} />
+              </>
+            )}
+            {name === translate(DOC_TITLE) && types && (
+              <>
+                <DocSubtitle
+                  text={translate(DOC_SUBTITLE_ALL_SHEME)}
+                  icon="root.svg"
+                />
+                <DocTypesList types={types} />
+              </>
+            )}
+          </>
+        )}
+      </div>
     </>
   );
 }
