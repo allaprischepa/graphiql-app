@@ -47,18 +47,18 @@ describe('Sign In Page', () => {
     const emailInput = screen.getByRole('textbox', { name: /e\-mail:/i });
 
     await user.type(emailInput, 'wrong-email.com');
-    expect(
-      screen.getByText(/email must be a valid email/i)
-    ).toBeInTheDocument();
+    expect(screen.getByText(validMessages.email.valid())).toBeInTheDocument();
     await user.clear(emailInput);
 
     await user.type(emailInput, 'correct-email@mail.com');
     expect(
-      screen.queryByText('email must be a valid email')
+      screen.queryByText(validMessages.email.valid())
     ).not.toBeInTheDocument();
     await user.clear(emailInput);
 
-    expect(screen.getByText(validMessages.email.required)).toBeInTheDocument();
+    expect(
+      screen.getByText(validMessages.email.required())
+    ).toBeInTheDocument();
   });
 
   it('Validate password field correctly', async () => {
@@ -74,29 +74,29 @@ describe('Sign In Page', () => {
     const passwordInput = screen.getByLabelText(/password:/i);
 
     await user.type(passwordInput, '123');
-    expect(screen.getByText(validMessages.password.min)).toBeInTheDocument();
+    expect(screen.getByText(validMessages.password.min())).toBeInTheDocument();
     await user.clear(passwordInput);
 
     await user.type(passwordInput, '12345678letters');
     expect(
-      screen.getByText(validMessages.password.hasSpecial)
+      screen.getByText(validMessages.password.hasSpecial())
     ).toBeInTheDocument();
     await user.clear(passwordInput);
 
     await user.type(passwordInput, '12345678!');
     expect(
-      screen.getByText(validMessages.password.hasLetter)
+      screen.getByText(validMessages.password.hasLetter())
     ).toBeInTheDocument();
     await user.clear(passwordInput);
 
     await user.type(passwordInput, 'letters!');
     expect(
-      screen.getByText(validMessages.password.hasNumber)
+      screen.getByText(validMessages.password.hasNumber())
     ).toBeInTheDocument();
     await user.clear(passwordInput);
 
     expect(
-      screen.getByText(validMessages.password.required)
+      screen.getByText(validMessages.password.required())
     ).toBeInTheDocument();
   });
 

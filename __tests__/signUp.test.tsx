@@ -51,11 +51,11 @@ describe('Sign Up Page', () => {
 
     await user.type(nameInput, '123User');
     expect(
-      screen.getByText(validMessages.name.startLetter)
+      screen.getByText(validMessages.name.startLetter())
     ).toBeInTheDocument();
     await user.clear(nameInput);
 
-    expect(screen.getByText(validMessages.name.required)).toBeInTheDocument();
+    expect(screen.getByText(validMessages.name.required())).toBeInTheDocument();
   });
 
   it('Validate confirm password field correctly', async () => {
@@ -75,13 +75,13 @@ describe('Sign Up Page', () => {
     await user.type(confirmPasswordInput, '12345678');
 
     expect(
-      screen.getByText(validMessages.confirmPassword.matchPassword)
+      screen.getByText(validMessages.confirmPassword.matchPassword())
     ).toBeInTheDocument();
     await user.clear(confirmPasswordInput);
 
     await user.type(confirmPasswordInput, '12345678letters!');
     expect(
-      screen.queryByText(validMessages.confirmPassword.matchPassword)
+      screen.queryByText(validMessages.confirmPassword.matchPassword())
     ).not.toBeInTheDocument();
   });
 
