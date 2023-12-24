@@ -100,6 +100,7 @@
 
     &.active {
       display: block;
+      position: relative;
     }
 
     h3 {
@@ -109,6 +110,11 @@
 
   .tools + .doc.active {
     border-left: 1px solid $main-color-dark;
+    margin-right: 10px;
+
+    @media screen and (max-width: 999px) {
+      margin-right: 0;
+    }
   }
 
   @media screen and (max-width: 679px) {
