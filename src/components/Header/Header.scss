@@ -6,7 +6,7 @@
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 50;
+  z-index: $header-z-index;
   transition:
     background-color 0.4s ease 0s,
     padding 0.4s ease 0s,

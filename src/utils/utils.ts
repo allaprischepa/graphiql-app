@@ -1,6 +1,9 @@
 import { EditorView } from 'codemirror';
 import { MutableRefObject } from 'react';
 import { ParseJsonResult } from '../types/types';
+import { Languages } from './enums';
+import en from '../languages/lang/en';
+import ru from '../languages/lang/ru';
 
 export const commentOutString = (str: string) => {
   return str
@@ -12,8 +15,9 @@ export const commentOutString = (str: string) => {
 export const sanitizeString = (str: string) => {
   return str
     .split('\n')
-    .filter((s) => s[0] !== '#')
+    .filter((s) => s.trim()[0] !== '#')
     .filter((s) => s.trim().length > 0)
+    .map((s) => s.replaceAll(/\s*#.*(?:\r\n|\r|\n|$)/gm, ''))
     .join('\n');
 };
 
@@ -59,6 +63,7 @@ export const prettifyGraphQLString = (str: string) => {
     .replaceAll(/(\w+)\s+(?=\w)/g, '$1\n')
     .replaceAll(/(\s+)(query)/g, '$2')
     .replaceAll(/(query)(\s+)/g, '$1 ')
+    .replaceAll(/(query)(\s*)(.+)/g, '$1 $3')
     .replaceAll(/(query\s+{)/g, '{');
   newStr = setTabs(newStr);
 
@@ -83,4 +88,11 @@ export const parseJsonFromString = (str: string): ParseJsonResult => {
   }
 
   return { object, error };
+};
+
+export const getTranslatedMsg = (CONSTANT: keyof typeof en) => {
+  const lang = localStorage.getItem('language') ?? Languages.RU;
+  const langData = lang === Languages.EN ? en : ru;
+
+  return langData[CONSTANT] ?? '';
 };

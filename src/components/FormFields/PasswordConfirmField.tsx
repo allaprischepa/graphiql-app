@@ -8,7 +8,10 @@ export function PasswordFieldConfirm({ register, errors }: FormHandlersSignUp) {
 
   return (
     <>
-      <div className="sign-field" data-testid="confirm-password-field">
+      <div
+        className="sign-field with-icon"
+        data-testid="confirm-password-field"
+      >
         <label htmlFor="confirmPassword">Confirm password:</label>
         <input
           type={isOpenedPassword ? 'text' : 'password'}

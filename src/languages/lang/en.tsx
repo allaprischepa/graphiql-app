@@ -44,6 +44,13 @@ import {
   DOC_SUBTITLE_FIELDS,
   DOC_SUBTITLE_ALL_SHEME,
   RU_EN,
+  API_SETTINGS,
+  ENDPOINT_SETUP_LABEL,
+  ENDPOINT_SETUP_SAVE,
+  ENDPOINT_SETUP_INTRO,
+  ENDPOINT_VALIDATION_MSG,
+  REQUIRED_MSG,
+  REVERT_TEXT,
 } from '../../constants';
 
 const en = {
@@ -132,6 +139,14 @@ const en = {
   [HEADER_VALIDATION_MSG]:
     'It can contain only alphanumeric characters and the following special characters',
   [TYPE_STRING_VALIDATION_MSG]: 'It should be a string only',
+  [API_SETTINGS]: 'API Settings',
+  [ENDPOINT_SETUP_LABEL]: 'Endpoint URL',
+  [ENDPOINT_SETUP_SAVE]: 'Save',
+  [ENDPOINT_SETUP_INTRO]:
+    'Adjust the GraphQL endpoint URL according to your needs for making requests. You can revert to the initial endpoint by clicking the "Revert" button and saving your changes.',
+  [ENDPOINT_VALIDATION_MSG]: 'Endpoint must be a valid URL',
+  [REQUIRED_MSG]: 'This field is required',
+  [REVERT_TEXT]: 'Set the initial endpoint',
 };
 
 export default en;

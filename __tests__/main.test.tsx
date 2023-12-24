@@ -35,8 +35,9 @@ describe('Main Page', () => {
 
     renderAppWithRoute(AppRoutes.main);
 
-    const requestSection = screen.getByTestId(REQUEST_SECTION_TEST_ID);
-    const responseSection = screen.getByTestId(RESPONSE_SECTION_TEST_ID);
+    const requestSection = await screen.findByTestId(REQUEST_SECTION_TEST_ID);
+    const responseSection = await screen.findByTestId(RESPONSE_SECTION_TEST_ID);
+
     expect(requestSection).toBeInTheDocument();
     expect(responseSection).toBeInTheDocument();
   });
