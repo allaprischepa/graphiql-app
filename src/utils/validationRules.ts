@@ -1,4 +1,6 @@
 import * as yup from 'yup';
+import { getTranslatedMsg } from './utils';
+import { ENDPOINT_VALIDATION_MSG, REQUIRED_MSG } from '../constants';
 
 export const validMessages = {
   name: {
@@ -56,4 +58,11 @@ export const validationSchemaSignUp = yup.object().shape({
 export const validationSchemaSignIn = yup.object().shape({
   email: email,
   password: password,
+});
+
+export const validationSchemaEndpoint = yup.object().shape({
+  endpointUrl: yup
+    .string()
+    .required(() => getTranslatedMsg(REQUIRED_MSG))
+    .url(() => getTranslatedMsg(ENDPOINT_VALIDATION_MSG)),
 });

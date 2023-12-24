@@ -66,7 +66,7 @@ describe('Main Page', () => {
 
     renderAppWithRoute(AppRoutes.main);
 
-    const mainPage = screen.getByTestId(MAIN_PAGE_TEST_ID);
+    const mainPage = await screen.findByTestId(MAIN_PAGE_TEST_ID);
     expect(mainPage).toBeInTheDocument();
   });
 });

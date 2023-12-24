@@ -13,7 +13,10 @@ export function PasswordFieldConfirm({ register, errors }: FormHandlersSignUp) {
 
   return (
     <>
-      <div className="sign-field" data-testid="confirm-password-field">
+      <div
+        className="sign-field with-icon"
+        data-testid="confirm-password-field"
+      >
         <label htmlFor="confirmPassword">
           {translate(RU_EN.FORMS.FIELD.CONFIRM_PASSWORD)}:
         </label>

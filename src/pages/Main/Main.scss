@@ -1,25 +1,31 @@
 @import '../../styles/abstracts/variables';
 
 .graphiql-container {
+  $marginSize: 15px;
+
   display: flex;
   height: calc(100vh - 154px);
   width: 100%;
 
   .graphiql-main {
     display: flex;
-    width: 100%;
+    flex: 1 1 0;
+    width: 10%;
     padding: 0;
-    margin: 15px;
+    margin: $marginSize $marginSize $marginSize 0;
     box-sizing: border-box;
-    border-radius: 10px;
+    border-radius: $block-border-radius;
     background-color: lighten($main-color-dark, 6);
+    box-sizing: border-box;
 
     .request-section {
+      $reqMarginSize: 10px;
+
       display: flex;
       flex-direction: column;
-      margin: 10px;
-      flex: 1.2 1 0%;
-      border-radius: 10px;
+      margin: $reqMarginSize;
+      width: calc(55% - 2 * $reqMarginSize);
+      border-radius: $block-border-radius;
       background-color: rgba(255, 255, 255, 0.7);
       box-shadow: 5px 0px 10px 0px $main-color-dark;
 
@@ -38,43 +44,29 @@
 
     .response-section {
       position: relative;
-      flex: 1 1 0%;
+      width: 45%;
     }
 
     .request-section,
     .response-section {
-      min-width: 30%;
-      max-height: 100vh;
       padding: 15px;
+      box-sizing: border-box;
 
       .editor {
         width: 100%;
         height: 100%;
         overflow: auto;
-      }
-    }
-  }
-
-  @media screen and (max-width: 679px) {
-    height: 100%;
-    max-height: 100%;
-
-    .graphiql-main {
-      flex-direction: column;
-      margin-right: 0;
-
-      .request-section {
-        box-shadow: 0px 5px 10px 0px $main-color-dark;
+        font-size: $font-size-15;
       }
     }
   }
 
   section.tools {
     padding: 15px 10px;
-
-    @media screen and (max-width: 679px) {
-      padding: 10px 15px 5px;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
   }
 
   section.doc {
@@ -87,10 +79,12 @@
 
   .doc {
     display: none;
-    max-width: 340px;
     width: 100%;
+    max-width: 340px;
+    min-width: 300px;
     max-height: calc(100vh - 30px);
     overflow-y: scroll;
+    box-sizing: border-box;
 
     @media screen and (max-width: 1200px) {
       max-width: 300px;
@@ -100,7 +94,7 @@
       min-width: 25%;
     }
 
-    @media screen and (max-width: 679px) {
+    @media screen and (max-width: 999px) {
       max-width: 100%;
     }
 
@@ -115,5 +109,46 @@
 
   .tools + .doc.active {
     border-left: 1px solid $main-color-dark;
+  }
+
+  @media screen and (max-width: 679px) {
+    height: 100%;
+    max-height: 100%;
+
+    .graphiql-main {
+      flex-direction: column;
+      margin-right: 0;
+
+      .request-section {
+        margin-bottom: 0;
+        box-shadow: 0px 5px 10px 0px $main-color-dark;
+      }
+
+      .request-section,
+      .response-section {
+        width: auto;
+        height: 50%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 999px) {
+    flex-direction: column;
+    height: auto;
+
+    .graphiql-main {
+      width: auto;
+      height: 100vh;
+      margin: 0 $marginSize $marginSize $marginSize;
+    }
+
+    .doc {
+      height: 45vh;
+    }
+
+    section.tools {
+      padding: 10px 15px 5px;
+      flex-direction: row;
+    }
   }
 }

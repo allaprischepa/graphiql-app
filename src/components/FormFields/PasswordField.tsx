@@ -16,7 +16,7 @@ export function PasswordField({ register, errors }: FormHandlers) {
 
   return (
     <>
-      <div className="sign-field" data-testid="password-field">
+      <div className="sign-field with-icon" data-testid="password-field">
         <label htmlFor="password">
           {translate(RU_EN.FORMS.FIELD.PASSWORD)}:
         </label>

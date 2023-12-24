@@ -1,4 +1,5 @@
 @import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
 
 .vh-section {
   .section-bar {
@@ -21,29 +22,12 @@
     }
 
     .toggle-tools {
-      width: 36px;
-      height: 36px;
-      border: none;
-      border-radius: 5px;
-      background: none;
+      @include editorToolsBtn(
+        $iconImgUrl: '../../assets/icons/arrow-up.png',
+        $btnSize: 36px,
+        $iconSize: 40%
+      );
       margin-left: auto;
-      cursor: pointer;
-
-      &::before {
-        content: '';
-        display: block;
-        width: 40%;
-        height: 40%;
-        margin: auto;
-        background: center / contain no-repeat
-          url('../../assets/icons/arrow-up.png');
-      }
-
-      @media (hover: hover) {
-        &:hover {
-          background-color: $light-gray;
-        }
-      }
     }
   }
 

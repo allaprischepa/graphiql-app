@@ -19,14 +19,14 @@ describe('Redirection and navigation if user is logged in', async () => {
   const router = renderAppWithRoute(AppRoutes.main);
 
   it('Redirect to Main page if navigate to sign in or sign up page', async () => {
-    act(() => {
+    await act(async () => {
       router.navigate(AppRoutes.signIn);
       renderApp(router);
     });
 
     expect(router.state.location.pathname).toContain(AppRoutes.main);
 
-    act(() => {
+    await act(async () => {
       router.navigate(AppRoutes.signUp);
       renderApp(router);
     });

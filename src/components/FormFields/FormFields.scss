@@ -1,6 +1,7 @@
 @import './../../styles/abstracts/variables';
 
-.sign-field {
+.sign-field,
+.api-field {
   position: relative;
   display: flex;
   align-items: center;
@@ -27,18 +28,33 @@
       border-width: 2px;
     }
   }
+
+  &.with-icon input {
+    padding-right: 34px;
+  }
 }
 
 .password-opened-eye,
-.password-closed-eye {
+.password-closed-eye,
+.revert-endpoint {
   position: absolute;
   right: -24px;
   width: 22px;
   height: 22px;
   cursor: pointer;
 
+  .with-icon & {
+    right: 8px;
+  }
+
   @media screen and (max-width: 533px) {
     top: 40px;
+  }
+}
+
+.revert-endpoint {
+  @media screen and (max-width: 533px) {
+    top: 36px;
   }
 }
 
@@ -48,6 +64,10 @@
 
 .password-closed-eye {
   content: url('../../assets/icons/closed-eye.svg');
+}
+
+.revert-endpoint {
+  content: url('../../assets/icons/revert.svg');
 }
 
 .error-message {
