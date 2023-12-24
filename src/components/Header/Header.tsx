@@ -30,7 +30,7 @@ const Header = () => {
           <Logo />
           <div className="header-right">
             <LangSwitcher />
-            {isUserLoggedIn || <Navigation />}
+            <Navigation />
             {!isUserLoggedIn || <SignOut />}
           </div>
         </div>

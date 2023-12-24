@@ -16,14 +16,11 @@ import {
   HERO_ENDPOINTS,
   HERO_RSS,
   HERO_SUBTITLE,
-  LANG_LABEL,
   NOT_FOUND_TEXT,
   NOT_FOUND_TITLE,
   RELOAD_PAGE,
   SASHA_NAME,
   SASHA_TEXT,
-  SIGN_IN,
-  SIGN_OUT,
   TEAM_LEAD,
   TITLE_FEATURES,
   TITLE_TEAM,
@@ -46,6 +43,7 @@ import {
   DOC_SUBTITLE_ROOT,
   DOC_SUBTITLE_FIELDS,
   DOC_SUBTITLE_ALL_SHEME,
+  RU_EN,
 } from '../../constants';
 
 const en = {
@@ -56,9 +54,10 @@ const en = {
   [ERROR_PAGE_TEXT]: 'Please, try to reload page',
   [RELOAD_PAGE]: 'Reload Page',
 
-  [LANG_LABEL]: 'EN',
-  [SIGN_IN]: 'Sign In',
-  [SIGN_OUT]: 'Sign Up',
+  [RU_EN.HEADER_NAV.LANG_LABEL]: 'EN',
+  [RU_EN.HEADER_NAV.SIGN_IN]: 'Sign In',
+  [RU_EN.HEADER_NAV.SIGN_UP]: 'Sign Up',
+  [RU_EN.HEADER_NAV.MAIN]: 'Main',
 
   [HERO_SUBTITLE]: 'GraphiQL is a playground/IDE for graphQL requests.',
   [HERO_AUTH]:
