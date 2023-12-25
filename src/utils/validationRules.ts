@@ -1,26 +1,27 @@
 import * as yup from 'yup';
 import { getTranslatedMsg } from './utils';
-import { ENDPOINT_VALIDATION_MSG, REQUIRED_MSG } from '../constants';
+import { ENDPOINT_VALIDATION_MSG, REQUIRED_MSG, RU_EN } from '../constants';
 
 export const validMessages = {
   name: {
-    required: 'enter your name',
-    max: 'at most 32 characters',
-    startLetter: 'start with letter',
+    required: () => getTranslatedMsg(RU_EN.VALID.NAME.REQUIRED),
+    max: () => getTranslatedMsg(RU_EN.VALID.NAME.MAX),
+    startLetter: () => getTranslatedMsg(RU_EN.VALID.NAME.START_LETTER),
   },
   email: {
-    required: 'enter your e-mail',
+    required: () => getTranslatedMsg(RU_EN.VALID.EMAIL.REQUIRED),
+    valid: () => getTranslatedMsg(RU_EN.VALID.EMAIL.VALID),
   },
   password: {
-    required: 'enter your password',
-    min: 'at least 8 characters',
-    hasNumber: 'at least 1 number',
-    hasLetter: 'at least 1 letter',
-    hasSpecial: 'at least 1 special character',
+    required: () => getTranslatedMsg(RU_EN.VALID.PASSWORD.REQUIRED),
+    min: () => getTranslatedMsg(RU_EN.VALID.PASSWORD.MIN),
+    hasNumber: () => getTranslatedMsg(RU_EN.VALID.PASSWORD.HAS_NUMBER),
+    hasLetter: () => getTranslatedMsg(RU_EN.VALID.PASSWORD.HAS_LETTER),
+    hasSpecial: () => getTranslatedMsg(RU_EN.VALID.PASSWORD.HAS_SPECIAL),
   },
   confirmPassword: {
-    required: 'confirm your password',
-    matchPassword: 'passwords must match',
+    required: () => getTranslatedMsg(RU_EN.VALID.CONFIRM.REQUIRED),
+    matchPassword: () => getTranslatedMsg(RU_EN.VALID.CONFIRM.MATCH_PASSWORD),
   },
 };
 
@@ -32,8 +33,8 @@ export const name = yup
 
 export const email = yup
   .string()
-  .email()
-  .required(validMessages.email.required);
+  .required(validMessages.email.required)
+  .email(validMessages.email.valid);
 
 const password = yup
   .string()

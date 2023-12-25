@@ -1,0 +1,42 @@
+@import './../../styles/abstracts/variables';
+
+@keyframes loader_btn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.loader-btn {
+  position: relative;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  & .square-btn {
+    background: $main-color-dark;
+    width: 8px;
+    height: 8px;
+    border-radius: 3px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+
+  & #sq1-btn {
+    margin-left: -18px;
+    animation: loader_btn 675ms ease-in-out 0s infinite alternate;
+  }
+
+  & #sq2-btn {
+    animation: loader_btn 675ms ease-in-out 150ms infinite alternate;
+  }
+
+  & #sq3-btn {
+    margin-left: 18px;
+    animation: loader_btn 675ms ease-in-out 300ms infinite alternate;
+  }
+}

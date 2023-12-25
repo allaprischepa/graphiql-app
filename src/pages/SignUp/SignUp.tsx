@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { AppRoutes } from '../../../src/utils/enums';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignUpForm } from '../../types/forms';
 import { validationSchemaSignUp } from '../../utils/validationRules';
@@ -12,18 +12,25 @@ import { EmailField } from '../../components/FormFields/EmailField';
 import { PasswordField } from '../../components/FormFields/PasswordField';
 import { PasswordFieldConfirm } from '../../components/FormFields/PasswordConfirmField';
 
+import LoaderBtn from '../../components/LoaderBtn/LoaderBtn';
+import { langContext } from '../../languages/langContext';
+import { RU_EN } from '../../constants';
+
 import './SignUp.scss';
 
 export default function SignUp() {
   const [isRegistering, setIsRegistering] = useState(false);
 
   const navigate = useNavigate();
+  const {
+    dispatch: { translate },
+  } = useContext(langContext);
 
   const form = useForm({
     mode: 'all',
     resolver: yupResolver(validationSchemaSignUp),
   });
-  const { register, handleSubmit, formState } = form;
+  const { register, handleSubmit, trigger, formState } = form;
   const { errors, isValid } = formState;
 
   const onFormSubmit = async (data: SignUpForm): Promise<void> => {
@@ -38,12 +45,16 @@ export default function SignUp() {
     }
   };
 
+  useEffect(() => {
+    trigger();
+  }, [translate, trigger]);
+
   return (
     <main>
       <section className="sign-section">
         <div className="sign-container">
           <div className="sign-title" data-testid="sign-up-title">
-            Sign Up
+            {translate(RU_EN.HEADER_NAV.SIGN_UP)}
           </div>
           <form
             onSubmit={handleSubmit(onFormSubmit)}
@@ -58,13 +69,17 @@ export default function SignUp() {
               <PasswordFieldConfirm {...{ register, errors }} />
             </div>
             <button type="submit" disabled={!isValid} className="submit-btn">
-              {isRegistering ? 'REGISTERING...' : 'SIGN UP'}
+              {isRegistering ? (
+                <LoaderBtn />
+              ) : (
+                translate(RU_EN.FORMS.BUTTON.SIGN_UP)
+              )}
             </button>
           </form>
           <div className="sign-text">
-            Already have an account?{' '}
+            {translate(RU_EN.FORMS.QUESTION.SIGN_UP)}{' '}
             <Link to={AppRoutes.signIn} className="sign-link">
-              Sign in!
+              {translate(RU_EN.FORMS.LINK.SIGN_UP)}
             </Link>
           </div>
         </div>

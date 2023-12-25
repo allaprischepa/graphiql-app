@@ -66,6 +66,36 @@ const ru = {
   [RU_EN.HEADER_NAV.SIGN_UP]: 'Регистрация',
   [RU_EN.HEADER_NAV.MAIN]: 'Главная',
 
+  [RU_EN.FORMS.FIELD.NAME]: 'Имя',
+  [RU_EN.FORMS.FIELD.EMAIL]: 'Эл. почта',
+  [RU_EN.FORMS.FIELD.PASSWORD]: 'Пароль',
+  [RU_EN.FORMS.FIELD.CONFIRM_PASSWORD]: 'Повторите пароль',
+
+  [RU_EN.FORMS.BUTTON.SIGN_UP]: 'ЗАРЕГИСТРИРОВАТЬСЯ',
+  [RU_EN.FORMS.BUTTON.SIGN_IN]: 'ВОЙТИ',
+
+  [RU_EN.FORMS.QUESTION.SIGN_UP]: 'Уже есть аккаунт?',
+  [RU_EN.FORMS.QUESTION.SIGN_IN]: 'Нет аккаунта?',
+
+  [RU_EN.FORMS.LINK.SIGN_UP]: 'Войдите!',
+  [RU_EN.FORMS.LINK.SIGN_IN]: 'Зарегистрируйтесь!',
+
+  [RU_EN.VALID.NAME.REQUIRED]: 'введите имя',
+  [RU_EN.VALID.NAME.MAX]: 'не более 32 символов',
+  [RU_EN.VALID.NAME.START_LETTER]: 'должно начинаться с буквы',
+
+  [RU_EN.VALID.EMAIL.REQUIRED]: 'введите эл. почту',
+  [RU_EN.VALID.EMAIL.VALID]: 'адрес должен быть корректным',
+
+  [RU_EN.VALID.PASSWORD.REQUIRED]: 'введите пароль',
+  [RU_EN.VALID.PASSWORD.MIN]: 'не менее 8 символов',
+  [RU_EN.VALID.PASSWORD.HAS_NUMBER]: 'должен содержать цифру',
+  [RU_EN.VALID.PASSWORD.HAS_LETTER]: 'должен содержать букву',
+  [RU_EN.VALID.PASSWORD.HAS_SPECIAL]: 'должен содержать спецсимвол',
+
+  [RU_EN.VALID.CONFIRM.REQUIRED]: 'введите пароль повторно',
+  [RU_EN.VALID.CONFIRM.MATCH_PASSWORD]: 'пароли должны совпадать',
+
   [HERO_SUBTITLE]: 'GraphiQL - это песочница/IDE для graphQL запросов',
   [HERO_AUTH]:
     'Приложение включает в себя возможности авторизации и аутентификации, обеспечивая доступ к инструменту только авторизованным пользователям.',
