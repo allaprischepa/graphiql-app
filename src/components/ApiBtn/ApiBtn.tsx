@@ -69,6 +69,7 @@ function ApiBtn() {
         className="settings-btn"
         onClick={openModal}
         title={translate(API_SETTINGS)}
+        data-testid="api-btn"
       >
         <img src="api.svg" alt="settings" width={40} />
       </button>

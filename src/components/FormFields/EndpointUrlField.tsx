@@ -18,7 +18,7 @@ export function EndpointUrlField({
 }: Props) {
   return (
     <>
-      <div className="api-field with-icon">
+      <div className="api-field with-icon" data-testid="endpoint-field">
         <label htmlFor="endpoint-url">{labelText}:</label>
         <input type="text" id="endpoint-url" {...register} />
         <div
