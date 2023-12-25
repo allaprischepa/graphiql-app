@@ -96,6 +96,9 @@ const ru = {
   [RU_EN.VALID.CONFIRM.REQUIRED]: 'введите пароль повторно',
   [RU_EN.VALID.CONFIRM.MATCH_PASSWORD]: 'пароли должны совпадать',
 
+  [RU_EN.ERROR.SIGN_IN_PREFIX]: 'Ошибка входа',
+  [RU_EN.ERROR.SIGN_UP_PREFIX]: 'Ошибка регистрации',
+
   [HERO_SUBTITLE]: 'GraphiQL - это песочница/IDE для graphQL запросов',
   [HERO_AUTH]:
     'Приложение включает в себя возможности авторизации и аутентификации, обеспечивая доступ к инструменту только авторизованным пользователям.',

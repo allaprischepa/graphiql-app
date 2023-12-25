@@ -12,6 +12,7 @@ import { EmailField } from '../../components/FormFields/EmailField';
 import { PasswordField } from '../../components/FormFields/PasswordField';
 import { setIsUserLoggedIn } from '../../services/authSlice';
 
+import { toastError, toastSuccess } from '../../utils/toastify-utils';
 import LoaderBtn from '../../components/LoaderBtn/LoaderBtn';
 import { langContext } from '../../languages/langContext';
 import { RU_EN } from '../../constants';
@@ -38,10 +39,12 @@ export default function SignIn() {
     setLoggingIn(true);
     try {
       await userAuth.logInWithEmailAndPassword(data);
+      toastSuccess('You are signed in successfully!');
       navigate(AppRoutes.main);
       dispatch(setIsUserLoggedIn(true));
     } catch (err) {
-      alert(err);
+      const errPrefix = translate(RU_EN.ERROR.SIGN_IN_PREFIX);
+      toastError(`${errPrefix}: ${err}`);
     } finally {
       setLoggingIn(false);
     }

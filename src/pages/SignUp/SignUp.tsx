@@ -12,6 +12,7 @@ import { EmailField } from '../../components/FormFields/EmailField';
 import { PasswordField } from '../../components/FormFields/PasswordField';
 import { PasswordFieldConfirm } from '../../components/FormFields/PasswordConfirmField';
 
+import { toastError, toastSuccess } from '../../utils/toastify-utils';
 import LoaderBtn from '../../components/LoaderBtn/LoaderBtn';
 import { langContext } from '../../languages/langContext';
 import { RU_EN } from '../../constants';
@@ -37,9 +38,11 @@ export default function SignUp() {
     setIsRegistering(true);
     try {
       await userAuth.registerWithEmailAndPassword(data);
+      toastSuccess('You are signed up successfully!');
       navigate(AppRoutes.signIn);
     } catch (err) {
-      alert(err);
+      const errPrefix = translate(RU_EN.ERROR.SIGN_UP_PREFIX);
+      toastError(`${errPrefix}: ${err}`);
     } finally {
       setIsRegistering(false);
     }

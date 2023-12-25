@@ -96,6 +96,9 @@ const en = {
   [RU_EN.VALID.CONFIRM.REQUIRED]: 'confirm your password',
   [RU_EN.VALID.CONFIRM.MATCH_PASSWORD]: 'passwords must match',
 
+  [RU_EN.ERROR.SIGN_IN_PREFIX]: 'Sign In error',
+  [RU_EN.ERROR.SIGN_IN_PREFIX]: 'Sign Up error',
+
   [HERO_SUBTITLE]: 'GraphiQL is a playground/IDE for graphQL requests.',
   [HERO_AUTH]:
     'App includes the authorization and authentication capabilities, ensuring access to the tool only for authorized users.',
