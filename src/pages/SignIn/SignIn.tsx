@@ -11,7 +11,9 @@ import { userAuth } from '../../services/firebaseAuth';
 import { EmailField } from '../../components/FormFields/EmailField';
 import { PasswordField } from '../../components/FormFields/PasswordField';
 import { setIsUserLoggedIn } from '../../services/authSlice';
+import { FirebaseError } from 'firebase/app';
 
+import { toastError, toastSuccess } from '../../utils/toastify-utils';
 import LoaderBtn from '../../components/LoaderBtn/LoaderBtn';
 import { langContext } from '../../languages/langContext';
 import { RU_EN } from '../../constants';
@@ -37,11 +39,19 @@ export default function SignIn() {
   const onFormSubmit = async (data: SignInForm): Promise<void> => {
     setLoggingIn(true);
     try {
-      await userAuth.logInWithEmailAndPassword(data);
+      const userCredential = await userAuth.logInWithEmailAndPassword(data);
+      const userName = userCredential.user.displayName;
+      const textBeforeName = translate(RU_EN.SUCCESS.SIGN_IN_NAMED_BEFORE);
+      const textAfterName = translate(RU_EN.SUCCESS.SIGN_IN_NAMED_AFTER);
+      userName
+        ? toastSuccess(`${textBeforeName}, ${userName}! ${textAfterName}`)
+        : toastSuccess(translate(RU_EN.SUCCESS.SIGN_IN_UNNAMED));
       navigate(AppRoutes.main);
       dispatch(setIsUserLoggedIn(true));
     } catch (err) {
-      alert(err);
+      const error = err as FirebaseError;
+      const errPrefix = translate(RU_EN.ERROR.SIGN_IN_PREFIX);
+      toastError(`${errPrefix}: ${error.code}`);
     } finally {
       setLoggingIn(false);
     }
