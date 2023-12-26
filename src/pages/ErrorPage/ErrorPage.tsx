@@ -1,10 +1,4 @@
-import {
-  isRouteErrorResponse,
-  useNavigate,
-  useRouteError,
-} from 'react-router-dom';
-import { HttpStatusCode } from '../../utils/enums';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 import './ErrorPage.scss';
 import { useContext } from 'react';
@@ -20,17 +14,8 @@ export default function ErrorPage() {
     dispatch: { translate },
   } = useContext(langContext);
 
-  const error = useRouteError();
   const navigate = useNavigate();
   const pageReload = () => navigate(0);
-
-  if (isRouteErrorResponse(error) && error.status === HttpStatusCode.NOT_FOUND)
-    return (
-      <>
-        <NotFoundPage />
-        <Footer />
-      </>
-    );
 
   return (
     <>

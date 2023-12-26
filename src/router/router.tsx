@@ -9,8 +9,14 @@ import ProtectedRoute from './ProtectedRoute';
 import PrivateRoute from './PrivateRoute';
 
 import Layout from '../components/Layout/Layout';
+import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 
 export const routesConfig = [
+  {
+    path: AppRoutes.notFound,
+    element: <NotFoundPage />,
+    errorElement: <ErrorPage />,
+  },
   {
     path: AppRoutes.layout,
     element: <Layout />,
