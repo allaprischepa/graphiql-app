@@ -11,6 +11,7 @@ import { userAuth } from '../../services/firebaseAuth';
 import { EmailField } from '../../components/FormFields/EmailField';
 import { PasswordField } from '../../components/FormFields/PasswordField';
 import { setIsUserLoggedIn } from '../../services/authSlice';
+import { FirebaseError } from 'firebase/app';
 
 import { toastError, toastSuccess } from '../../utils/toastify-utils';
 import LoaderBtn from '../../components/LoaderBtn/LoaderBtn';
@@ -46,8 +47,9 @@ export default function SignIn() {
       navigate(AppRoutes.main);
       dispatch(setIsUserLoggedIn(true));
     } catch (err) {
+      const error = err as FirebaseError;
       const errPrefix = translate(RU_EN.ERROR.SIGN_IN_PREFIX);
-      toastError(`${errPrefix}: ${err}`);
+      toastError(`${errPrefix}: ${error.code}`);
     } finally {
       setLoggingIn(false);
     }

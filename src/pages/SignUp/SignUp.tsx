@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { SignUpForm } from '../../types/forms';
 import { validationSchemaSignUp } from '../../utils/validationRules';
 import { userAuth } from '../../services/firebaseAuth';
+import { FirebaseError } from 'firebase/app';
 
 import { NameField } from '../../components/FormFields/NameField';
 import { EmailField } from '../../components/FormFields/EmailField';
@@ -41,8 +42,9 @@ export default function SignUp() {
       toastSuccess('You are signed up successfully!');
       navigate(AppRoutes.signIn);
     } catch (err) {
+      const error = err as FirebaseError;
       const errPrefix = translate(RU_EN.ERROR.SIGN_UP_PREFIX);
-      toastError(`${errPrefix}: ${err}`);
+      toastError(`${errPrefix}: ${error.code}`);
     } finally {
       setIsRegistering(false);
     }
