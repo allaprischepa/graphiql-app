@@ -23,7 +23,7 @@ function Footer() {
       <div className="container">
         <div className="body">
           <div className="github-body">{teamMembers}</div>
-          <a href="https://rs.school/" className="footer-logo">
+          <a href="https://rs.school/react/" className="footer-logo">
             <img src="/rs_school_js.svg" alt="RSS" />
           </a>
           <span className="date">2024</span>
