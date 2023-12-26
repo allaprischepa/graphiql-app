@@ -150,3 +150,26 @@ describe('Prettify button', () => {
     }
   });
 });
+
+describe('Main Page', () => {
+  it('contains Api btn that triggers opening modal with settings form', async () => {
+    localStorage.setItem(IS_USER_LOGGED_IN, 'true');
+
+    vi.mock('firebase/auth', () => {
+      return {
+        getAuth: vi.fn().mockImplementationOnce(() => {}),
+        onAuthStateChanged: vi.fn().mockImplementationOnce(() => {}),
+      };
+    });
+
+    renderAppWithRoute(AppRoutes.main);
+
+    const apiBtn = await screen.findByTestId('api-btn');
+    expect(apiBtn).toBeInTheDocument();
+
+    await userEvent.click(apiBtn);
+
+    const endpointField = await screen.findByTestId('endpoint-field');
+    expect(endpointField).toBeInTheDocument();
+  });
+});
