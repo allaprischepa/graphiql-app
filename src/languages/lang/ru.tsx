@@ -99,6 +99,11 @@ const ru = {
   [RU_EN.ERROR.SIGN_IN_PREFIX]: 'Ошибка входа',
   [RU_EN.ERROR.SIGN_UP_PREFIX]: 'Ошибка регистрации',
 
+  [RU_EN.SUCCESS.SIGN_IN_NAMED_BEFORE]: 'Добро пожаловать',
+  [RU_EN.SUCCESS.SIGN_IN_NAMED_AFTER]: 'Рады Вас видеть!',
+  [RU_EN.SUCCESS.SIGN_IN_UNNAMED]: 'Вы успешно вошли!',
+  [RU_EN.SUCCESS.SIGN_UP]: 'Вы успешно зарегистрированы!',
+
   [HERO_SUBTITLE]: 'GraphiQL - это песочница/IDE для graphQL запросов',
   [HERO_AUTH]:
     'Приложение включает в себя возможности авторизации и аутентификации, обеспечивая доступ к инструменту только авторизованным пользователям.',

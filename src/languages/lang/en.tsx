@@ -99,6 +99,11 @@ const en = {
   [RU_EN.ERROR.SIGN_IN_PREFIX]: 'Sign In error',
   [RU_EN.ERROR.SIGN_IN_PREFIX]: 'Sign Up error',
 
+  [RU_EN.SUCCESS.SIGN_IN_NAMED_BEFORE]: 'Welcome',
+  [RU_EN.SUCCESS.SIGN_IN_NAMED_AFTER]: 'Nice to see you!',
+  [RU_EN.SUCCESS.SIGN_IN_UNNAMED]: 'You are signed in successfully!',
+  [RU_EN.SUCCESS.SIGN_UP]: 'You are signed up successfully!',
+
   [HERO_SUBTITLE]: 'GraphiQL is a playground/IDE for graphQL requests.',
   [HERO_AUTH]:
     'App includes the authorization and authentication capabilities, ensuring access to the tool only for authorized users.',

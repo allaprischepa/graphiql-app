@@ -41,9 +41,11 @@ export default function SignIn() {
     try {
       const userCredential = await userAuth.logInWithEmailAndPassword(data);
       const userName = userCredential.user.displayName;
+      const textBeforeName = translate(RU_EN.SUCCESS.SIGN_IN_NAMED_BEFORE);
+      const textAfterName = translate(RU_EN.SUCCESS.SIGN_IN_NAMED_AFTER);
       userName
-        ? toastSuccess(`Welcome, ${userName}! Nice to see you.`)
-        : toastSuccess(`You are signed in successfully!`);
+        ? toastSuccess(`${textBeforeName}, ${userName}! ${textAfterName}`)
+        : toastSuccess(translate(RU_EN.SUCCESS.SIGN_IN_UNNAMED));
       navigate(AppRoutes.main);
       dispatch(setIsUserLoggedIn(true));
     } catch (err) {

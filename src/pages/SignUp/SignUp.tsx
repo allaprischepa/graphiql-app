@@ -39,7 +39,7 @@ export default function SignUp() {
     setIsRegistering(true);
     try {
       await userAuth.registerWithEmailAndPassword(data);
-      toastSuccess('You are signed up successfully!');
+      toastSuccess(translate(RU_EN.SUCCESS.SIGN_UP));
       navigate(AppRoutes.signIn);
     } catch (err) {
       const error = err as FirebaseError;
