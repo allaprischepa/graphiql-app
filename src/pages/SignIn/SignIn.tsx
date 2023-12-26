@@ -38,8 +38,11 @@ export default function SignIn() {
   const onFormSubmit = async (data: SignInForm): Promise<void> => {
     setLoggingIn(true);
     try {
-      await userAuth.logInWithEmailAndPassword(data);
-      toastSuccess('You are signed in successfully!');
+      const userCredential = await userAuth.logInWithEmailAndPassword(data);
+      const userName = userCredential.user.displayName;
+      userName
+        ? toastSuccess(`Welcome, ${userName}! Nice to see you.`)
+        : toastSuccess(`You are signed in successfully!`);
       navigate(AppRoutes.main);
       dispatch(setIsUserLoggedIn(true));
     } catch (err) {
