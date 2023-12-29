@@ -1,0 +1,113 @@
+@import './../../styles/abstracts/variables';
+
+.footer {
+  background-color: $main-color-dark;
+  padding: 10px 0;
+}
+
+.body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.footer-logo {
+  width: 100px;
+
+  & img {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    order: 1;
+    margin-bottom: 20px;
+  }
+}
+
+.date {
+  font-size: 16px;
+  font-weight: 900;
+  color: $accent-light;
+
+  @media (max-width: 768px) {
+    order: 3;
+  }
+}
+
+.github-body {
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 768px) {
+    order: 2;
+    margin-bottom: 10px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @media (max-width: 533px) {
+    flex-direction: column;
+  }
+}
+
+.github-item {
+  text-decoration: none;
+  color: $accent-light;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  transition: $trans;
+
+  &:last-child {
+    margin-bottom: 0;
+
+    @media (max-width: 768px) {
+      margin-right: 10px;
+    }
+
+    @media (max-width: 360px) {
+      margin-right: 0;
+    }
+  }
+
+  &:visited {
+    text-decoration: none;
+    color: $accent-light;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:visited:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    margin-right: 10px;
+    margin-bottom: 5px;
+  }
+
+  @media (max-width: 360px) {
+    margin-right: 7px;
+  }
+}
+
+.nick {
+  margin-left: 3px;
+  position: relative;
+  padding-left: 20px;
+
+  &::before {
+    content: url('../../assets/icons/github-footer.svg');
+    position: absolute;
+    top: 1px;
+    left: 0;
+    margin-right: 5px;
+  }
+}

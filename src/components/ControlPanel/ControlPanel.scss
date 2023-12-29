@@ -1,0 +1,35 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+.control-panel {
+  $btnSize: 40px;
+
+  display: flex;
+  flex-direction: column;
+  width: $btnSize;
+  gap: 10px;
+
+  .run {
+    @include editorToolsBtn(
+      $iconImgUrl: '../../assets/icons/play.png',
+      $btnSize: $btnSize,
+      $iconSize: 50%,
+      $iconColor: white
+    );
+    background-color: $accent-light;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: $accent-dark;
+      }
+    }
+  }
+
+  .prettify {
+    @include editorToolsBtn(
+      $iconImgUrl: '/clean.svg',
+      $btnSize: $btnSize,
+      $iconSize: 80%
+    );
+  }
+}

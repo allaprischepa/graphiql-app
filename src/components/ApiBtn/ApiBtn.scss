@@ -1,0 +1,71 @@
+@import './../../styles/abstracts/variables';
+@import './../../styles/abstracts/mixins';
+
+.settings-btn {
+  border: none;
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  position: relative;
+  transition: $trans;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 500px;
+  max-width: 90vw;
+  padding: 20px 20px 26px;
+  border-radius: $block-border-radius;
+  background-color: $main-color-light;
+  box-sizing: border-box;
+  font-size: $font-size-15;
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .close-btn {
+    @include btnClose();
+  }
+
+  .intro {
+    text-align: justify;
+    margin: 20px 0;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($accent-dark, 0.5);
+  z-index: $overlay-z-index;
+}
+
+.api-settings-form {
+  display: flex;
+  flex-direction: column;
+
+  .api-field {
+    column-gap: 15px;
+
+    & input {
+      width: auto;
+      flex-grow: 1;
+      align-self: stretch;
+      color: $accent-dark;
+    }
+  }
+}

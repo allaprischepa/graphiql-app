@@ -1,0 +1,15 @@
+@import './../../styles/abstracts/variables';
+
+.type {
+  background: transparent;
+  font-size: 15px;
+  border: none;
+  display: inline;
+  color: $orange;
+  transition: $trans;
+  cursor: pointer;
+
+  &:hover {
+    color: $pink-x2;
+  }
+}

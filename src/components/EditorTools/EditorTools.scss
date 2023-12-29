@@ -1,0 +1,70 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+.vh-section {
+  .section-bar {
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+
+    .tab {
+      font-size: 15px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      box-sizing: border-box;
+      cursor: pointer;
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: $light-gray;
+        }
+      }
+    }
+
+    .toggle-tools {
+      @include editorToolsBtn(
+        $iconImgUrl: '../../assets/icons/arrow-up.png',
+        $btnSize: 36px,
+        $iconSize: 40%
+      );
+      margin-left: auto;
+    }
+  }
+
+  .section-content {
+    display: none;
+
+    .tab-content {
+      display: none;
+      height: 150px;
+      width: 100%;
+      overflow: auto;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  &.open {
+    .section-bar {
+      .tab {
+        color: $accent-light;
+
+        &.active {
+          color: darken($accent-medium, 50);
+        }
+      }
+
+      .toggle-tools {
+        &::before {
+          transform: rotateZ(180deg);
+        }
+      }
+    }
+
+    .section-content {
+      display: flex;
+    }
+  }
+}
