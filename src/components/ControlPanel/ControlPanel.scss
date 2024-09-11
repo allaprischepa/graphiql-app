@@ -16,7 +16,10 @@
       $iconSize: 50%,
       $iconColor: white
     );
-    background-color: $accent-light;
+
+    & {
+      background-color: $accent-light;
+    }
 
     @media (hover: hover) {
       &:hover {
