@@ -1,0 +1,19 @@
+@import '../../styles/abstracts/variables';
+
+.documentation {
+  font-size: $font-size-15;
+  padding: 0 10px;
+  position: relative;
+
+  @media screen and (max-width: 679px) {
+    padding: 0 15px;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+}

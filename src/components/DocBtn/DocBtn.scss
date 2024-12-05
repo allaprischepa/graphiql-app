@@ -1,0 +1,15 @@
+@import './../../styles/abstracts/variables';
+
+.doc-btn {
+  border: none;
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  position: relative;
+  transition: $trans;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+}

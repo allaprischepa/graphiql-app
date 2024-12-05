@@ -1,0 +1,28 @@
+@import './../../styles/abstracts/variables';
+
+.doc-nav {
+  position: relative;
+  left: -7px;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 15px;
+  font-size: 13px;
+  font-weight: 700;
+  color: $accent-light;
+  padding-left: 20px;
+  cursor: pointer;
+
+  &::before {
+    content: url('../../assets/icons/arrow-left.svg');
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 20px;
+  }
+
+  &:hover {
+    color: $accent-medium;
+  }
+}

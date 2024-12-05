@@ -1,0 +1,15 @@
+@import './../../styles/abstracts/variables';
+
+.doc-field {
+  margin-bottom: 20px;
+  color: $blue;
+
+  & .additional {
+    color: $accent-light;
+  }
+}
+
+.descr {
+  color: $accent-light;
+  margin-top: 5px;
+}
